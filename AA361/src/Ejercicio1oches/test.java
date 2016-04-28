@@ -5,6 +5,8 @@
  */
 package Ejercicio1oches;
 
+import java.sql.SQLException;
+
 /**
  *
  * @author UsuarioPrueba
@@ -14,8 +16,13 @@ public class test {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
        conexionBD con = new conexionBD();
+       funciones f = new funciones();
+       
+       con.conectarte();
+      f.creaTablaCoches(con.conectarte(), "aa361");
+      f.cargaTablacoches(con.conectarte(),"aa361","ejercicio1.txt");
     }
     
 }
