@@ -11,17 +11,17 @@ package modelo;
  */
 import java.sql.*;
 /**
- * @web http://www.jc-mouse.net
- * @author Mouse
+ * 
+ * @author 
  */
 public class Database {
  /* DATOS PARA LA CONEXION */
   /** base de datos por defecto es test*/
-  private String db = "prueba";
+  private String db = "dbtest";
   /** usuario */
   private String user = "root";
   /** contraseña de MySql*/
-  private String password = "chile022";
+  private String password = "secret";
   /** Cadena de conexion */
   private String url = "jdbc:mysql://localhost/"+db;
   /** variable para trabajar con la conexion a la base de datos */
@@ -35,7 +35,7 @@ public class Database {
          Class.forName("com.mysql.jdbc.Driver");
          //obtenemos la conexión
          conn = DriverManager.getConnection( this.url, this.user , this.password ); 
-         System.out.println("Connection succeed!");
+           System.out.println("conecta");
       }catch(SQLException e){
          System.err.println( e.getMessage() );
       }catch(ClassNotFoundException e){

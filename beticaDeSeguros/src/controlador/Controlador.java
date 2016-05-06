@@ -38,6 +38,7 @@ public class Controlador implements ActionListener,MouseListener{
 
      public void iniciar()
     {
+        vista.setVisible(true);
         System.out.println("ejecutando iniciar");
         //declara una acción y añade un escucha al evento producido por el componente
         
