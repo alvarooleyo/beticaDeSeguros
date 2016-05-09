@@ -11,8 +11,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.table.DefaultTableModel;
 import modelo.Modelo;
-import vista.Administrador;
-import vista.Principal;
+import vista.Interfaz;
+
 
 /**
  *
@@ -21,7 +21,7 @@ import vista.Principal;
 public class Controlador implements ActionListener,MouseListener{
     
     /** instancia a nuestra interfaz de usuario*/
-    Administrador vista ;
+    Interfaz vista ;
     /** instancia a nuestro modelo */
     Modelo modelo = new Modelo();
     
@@ -30,7 +30,7 @@ public class Controlador implements ActionListener,MouseListener{
     /** Constrcutor de clase
      * @param vista Instancia de clase interfaz
      */
-    public Controlador( Administrador vista )
+    public Controlador( Interfaz vista )
     {
         this.vista = vista;
         System.out.println("Construyendo controlador");
@@ -39,6 +39,7 @@ public class Controlador implements ActionListener,MouseListener{
      public void iniciar()
     {
         vista.setVisible(true);
+        vista.login.setVisible(true);
         System.out.println("ejecutando iniciar");
         //declara una acción y añade un escucha al evento producido por el componente
         
