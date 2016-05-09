@@ -40,11 +40,16 @@ public class Controlador implements ActionListener,MouseListener{
     {
         vista.setVisible(true);
         vista.login.setVisible(true);
+        vista.panelComercial.setVisible(false);
+        vista.administrador.setVisible(false);
+        
+        
         System.out.println("ejecutando iniciar");
         //declara una acción y añade un escucha al evento producido por el componente
         
         //añade e inicia el jtable con un DefaultTableModel vacio
          this.vista.tablaACoCo.setModel( this.modelo.getTablaComerciales() );
+         
       
     }
     
