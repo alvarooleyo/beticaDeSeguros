@@ -39,9 +39,9 @@ public class Controlador implements ActionListener,MouseListener{
      public void iniciar()
     {
         vista.setVisible(true);
-        vista.login.setVisible(true);
+        vista.login.setVisible(false);
         vista.panelComercial.setVisible(false);
-        vista.administrador.setVisible(false);
+        vista.administrador.setVisible(true);
         
         
         System.out.println("ejecutando iniciar");
