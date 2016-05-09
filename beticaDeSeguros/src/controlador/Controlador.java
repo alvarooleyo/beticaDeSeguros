@@ -96,14 +96,14 @@ public class Controlador implements ActionListener,MouseListener{
                     this.vista.tablaACoCo.setModel( new DefaultTableModel() );
                     //Se añaden valores a las tablas
                     this.vista.tablaACoCo.setModel( this.modelo.getTablaComerciales() );
-                    this.vista.tablaACoBajas.setModel( this.modelo.getTablaComerciales() );
+                    
                                         //Se añaden valores a las tablas
                                         
                     this.vista.comboCoCo.setModel(this.modelo.rellenarComboBajasC());
                     
                     this.vista.comboCoZona.setModel(this.modelo.rellenarComboBajasZ());
                     
-                    this.vista.tablaACoBajas.setModel( this.modelo.getTablaComerciales() );
+                   
                     
                     this.vista.tablaAClientes.addMouseListener(this);
                     this.vista.tablaAClientes.setModel(this.modelo.rellenarTablaClientes());

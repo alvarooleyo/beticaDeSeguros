@@ -79,10 +79,16 @@ public class Interfaz extends javax.swing.JFrame {
         Estadisticas = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tablaACoCo = new javax.swing.JTable();
-        Bajas = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablaACoBajas = new javax.swing.JTable();
-        btnCoBaja = new javax.swing.JButton();
+        txtACCNombre = new javax.swing.JTextField();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        txtACCDni = new javax.swing.JTextField();
+        jLabel38 = new javax.swing.JLabel();
+        txtACCUsuario = new javax.swing.JTextField();
+        jLabel39 = new javax.swing.JLabel();
+        txtACCClave = new javax.swing.JTextField();
+        btnACCModificar = new javax.swing.JButton();
+        btnACCBaja = new javax.swing.JButton();
         Reasignaciones = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -556,62 +562,76 @@ public class Interfaz extends javax.swing.JFrame {
         ));
         jScrollPane4.setViewportView(tablaACoCo);
 
+        jLabel36.setText("Nombre:");
+
+        jLabel37.setText("D.N.I.:");
+
+        jLabel38.setText("Usuario:");
+
+        jLabel39.setText("Clave:");
+
+        btnACCModificar.setText("Modificar Datos");
+
+        btnACCBaja.setText("Dar de Baja");
+
         javax.swing.GroupLayout EstadisticasLayout = new javax.swing.GroupLayout(Estadisticas);
         Estadisticas.setLayout(EstadisticasLayout);
         EstadisticasLayout.setHorizontalGroup(
             EstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EstadisticasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(EstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE)
+                    .addGroup(EstadisticasLayout.createSequentialGroup()
+                        .addGroup(EstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(EstadisticasLayout.createSequentialGroup()
+                                .addGroup(EstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel36)
+                                    .addComponent(jLabel38))
+                                .addGap(35, 35, 35)
+                                .addGroup(EstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtACCNombre)
+                                    .addComponent(txtACCUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE))
+                                .addGap(31, 31, 31)
+                                .addGroup(EstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(EstadisticasLayout.createSequentialGroup()
+                                        .addComponent(jLabel37)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtACCDni, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(EstadisticasLayout.createSequentialGroup()
+                                        .addComponent(jLabel39)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtACCClave))))
+                            .addGroup(EstadisticasLayout.createSequentialGroup()
+                                .addComponent(btnACCModificar)
+                                .addGap(81, 81, 81)
+                                .addComponent(btnACCBaja)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         EstadisticasLayout.setVerticalGroup(
             EstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EstadisticasLayout.createSequentialGroup()
-                .addComponent(jScrollPane4)
-                .addContainerGap())
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addGroup(EstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtACCNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel36)
+                    .addComponent(jLabel37)
+                    .addComponent(txtACCDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(EstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel38)
+                    .addComponent(txtACCUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel39)
+                    .addComponent(txtACCClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                .addGroup(EstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnACCModificar)
+                    .addComponent(btnACCBaja))
+                .addGap(78, 78, 78))
         );
 
         jTabbedPane1.addTab("Comerciales", Estadisticas);
-
-        tablaACoBajas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(tablaACoBajas);
-
-        btnCoBaja.setText("Dar de Baja");
-
-        javax.swing.GroupLayout BajasLayout = new javax.swing.GroupLayout(Bajas);
-        Bajas.setLayout(BajasLayout);
-        BajasLayout.setHorizontalGroup(
-            BajasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BajasLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(BajasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BajasLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnCoBaja)))
-                .addContainerGap())
-        );
-        BajasLayout.setVerticalGroup(
-            BajasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BajasLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCoBaja)
-                .addGap(33, 33, 33))
-        );
-
-        jTabbedPane1.addTab("Bajas", Bajas);
 
         jLabel6.setText("Eliga comercial:");
 
@@ -1323,19 +1343,19 @@ public class Interfaz extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Altas;
-    private javax.swing.JPanel Bajas;
     private javax.swing.JPanel Estadisticas;
     private javax.swing.JPanel Reasignaciones;
     public javax.swing.JTabbedPane administrador;
     private javax.swing.JButton btnAADA;
     private javax.swing.JButton btnAADB;
     public javax.swing.JButton btnACAnadir;
+    public javax.swing.JButton btnACCBaja;
+    public javax.swing.JButton btnACCModificar;
     public javax.swing.JButton btnACEliminar;
     public javax.swing.JButton btnACoAlta;
     public javax.swing.JButton btnAPAn;
     public javax.swing.JButton btnAPEli;
     public javax.swing.JButton btnAPMo;
-    public javax.swing.JButton btnCoBaja;
     public javax.swing.JButton btnCoReasignar;
     public javax.swing.JButton btnEntrar;
     public javax.swing.JComboBox<String> comboCoCo;
@@ -1376,6 +1396,10 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1395,7 +1419,6 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1425,7 +1448,6 @@ public class Interfaz extends javax.swing.JFrame {
     public javax.swing.JPanel panelComercial;
     private javax.swing.JTable tablaAAdmi;
     public javax.swing.JTable tablaAClientes;
-    public javax.swing.JTable tablaACoBajas;
     public javax.swing.JTable tablaACoCo;
     public javax.swing.JTable tablaAPro;
     public javax.swing.JTable tablaAZonas;
@@ -1434,6 +1456,10 @@ public class Interfaz extends javax.swing.JFrame {
     public javax.swing.JTextField txtAADni;
     public javax.swing.JTextField txtAANU;
     public javax.swing.JTextField txtAANombre;
+    public javax.swing.JTextField txtACCClave;
+    public javax.swing.JTextField txtACCDni;
+    public javax.swing.JTextField txtACCNombre;
+    public javax.swing.JTextField txtACCUsuario;
     public javax.swing.JTextField txtACDni;
     public javax.swing.JTextField txtACEst;
     public javax.swing.JTextField txtACNombre;
