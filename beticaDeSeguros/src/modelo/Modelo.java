@@ -297,8 +297,16 @@ public class Modelo extends Database{
     }
     
     
-    
-    
-    
+    public void BajaComercales(String dni){
+        String q="delete from Comercial where dni='"+dni+"'";
+         try{
+             PreparedStatement pstm = this.getConexion().prepareStatement(q);
+             pstm.execute();
+             pstm.close();
+             }catch(SQLException e){
+                 System.err.println( e.getMessage() );
+                 }
+    }
+        
     
 }

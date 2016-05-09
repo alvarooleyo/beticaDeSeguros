@@ -42,7 +42,8 @@ public class Controlador implements ActionListener,MouseListener{
      public enum AccionMVC {
         btnEntrar,
         menuCerrar,
-        menuSalir
+        menuSalir,
+        btnACCBaja
     }
     
     
@@ -97,21 +98,28 @@ public class Controlador implements ActionListener,MouseListener{
                     //Se añaden valores a las tablas
                     this.vista.tablaACoCo.setModel( this.modelo.getTablaComerciales() );
                     
+                    this.vista.tablaACoCo.addMouseListener(this);
+                    
+                    
                                         //Se añaden valores a las tablas
                                         
                     this.vista.comboCoCo.setModel(this.modelo.rellenarComboBajasC());
                     
-                    this.vista.comboCoZona.setModel(this.modelo.rellenarComboBajasZ());
-                    
-                   
+                    this.vista.comboCoZona.setModel(this.modelo.rellenarComboBajasZ());                  
                     
                     this.vista.tablaAClientes.addMouseListener(this);
                     this.vista.tablaAClientes.setModel(this.modelo.rellenarTablaClientes());
+                    
+                    this.vista.tablaAClientes.addMouseListener(this);
+                   
                     
                     this.vista.tablaAZonas.setModel(this.modelo.rellenarTablaZona());
                     
                     this.vista.tablaAPro.addMouseListener(this);
                     this.vista.tablaAPro.setModel(this.modelo.rellenarTablaProductos());
+                    
+                    this.vista.btnACCBaja.setActionCommand("btnACCBaja");
+                    this.vista.btnACCBaja.addActionListener(this);
                     
                 }else if(modelo.verificarClave(Usuario, clave)==2){
                     this.vista.setVisible(true);
@@ -137,6 +145,13 @@ public class Controlador implements ActionListener,MouseListener{
             //accion que se ejecutará al hacer click sobre el botón Cerrar sesión en el menú superior
             case menuSalir:
                 this.vista.dispose();
+                break;
+            case btnACCBaja:
+                
+                this.modelo.BajaComercales(this.vista.txtACCDni.getText());
+                this.vista.tablaACoCo.setModel( this.modelo.getTablaComerciales());
+                
+            
                     
                 
             
@@ -168,6 +183,19 @@ public class Controlador implements ActionListener,MouseListener{
                 this.vista.txtAPNombre.setText( String.valueOf( this.vista.tablaAPro.getValueAt(fila, 1) ));
                 this.vista.txtAPDes.setText( String.valueOf( this.vista.tablaAPro.getValueAt(fila, 2) ));
                 this.vista.txtAPPrecio.setText( String.valueOf( this.vista.tablaAPro.getValueAt(fila, 3) ));
+                
+               
+             }
+        }
+        
+         if( e.getButton()== 1)//boton izquierdo
+        {
+             int fila = this.vista.tablaAPro.rowAtPoint(e.getPoint());
+             if (fila > -1){                
+                this.vista.txtACCNombre.setText( String.valueOf( this.vista.tablaACoCo.getValueAt(fila, 1) ));
+                this.vista.txtACCDni.setText( String.valueOf( this.vista.tablaACoCo.getValueAt(fila, 2) ));
+                this.vista.txtACCUsuario.setText( String.valueOf( this.vista.tablaACoCo.getValueAt(fila, 5) ));
+                this.vista.txtACCClave.setText( String.valueOf( this.vista.tablaACoCo.getValueAt(fila, 6) ));
                 
                
              }
