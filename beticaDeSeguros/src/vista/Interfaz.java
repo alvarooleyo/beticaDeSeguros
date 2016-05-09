@@ -153,8 +153,8 @@ public class Interfaz extends javax.swing.JFrame {
         btnAPEli = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        menuCerrar = new javax.swing.JMenuItem();
+        menuSalir = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         jMenuItem2.setText("jMenuItem2");
@@ -198,10 +198,10 @@ public class Interfaz extends javax.swing.JFrame {
                             .addComponent(jLabel31)
                             .addComponent(jLabel32))
                         .addGap(37, 37, 37)
-                        .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                            .addComponent(txtPassword))))
+                .addContainerGap(343, Short.MAX_VALUE))
         );
         loginLayout.setVerticalGroup(
             loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1104,11 +1104,11 @@ public class Interfaz extends javax.swing.JFrame {
 
         jMenu1.setText("Archivo");
 
-        jMenuItem1.setText("Cerrar Sesión");
-        jMenu1.add(jMenuItem1);
+        menuCerrar.setText("Cerrar Sesión");
+        jMenu1.add(menuCerrar);
 
-        jMenuItem3.setText("Salir");
-        jMenu1.add(jMenuItem3);
+        menuSalir.setText("Salir");
+        jMenu1.add(menuSalir);
 
         jMenuBar1.add(jMenu1);
 
@@ -1385,9 +1385,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1418,6 +1416,8 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     public javax.swing.JPanel login;
+    public javax.swing.JMenuItem menuCerrar;
+    public javax.swing.JMenuItem menuSalir;
     private javax.swing.JPanel mnCli;
     private javax.swing.JPanel mnCon;
     private javax.swing.JPanel mnObj;

@@ -40,41 +40,51 @@ public class Controlador implements ActionListener,MouseListener{
 
     
      public enum AccionMVC {
-        btnEntrar
+        btnEntrar,
+        menuCerrar,
+        menuSalir
     }
     
     
     
     
     
-     public void iniciar()
-    {
-        System.out.println("ejecutando iniciar");
+     public void iniciar(){
+         
+        
         //iniciamos el panel principal        
         this.vista.setVisible(true);
         this.vista.login.setVisible(true);
         this.vista.panelAdmin.setVisible(false);
-        this.vista.panelComercial.setVisible(false);        //declara una acción y añade un escucha al evento producido por el componente
+        this.vista.panelComercial.setVisible(false);
+        //declara una acción y añade un escucha al evento producido por el componente:
+        //boton de entrar
         this.vista.btnEntrar.setActionCommand( "btnEntrar" );
         this.vista.btnEntrar.addActionListener(this);
-        
-        //añade e inicia el jtable con un DefaultTableModel vacio
-       
+        //boton de cerrar sesión
+        this.vista.menuCerrar.setActionCommand( "menuCerrar" );
+        this.vista.menuCerrar.addActionListener(this);
+        //boton de salir
+        this.vista.menuSalir.setActionCommand( "menuSalir" );
+        this.vista.menuSalir.addActionListener(this);   
+           
         
       
     }
     
+     
+     /** Acciones que se ejecutar al pulsar cada uno de los botones de la aplicacion**/
 
     @Override
     public void actionPerformed(ActionEvent e) {
         
         switch ( AccionMVC.valueOf( e.getActionCommand() ) ){
-            
+            //Acción sobre el botón entrar en el panel del login
             case btnEntrar:
                 System.out.println("Pulsando entrar");
                 String Usuario=this.vista.txtUsuario.getText();
                 String clave=this.vista.txtPassword.getText();
-                if (modelo.verificarClave(Usuario, clave)){
+                if (modelo.verificarClave(Usuario, clave)==1){
                     System.out.println("abriendo administrador");
                     
                     this.vista.setVisible(true);
@@ -103,10 +113,32 @@ public class Controlador implements ActionListener,MouseListener{
                     this.vista.tablaAPro.addMouseListener(this);
                     this.vista.tablaAPro.setModel(this.modelo.rellenarTablaProductos());
                     
-                }else{
+                }else if(modelo.verificarClave(Usuario, clave)==2){
+                    this.vista.setVisible(true);
+                    this.vista.login.setVisible(false);
+                    this.vista.panelComercial.setVisible(true);
+                    this.vista.panelAdmin.setVisible(false);  
+                    
+                }else{    
                     JOptionPane.showMessageDialog(vista,"Error: Los datos son incorrectos.");
                 }
             break;
+            
+            //accion que se ejecutará al hacer click sobre el botón Cerrar sesión en el menú superior
+            case menuCerrar:
+                this.vista.setVisible(true);
+                this.vista.login.setVisible(true);
+                this.vista.panelComercial.setVisible(false);
+                this.vista.panelAdmin.setVisible(false); 
+                this.vista.txtUsuario.setText("");
+                this.vista.txtPassword.setText("");
+            break;
+            
+            //accion que se ejecutará al hacer click sobre el botón Cerrar sesión en el menú superior
+            case menuSalir:
+                this.vista.dispose();
+                    
+                
             
         
         }

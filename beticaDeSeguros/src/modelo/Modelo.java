@@ -69,10 +69,10 @@ public class Modelo extends Database{
      * @param usuario*
      * @param clave
      * @return */
-    public boolean verificarClave(String usuario, String clave){
-        boolean res=false;
+    public int verificarClave(String usuario, String clave){
+        int res=0;
         //se arma la consulta
-        String q = "select id FROM Comercial WHERE  usuario='" + usuario + "' and clave='"+clave+"'" ;
+        String q = "select rango as rango FROM Comercial WHERE  usuario='" + usuario + "' and clave='"+clave+"'" ;
         //se ejecuta la consulta
         System.out.println(usuario+clave);
          try {
@@ -80,8 +80,10 @@ public class Modelo extends Database{
             ResultSet resultado=pstm.executeQuery();
             resultado.next();
             //Condición de entrada
-            if(resultado.getInt("id")==1){
-                res=true;
+            if(resultado.getString("rango").equals("Administrador")){
+                res=1;
+            }else if(resultado.getString("rango").equals("Comercial")){
+                res=2;                
             }
             pstm.close();
             resultado.close();
