@@ -53,8 +53,8 @@ public class Controlador implements ActionListener,MouseListener{
         //iniciamos el panel principal        
         this.vista.setVisible(true);
         this.vista.login.setVisible(true);
-        this.vista.administrador.setVisible(false);
-        this.vista.comercial.setVisible(false);        //declara una acción y añade un escucha al evento producido por el componente
+        this.vista.panelAdmin.setVisible(false);
+        this.vista.panelComercial.setVisible(false);        //declara una acción y añade un escucha al evento producido por el componente
         this.vista.btnEntrar.setActionCommand( "btnEntrar" );
         this.vista.btnEntrar.addActionListener(this);
         
@@ -79,8 +79,8 @@ public class Controlador implements ActionListener,MouseListener{
                     
                     this.vista.setVisible(true);
                     this.vista.login.setVisible(false);
-                    this.vista.administrador.setVisible(true);
-                    this.vista.comercial.setVisible(false);  
+                    this.vista.panelComercial.setVisible(false);
+                    this.vista.panelAdmin.setVisible(true);  
                     
                     
                     this.vista.tablaACoCo.setModel( new DefaultTableModel() );
