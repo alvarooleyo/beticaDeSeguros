@@ -27,11 +27,11 @@ public class Modelo extends Database{
         
       DefaultTableModel tablemodel = new DefaultTableModel();
       int registros = 0;
-      String[] columNames = {"ID","Nombre","D.N.I.","Puesto","Clave","usuario","Zona"};
+      String[] columNames = {"ID","Nombre","D.N.I.","Puesto","Clave","usuario","Zon"};
       //obtenemos la cantidad de registros existentes en la tabla y se almacena en la variable "registros"
       //para formar la matriz de datos
       try{
-         PreparedStatement pstm = this.getConexion().prepareStatement( "SELECT count(*) as total FROM comercial");
+         PreparedStatement pstm = this.getConexion().prepareStatement( "SELECT count(*) as total FROM comercial where rango='comercial'");
          ResultSet res = pstm.executeQuery();
          res.next();
          registros = res.getInt("total");
@@ -43,7 +43,7 @@ public class Modelo extends Database{
     Object[][] data = new String[registros][7];
       try{
           //realizamos la consulta sql y llenamos los datos en la matriz "Object[][] data"
-         PreparedStatement pstm = this.getConexion().prepareStatement("SELECT * FROM comercial");
+         PreparedStatement pstm = this.getConexion().prepareStatement("SELECT * FROM comercial where rango='comercial'");
          ResultSet res = pstm.executeQuery();
          int i=0;
          while(res.next()){

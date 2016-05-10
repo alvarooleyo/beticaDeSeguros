@@ -87,36 +87,34 @@ public class Controlador implements ActionListener,MouseListener{
                 System.out.println("Pulsando entrar");
                 String Usuario=this.vista.txtUsuario.getText();
                 String clave=this.vista.txtPassword.getText();
+                // se verifica la clave
                 if (modelo.verificarClave(Usuario, clave)==1){
-                    System.out.println("abriendo administrador");
                     
+                    //cargamos el panel de administrador
                     this.vista.setVisible(true);
                     this.vista.login.setVisible(false);
                     this.vista.panelComercial.setVisible(false);
                     this.vista.panelAdmin.setVisible(true);  
                     
-                    
-                    this.vista.tablaACoCo.setModel( new DefaultTableModel() );
-                    //Se añaden valores a las tablas
+                    //se añaden la tabla comerciales y se cargan los datos de la base de dtos
+                    this.vista.tablaACoCo.setModel( new DefaultTableModel() );                   
                     this.vista.tablaACoCo.setModel( this.modelo.getTablaComerciales() );
+                    //se añade un mouselistener a la tabla comerciales
+                    this.vista.tablaACoCo.addMouseListener(this);                    
                     
-                    this.vista.tablaACoCo.addMouseListener(this);
-                    
-                    
-                                        //Se añaden valores a las tablas
-                                        
-                    this.vista.comboCoCo.setModel(this.modelo.rellenarComboBajasC());
-                    
+                    //Se rellenan los combobox de comerciales y zonas                    
+                    this.vista.comboCoCo.setModel(this.modelo.rellenarComboBajasC());                    
                     this.vista.comboCoZona.setModel(this.modelo.rellenarComboBajasZ());                  
                     
-                    
+                    //se cargan los datos de la base de datos en la tabla clientes
                     this.vista.tablaAClientes.setModel(this.modelo.rellenarTablaClientes());
                     
                     this.vista.tablaAClientes.addMouseListener(this);
                    
-                    
+                    //se cargan los datos de la base de datos en la tabla zonas
                     this.vista.tablaAZonas.setModel(this.modelo.rellenarTablaZona());
                     
+                    //se cargan los datos de la base de datos en la tabla productos
                     this.vista.tablaAPro.addMouseListener(this);
                     this.vista.tablaAPro.setModel(this.modelo.rellenarTablaProductos());
                     
