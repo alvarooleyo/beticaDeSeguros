@@ -168,7 +168,7 @@ public class Controlador implements ActionListener,MouseListener{
                 this.vista.tablaACoCo.setModel( this.modelo.getTablaComerciales());
                 break;
             case btnAADA:
-                this.modelo.AñadirAdministrador(this.vista.txtAANombre.getText()+" "+this.vista.txtAANombre.getText(),this.vista.txtAADni.getText(),"administrador",this.vista.txtAAClave.getText(),this.vista.txtAANU.getText());
+                this.modelo.AñadirAdministrador(this.vista.txtAANombre.getText()+" "+this.vista.txtAAApellidos.getText(),this.vista.txtAADni.getText(),"administrador",this.vista.txtAAClave.getText(),this.vista.txtAANU.getText());
                 this.vista.tablaAAdmi.setModel( this.modelo.rellenarTablaAdministradores());
                 break;
             

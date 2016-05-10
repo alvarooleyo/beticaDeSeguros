@@ -31,7 +31,7 @@ public class Modelo extends Database{
       //obtenemos la cantidad de registros existentes en la tabla y se almacena en la variable "registros"
       //para formar la matriz de datos
       try{
-         PreparedStatement pstm = this.getConexion().prepareStatement( "SELECT count(*) as total FROM Comercial");
+         PreparedStatement pstm = this.getConexion().prepareStatement( "SELECT count(*) as total FROM comercial");
          ResultSet res = pstm.executeQuery();
          res.next();
          registros = res.getInt("total");
@@ -43,7 +43,7 @@ public class Modelo extends Database{
     Object[][] data = new String[registros][7];
       try{
           //realizamos la consulta sql y llenamos los datos en la matriz "Object[][] data"
-         PreparedStatement pstm = this.getConexion().prepareStatement("SELECT * FROM Comercial");
+         PreparedStatement pstm = this.getConexion().prepareStatement("SELECT * FROM comercial");
          ResultSet res = pstm.executeQuery();
          int i=0;
          while(res.next()){
@@ -72,7 +72,7 @@ public class Modelo extends Database{
     public int verificarClave(String usuario, String clave){
         int res=0;
         //se arma la consulta
-        String q = "select rango as rango FROM Comercial WHERE  usuario='" + usuario + "' and clave='"+clave+"'" ;
+        String q = "select rango as rango FROM comercial WHERE  usuario='" + usuario + "' and clave='"+clave+"'" ;
         //se ejecuta la consulta
         System.out.println(usuario+clave);
          try {
@@ -80,9 +80,9 @@ public class Modelo extends Database{
             ResultSet resultado=pstm.executeQuery();
             resultado.next();
             //Condición de entrada
-            if(resultado.getString("rango").equals("Administrador")){
+            if(resultado.getString("rango").equals("administrador")){
                 res=1;
-            }else if(resultado.getString("rango").equals("Comercial")){
+            }else if(resultado.getString("rango").equals("comercial")){
                 res=2;                
             }
             pstm.close();
@@ -105,7 +105,7 @@ public class Modelo extends Database{
          /**Obtenemos la cantidad de elementos que contendra el ComboBox de comerciales**/
          try{
              //se arma la consulta
-             PreparedStatement pstm = this.getConexion().prepareStatement( "SELECT count(*) as total FROM Comercial");
+             PreparedStatement pstm = this.getConexion().prepareStatement( "SELECT count(*) as total FROM comercial");
              //se ejecuta la consulta
              ResultSet res1 = pstm.executeQuery();
              res1.next();
@@ -116,7 +116,7 @@ public class Modelo extends Database{
       }         
          int i=0;
          Object[] data = new String[total];       
-         String q = "select nombre FROM Comercial" ;       
+         String q = "select nombre FROM comercial" ;       
          try {
              //se arma la consulta
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
@@ -144,7 +144,7 @@ public class Modelo extends Database{
          /**Obtenemos la cantidad de elementos que contendra el ComboBox de comerciales**/
          try{
              //se arma la consulta
-             PreparedStatement pstm = this.getConexion().prepareStatement( "SELECT count(*) as total FROM Zona");
+             PreparedStatement pstm = this.getConexion().prepareStatement( "SELECT count(*) as total FROM zona");
              //se ejecuta la consulta
              ResultSet res1 = pstm.executeQuery();
              res1.next();
@@ -155,7 +155,7 @@ public class Modelo extends Database{
       }         
          int i=0;
          Object[] data = new String[total];       
-         String q = "select nombre FROM Zona" ;       
+         String q = "select nombre FROM zona" ;       
          try {
              //se arma la consulta
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
@@ -184,7 +184,7 @@ public class Modelo extends Database{
       //obtenemos la cantidad de registros existentes en la tabla y se almacena en la variable "registros"
       //para formar la matriz de datos
       try{
-         PreparedStatement pstm = this.getConexion().prepareStatement( "SELECT count(*) as total FROM Cliente");
+         PreparedStatement pstm = this.getConexion().prepareStatement( "SELECT count(*) as total FROM cliente");
          ResultSet res = pstm.executeQuery();
          res.next();
          registros = res.getInt("total");
@@ -196,7 +196,7 @@ public class Modelo extends Database{
     Object[][] data = new String[registros][6];
       try{
           //realizamos la consulta sql y llenamos los datos en la matriz "Object[][] data"
-         PreparedStatement pstm = this.getConexion().prepareStatement("SELECT * FROM Cliente");
+         PreparedStatement pstm = this.getConexion().prepareStatement("SELECT * FROM cliente");
          ResultSet res = pstm.executeQuery();
          int i=0;
          while(res.next()){
@@ -225,7 +225,7 @@ public class Modelo extends Database{
       //obtenemos la cantidad de registros existentes en la tabla y se almacena en la variable "registros"
       //para formar la matriz de datos
       try{
-         PreparedStatement pstm = this.getConexion().prepareStatement( "SELECT count(*) as total FROM Zona");
+         PreparedStatement pstm = this.getConexion().prepareStatement( "SELECT count(*) as total FROM zona");
          ResultSet res = pstm.executeQuery();
          res.next();
          registros = res.getInt("total");
@@ -237,7 +237,7 @@ public class Modelo extends Database{
     Object[][] data = new String[registros][4];
       try{
           //realizamos la consulta sql y llenamos los datos en la matriz "Object[][] data"
-         PreparedStatement pstm = this.getConexion().prepareStatement("SELECT * FROM Zona");
+         PreparedStatement pstm = this.getConexion().prepareStatement("SELECT * FROM zona");
          ResultSet res = pstm.executeQuery();
          int i=0;
          while(res.next()){
@@ -265,7 +265,7 @@ public class Modelo extends Database{
       //obtenemos la cantidad de registros existentes en la tabla y se almacena en la variable "registros"
       //para formar la matriz de datos
       try{
-         PreparedStatement pstm = this.getConexion().prepareStatement( "SELECT count(*) as total FROM Productos");
+         PreparedStatement pstm = this.getConexion().prepareStatement( "SELECT count(*) as total FROM productos");
          ResultSet res = pstm.executeQuery();
          res.next();
          registros = res.getInt("total");
@@ -277,7 +277,7 @@ public class Modelo extends Database{
     Object[][] data = new String[registros][4];
       try{
           //realizamos la consulta sql y llenamos los datos en la matriz "Object[][] data"
-         PreparedStatement pstm = this.getConexion().prepareStatement("SELECT * FROM Productos");
+         PreparedStatement pstm = this.getConexion().prepareStatement("SELECT * FROM productos");
          ResultSet res = pstm.executeQuery();
          int i=0;
          while(res.next()){
@@ -298,7 +298,7 @@ public class Modelo extends Database{
     
     
     public void BajaComerciales(String dni){
-        String q="delete from Comercial where dni='"+dni+"'";
+        String q="delete from comercial where dni='"+dni+"'";
          try{
              PreparedStatement pstm = this.getConexion().prepareStatement(q);
              pstm.execute();
@@ -309,7 +309,7 @@ public class Modelo extends Database{
     }
     
     public void MoificarDatosComerciales(String usuario,String clave,String dni){
-        String q="update Comercial set usuario='"+usuario+"',clave='"+clave+"' where dni='"+dni+"'";
+        String q="update comercial set usuario='"+usuario+"',clave='"+clave+"' where dni='"+dni+"'";
          try{
              PreparedStatement pstm = this.getConexion().prepareStatement(q);
              pstm.execute();
@@ -329,7 +329,7 @@ public class Modelo extends Database{
       //obtenemos la cantidad de registros existentes en la tabla y se almacena en la variable "registros"
       //para formar la matriz de datos
       try{
-         PreparedStatement pstm = this.getConexion().prepareStatement( "SELECT count(*) as total FROM Comercial");
+         PreparedStatement pstm = this.getConexion().prepareStatement( "SELECT count(*) as total FROM comercial");
          ResultSet res = pstm.executeQuery();
          res.next();
          registros = res.getInt("total");
@@ -341,7 +341,7 @@ public class Modelo extends Database{
     Object[][] data = new String[registros][7];
       try{
           //realizamos la consulta sql y llenamos los datos en la matriz "Object[][] data"
-         PreparedStatement pstm = this.getConexion().prepareStatement("SELECT * FROM Comercial where rango='Administrador'");
+         PreparedStatement pstm = this.getConexion().prepareStatement("SELECT * FROM comercial where rango='administrador'");
          ResultSet res = pstm.executeQuery();
          int i=0;
          while(res.next()){
@@ -366,7 +366,8 @@ public class Modelo extends Database{
       
       
       public void AñadirAdministrador(String nom,String dni,String admin,String clave,String usr){
-           String q="insert into Comercial values (null,'"+nom+"','"+dni+"','"+admin+"','"+clave+"','"+usr+"',null";
+           String q="insert into comercial values (null,'"+nom+"','"+dni+"','"+admin+"',null,'"+clave+"','"+usr+"')";
+           System.out.println(q);
          try{
              PreparedStatement pstm = this.getConexion().prepareStatement(q);
              pstm.execute();
