@@ -297,7 +297,7 @@ public class Modelo extends Database{
     }
     
     
-    public void BajaComercales(String dni){
+    public void BajaComerciales(String dni){
         String q="delete from Comercial where dni='"+dni+"'";
          try{
              PreparedStatement pstm = this.getConexion().prepareStatement(q);
@@ -307,6 +307,78 @@ public class Modelo extends Database{
                  System.err.println( e.getMessage() );
                  }
     }
+    
+    public void MoificarDatosComerciales(String usuario,String clave,String dni){
+        String q="update Comercial set usuario='"+usuario+"',clave='"+clave+"' where dni='"+dni+"'";
+         try{
+             PreparedStatement pstm = this.getConexion().prepareStatement(q);
+             pstm.execute();
+             pstm.close();
+             }catch(SQLException e){
+                 System.err.println( e.getMessage() );
+                 }
+        
+    }
+    
+    
+      public DefaultTableModel rellenarTablaAdministradores() {
+        
+        DefaultTableModel tablemodel = new DefaultTableModel();
+      int registros = 0;
+      String[] columNames = {"ID","Nombre","D.N.I.","Puesto","Clave","usuario","Zona"};
+      //obtenemos la cantidad de registros existentes en la tabla y se almacena en la variable "registros"
+      //para formar la matriz de datos
+      try{
+         PreparedStatement pstm = this.getConexion().prepareStatement( "SELECT count(*) as total FROM Comercial");
+         ResultSet res = pstm.executeQuery();
+         res.next();
+         registros = res.getInt("total");
+         res.close();
+      }catch(SQLException e){
+         System.err.println( e.getMessage() );
+      }
+    //se crea una matriz con tantas filas y columnas que necesite
+    Object[][] data = new String[registros][7];
+      try{
+          //realizamos la consulta sql y llenamos los datos en la matriz "Object[][] data"
+         PreparedStatement pstm = this.getConexion().prepareStatement("SELECT * FROM Comercial where rango='Administrador'");
+         ResultSet res = pstm.executeQuery();
+         int i=0;
+         while(res.next()){
+                data[i][0] = res.getString( "id" );
+                data[i][1] = res.getString( "nombre" );
+                data[i][2] = res.getString( "dni" );
+                data[i][3] = res.getString( "rango" );
+                data[i][4] = res.getString( "clave" );
+                data[i][5] = res.getString( "usuario" );
+                data[i][6] = res.getString( "zona" );
+            i++;
+         }
+         res.close();
+         //se añade la matriz de datos en el DefaultTableModel
+         tablemodel.setDataVector(data, columNames );
+         }catch(SQLException e){
+            System.err.println( e.getMessage() );
+        }
+        return tablemodel;
+    
+    }
+      
+      
+      public void AñadirAdministrador(String nom,String dni,String admin,String clave,String usr){
+           String q="insert into Comercial values (null,'"+nom+"','"+dni+"','"+admin+"','"+clave+"','"+usr+"',null";
+         try{
+             PreparedStatement pstm = this.getConexion().prepareStatement(q);
+             pstm.execute();
+             pstm.close();
+             }catch(SQLException e){
+                 System.err.println( e.getMessage() );
+                 }
+        
+    }
+          
+      
+    
         
     
 }

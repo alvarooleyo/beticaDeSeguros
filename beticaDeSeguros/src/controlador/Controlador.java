@@ -43,7 +43,9 @@ public class Controlador implements ActionListener,MouseListener{
         btnEntrar,
         menuCerrar,
         menuSalir,
-        btnACCBaja
+        btnACCBaja,
+        btnACCModificar,
+        btnAADA
     }
     
     
@@ -107,7 +109,7 @@ public class Controlador implements ActionListener,MouseListener{
                     
                     this.vista.comboCoZona.setModel(this.modelo.rellenarComboBajasZ());                  
                     
-                    this.vista.tablaAClientes.addMouseListener(this);
+                    
                     this.vista.tablaAClientes.setModel(this.modelo.rellenarTablaClientes());
                     
                     this.vista.tablaAClientes.addMouseListener(this);
@@ -120,6 +122,16 @@ public class Controlador implements ActionListener,MouseListener{
                     
                     this.vista.btnACCBaja.setActionCommand("btnACCBaja");
                     this.vista.btnACCBaja.addActionListener(this);
+                    
+                     this.vista.btnACCModificar.setActionCommand("btnACCModificar");
+                    this.vista.btnACCModificar.addActionListener(this);
+                    
+                    this.vista.tablaAAdmi.setModel(this.modelo.rellenarTablaAdministradores());
+                    
+                    this.vista.tablaAAdmi.addMouseListener(this);
+                    
+                    this.vista.btnAADA.setActionCommand("btnAADA");
+                    this.vista.btnAADA.addActionListener(this);
                     
                 }else if(modelo.verificarClave(Usuario, clave)==2){
                     this.vista.setVisible(true);
@@ -148,9 +160,17 @@ public class Controlador implements ActionListener,MouseListener{
                 break;
             case btnACCBaja:
                 
-                this.modelo.BajaComercales(this.vista.txtACCDni.getText());
+                this.modelo.BajaComerciales(this.vista.txtACCDni.getText());
                 this.vista.tablaACoCo.setModel( this.modelo.getTablaComerciales());
-                
+                break;
+            case btnACCModificar:
+                this.modelo.MoificarDatosComerciales(this.vista.txtACCUsuario.getText(),this.vista.txtACCClave.getText(),this.vista.txtACCDni.getText());
+                this.vista.tablaACoCo.setModel( this.modelo.getTablaComerciales());
+                break;
+            case btnAADA:
+                this.modelo.AñadirAdministrador(this.vista.txtAANombre.getText()+" "+this.vista.txtAANombre.getText(),this.vista.txtAADni.getText(),"administrador",this.vista.txtAAClave.getText(),this.vista.txtAANU.getText());
+                this.vista.tablaAAdmi.setModel( this.modelo.rellenarTablaAdministradores());
+                break;
             
                     
                 
@@ -195,7 +215,7 @@ public class Controlador implements ActionListener,MouseListener{
                 this.vista.txtACCNombre.setText( String.valueOf( this.vista.tablaACoCo.getValueAt(fila, 1) ));
                 this.vista.txtACCDni.setText( String.valueOf( this.vista.tablaACoCo.getValueAt(fila, 2) ));
                 this.vista.txtACCUsuario.setText( String.valueOf( this.vista.tablaACoCo.getValueAt(fila, 5) ));
-                this.vista.txtACCClave.setText( String.valueOf( this.vista.tablaACoCo.getValueAt(fila, 6) ));
+                this.vista.txtACCClave.setText( String.valueOf( this.vista.tablaACoCo.getValueAt(fila, 4) ));
                 
                
              }

@@ -562,9 +562,13 @@ public class Interfaz extends javax.swing.JFrame {
         ));
         jScrollPane4.setViewportView(tablaACoCo);
 
+        txtACCNombre.setEditable(false);
+
         jLabel36.setText("Nombre:");
 
         jLabel37.setText("D.N.I.:");
+
+        txtACCDni.setEditable(false);
 
         jLabel38.setText("Usuario:");
 
@@ -1340,8 +1344,8 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JPanel Estadisticas;
     private javax.swing.JPanel Reasignaciones;
     public javax.swing.JTabbedPane administrador;
-    private javax.swing.JButton btnAADA;
-    private javax.swing.JButton btnAADB;
+    public javax.swing.JButton btnAADA;
+    public javax.swing.JButton btnAADB;
     public javax.swing.JButton btnACAnadir;
     public javax.swing.JButton btnACCBaja;
     public javax.swing.JButton btnACCModificar;
@@ -1440,7 +1444,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JPanel mnObj;
     public javax.swing.JPanel panelAdmin;
     public javax.swing.JPanel panelComercial;
-    private javax.swing.JTable tablaAAdmi;
+    public javax.swing.JTable tablaAAdmi;
     public javax.swing.JTable tablaAClientes;
     public javax.swing.JTable tablaACoCo;
     public javax.swing.JTable tablaAPro;
