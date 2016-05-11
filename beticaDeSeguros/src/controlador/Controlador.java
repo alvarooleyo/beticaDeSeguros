@@ -45,7 +45,8 @@ public class Controlador implements ActionListener,MouseListener{
         menuSalir,
         btnACCBaja,
         btnACCModificar,
-        btnAADA
+        btnAADA,
+        txtPassword
     }
     
     
@@ -64,6 +65,10 @@ public class Controlador implements ActionListener,MouseListener{
         //boton de entrar
         this.vista.btnEntrar.setActionCommand( "btnEntrar" );
         this.vista.btnEntrar.addActionListener(this);
+        
+        this.vista.txtPassword.setActionCommand("txtPassword");
+        this.vista.txtPassword.addActionListener(this);
+        this.vista.txtPassword.addMouseListener(this);
         //boton de cerrar sesión
         this.vista.menuCerrar.setActionCommand( "menuCerrar" );
         this.vista.menuCerrar.addActionListener(this);
@@ -84,13 +89,129 @@ public class Controlador implements ActionListener,MouseListener{
         switch ( AccionMVC.valueOf( e.getActionCommand() ) ){
             //Acción sobre el botón entrar en el panel del login
             case btnEntrar:
-                System.out.println("Pulsando entrar");
+               this.cargaPaneles();
+            break;
+            
+            //accion que se ejecutará al hacer click sobre el botón Cerrar sesión en el menú superior
+            case menuCerrar:
+                this.vista.setVisible(true);
+                this.vista.login.setVisible(true);
+                this.vista.panelComercial.setVisible(false);
+                this.vista.panelAdmin.setVisible(false); 
+                this.vista.txtUsuario.setText("");
+                this.vista.txtPassword.setText("");
+            break;
+            
+            //accion que se ejecutará al hacer click sobre el botón Cerrar sesión en el menú superior
+            case menuSalir:
+                this.vista.dispose();
+                break;
+            case btnACCBaja:
+                
+                this.modelo.BajaComerciales(this.vista.txtACCDni.getText());
+                this.vista.tablaACoCo.setModel( this.modelo.getTablaComerciales());
+                break;
+            case btnACCModificar:
+                this.modelo.MoificarDatosComerciales(this.vista.txtACCUsuario.getText(),this.vista.txtACCClave.getText(),this.vista.txtACCDni.getText());
+                this.vista.tablaACoCo.setModel( this.modelo.getTablaComerciales());
+                break;
+            case btnAADA:
+                this.modelo.AñadirAdministrador(this.vista.txtAANombre.getText()+" "+this.vista.txtAAApellidos.getText(),this.vista.txtAADni.getText(),"administrador",this.vista.txtAAClave.getText(),this.vista.txtAANU.getText());
+                this.vista.tablaAAdmi.setModel( this.modelo.rellenarTablaAdministradores());
+                break;
+            case txtPassword:
+                this.cargaPaneles();
+                break;
+            
+                    
+                
+            
+        
+        }
+        
+    
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        if( e.getButton()== 1)//boton izquierdo
+        {    
+             int fila = this.vista.tablaAClientes.rowAtPoint(e.getPoint());
+             if (fila > -1){                
+                this.vista.txtACNombre.setText( String.valueOf( this.vista.tablaAClientes.getValueAt(fila, 1) ));
+                this.vista.txtACDni.setText( String.valueOf( this.vista.tablaAClientes.getValueAt(fila, 2) ));
+                this.vista.txtACTelefono.setText( String.valueOf( this.vista.tablaAClientes.getValueAt(fila, 3) ));
+                this.vista.txtACEst.setText( String.valueOf( this.vista.tablaAClientes.getValueAt(fila, 4) ));
+                this.vista.txtACZona.setText( String.valueOf( this.vista.tablaAClientes.getValueAt(fila, 5) ));
+               
+             }
+        }
+        
+        if( e.getButton()== 1)//boton izquierdo
+        {
+             int fila = this.vista.tablaAPro.rowAtPoint(e.getPoint());
+             if (fila > -1){                
+                this.vista.txtAPNombre.setText( String.valueOf( this.vista.tablaAPro.getValueAt(fila, 1) ));
+                this.vista.txtAPDes.setText( String.valueOf( this.vista.tablaAPro.getValueAt(fila, 2) ));
+                this.vista.txtAPPrecio.setText( String.valueOf( this.vista.tablaAPro.getValueAt(fila, 3) ));
+                
+               
+             }
+        }
+        
+         if( e.getButton()== 1)//boton izquierdo
+        {
+             int fila = this.vista.tablaAPro.rowAtPoint(e.getPoint());
+             if (fila > -1){                
+                this.vista.txtACCNombre.setText( String.valueOf( this.vista.tablaACoCo.getValueAt(fila, 1) ));
+                this.vista.txtACCDni.setText( String.valueOf( this.vista.tablaACoCo.getValueAt(fila, 2) ));
+                this.vista.txtACCUsuario.setText( String.valueOf( this.vista.tablaACoCo.getValueAt(fila, 5) ));
+                this.vista.txtACCClave.setText( String.valueOf( this.vista.tablaACoCo.getValueAt(fila, 4) ));
+                
+               
+             }
+        }
+         
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+     
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+   
+    }
+    public void cargaPaneles(){
+         System.out.println("Pulsando entrar");
                 String Usuario=this.vista.txtUsuario.getText();
                 String clave=this.vista.txtPassword.getText();
                 // se verifica la clave
                 if (modelo.verificarClave(Usuario, clave)==1){
+                    this.panelAdmin();
+                   
                     
-                    //cargamos el panel de administrador
+                }else if(modelo.verificarClave(Usuario, clave)==2){
+                    
+                    this.panelComercial();
+                }else{    
+                    JOptionPane.showMessageDialog(vista,"Error: Los datos son incorrectos.");
+                }
+    }
+    
+    public void panelAdmin(){
+         //cargamos el panel de administrador
                     this.vista.setVisible(true);
                     this.vista.login.setVisible(false);
                     this.vista.panelComercial.setVisible(false);
@@ -130,117 +251,14 @@ public class Controlador implements ActionListener,MouseListener{
                     
                     this.vista.btnAADA.setActionCommand("btnAADA");
                     this.vista.btnAADA.addActionListener(this);
-                    
-                }else if(modelo.verificarClave(Usuario, clave)==2){
-                    this.vista.setVisible(true);
+    }
+    
+    public void panelComercial(){
+        this.vista.setVisible(true);
                     this.vista.login.setVisible(false);
                     this.vista.panelComercial.setVisible(true);
                     this.vista.panelAdmin.setVisible(false);  
-                    
-                }else{    
-                    JOptionPane.showMessageDialog(vista,"Error: Los datos son incorrectos.");
-                }
-            break;
-            
-            //accion que se ejecutará al hacer click sobre el botón Cerrar sesión en el menú superior
-            case menuCerrar:
-                this.vista.setVisible(true);
-                this.vista.login.setVisible(true);
-                this.vista.panelComercial.setVisible(false);
-                this.vista.panelAdmin.setVisible(false); 
-                this.vista.txtUsuario.setText("");
-                this.vista.txtPassword.setText("");
-            break;
-            
-            //accion que se ejecutará al hacer click sobre el botón Cerrar sesión en el menú superior
-            case menuSalir:
-                this.vista.dispose();
-                break;
-            case btnACCBaja:
-                
-                this.modelo.BajaComerciales(this.vista.txtACCDni.getText());
-                this.vista.tablaACoCo.setModel( this.modelo.getTablaComerciales());
-                break;
-            case btnACCModificar:
-                this.modelo.MoificarDatosComerciales(this.vista.txtACCUsuario.getText(),this.vista.txtACCClave.getText(),this.vista.txtACCDni.getText());
-                this.vista.tablaACoCo.setModel( this.modelo.getTablaComerciales());
-                break;
-            case btnAADA:
-                this.modelo.AñadirAdministrador(this.vista.txtAANombre.getText()+" "+this.vista.txtAAApellidos.getText(),this.vista.txtAADni.getText(),"administrador",this.vista.txtAAClave.getText(),this.vista.txtAANU.getText());
-                this.vista.tablaAAdmi.setModel( this.modelo.rellenarTablaAdministradores());
-                break;
-            
-                    
-                
-            
-        
-        }
-        
-    
     }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        if( e.getButton()== 1)//boton izquierdo
-        {
-             int fila = this.vista.tablaAClientes.rowAtPoint(e.getPoint());
-             if (fila > -1){                
-                this.vista.txtACNombre.setText( String.valueOf( this.vista.tablaAClientes.getValueAt(fila, 1) ));
-                this.vista.txtACDni.setText( String.valueOf( this.vista.tablaAClientes.getValueAt(fila, 2) ));
-                this.vista.txtACTelefono.setText( String.valueOf( this.vista.tablaAClientes.getValueAt(fila, 3) ));
-                this.vista.txtACEst.setText( String.valueOf( this.vista.tablaAClientes.getValueAt(fila, 4) ));
-                this.vista.txtACZona.setText( String.valueOf( this.vista.tablaAClientes.getValueAt(fila, 5) ));
-               
-             }
-        }
-        
-        if( e.getButton()== 1)//boton izquierdo
-        {
-             int fila = this.vista.tablaAPro.rowAtPoint(e.getPoint());
-             if (fila > -1){                
-                this.vista.txtAPNombre.setText( String.valueOf( this.vista.tablaAPro.getValueAt(fila, 1) ));
-                this.vista.txtAPDes.setText( String.valueOf( this.vista.tablaAPro.getValueAt(fila, 2) ));
-                this.vista.txtAPPrecio.setText( String.valueOf( this.vista.tablaAPro.getValueAt(fila, 3) ));
-                
-               
-             }
-        }
-        
-         if( e.getButton()== 1)//boton izquierdo
-        {
-             int fila = this.vista.tablaAPro.rowAtPoint(e.getPoint());
-             if (fila > -1){                
-                this.vista.txtACCNombre.setText( String.valueOf( this.vista.tablaACoCo.getValueAt(fila, 1) ));
-                this.vista.txtACCDni.setText( String.valueOf( this.vista.tablaACoCo.getValueAt(fila, 2) ));
-                this.vista.txtACCUsuario.setText( String.valueOf( this.vista.tablaACoCo.getValueAt(fila, 5) ));
-                this.vista.txtACCClave.setText( String.valueOf( this.vista.tablaACoCo.getValueAt(fila, 4) ));
-                
-               
-             }
-        }
-       
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-     
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-   
-    }
-    
 }
 
 
