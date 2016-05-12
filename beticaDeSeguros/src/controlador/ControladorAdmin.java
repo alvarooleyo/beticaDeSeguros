@@ -229,12 +229,7 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
                     this.vista.btnACoAlta.addActionListener(this);
     }
     
-    public void panelComercial(){
-        this.vista.setVisible(true);
-        this.vista.login.setVisible(false);
-        this.vista.panelComercial.setVisible(true);
-        this.vista.panelAdmin.setVisible(false);  
-    }
+   
 }
 
  

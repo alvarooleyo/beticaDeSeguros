@@ -471,7 +471,7 @@ public class Modelo extends Database{
       public DefaultTableModel getTablaCliente(){
           DefaultTableModel tablemodel = new DefaultTableModel();
           int registros = 0;
-          String [] columNames = {"id, nombre, telefono"};
+          String [] columNames = {"id", "nombre", "telefono"};
           try{
               String sql ="select count(*) as total from cliente";
               PreparedStatement pstm = this.getConexion().prepareStatement(sql);
@@ -492,8 +492,8 @@ public class Modelo extends Database{
               int i = 0;
               while(res.next()){
                   data[i][0] = res.getString("id");
-                  data[i][1] = res.getString("id");
-                  data[i][2] = res.getString("id");
+                  data[i][1] = res.getString("nombre");
+                  data[i][2] = res.getString("telefono");
                 i++;
               }
               res.close();

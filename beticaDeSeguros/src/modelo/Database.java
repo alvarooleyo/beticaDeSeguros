@@ -17,11 +17,11 @@ import java.sql.*;
 public class Database {
  /* DATOS PARA LA CONEXION */
   /** base de datos por defecto es test*/
-  private String db = "beticaseguros";
+  private String db = "BeticaSeguros";
   /** usuario */
   private String user = "root";
   /** contraseña de MySql*/
-  private String password = "root";
+  private String password = "chile022";
   /** Cadena de conexion */
   private String url = "jdbc:mysql://localhost/"+db;
   /** variable para trabajar con la conexion a la base de datos */
