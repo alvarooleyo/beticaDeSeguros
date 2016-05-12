@@ -43,7 +43,7 @@ public class ControladorComercial extends Controlador implements ActionListener,
         switch (ControladorComercial.MouseMVC.valueOf(e.getComponent().getName())){           
         
             case tablaCaptaciones  :
-             fila = this.vista.tabla.rowAtPoint(e.getPoint());
+             fila = this.vista.tablaAClientes.rowAtPoint(e.getPoint());
             if (fila > -1){                
                 this.vista.txtACNombre.setText( String.valueOf( this.vista.tablaAClientes.getValueAt(fila, 1) ));
                 this.vista.txtACDni.setText( String.valueOf( this.vista.tablaAClientes.getValueAt(fila, 2) ));
@@ -63,15 +63,7 @@ public class ControladorComercial extends Controlador implements ActionListener,
                 
                
              }
-            case tablaACoCo:
-              fila = this.vista.tablaACoCo.rowAtPoint(e.getPoint());
-             if (fila > -1){                
-                this.vista.txtACCNombre.setText( String.valueOf( this.vista.tablaACoCo.getValueAt(fila, 1) ));
-                this.vista.txtACCDni.setText( String.valueOf( this.vista.tablaACoCo.getValueAt(fila, 2) ));
-                this.vista.txtACCUsuario.setText( String.valueOf( this.vista.tablaACoCo.getValueAt(fila, 5) ));
-                this.vista.txtACCClave.setText( String.valueOf( this.vista.tablaACoCo.getValueAt(fila, 4) ));
-                
-             }
+            
              }
         
     }
