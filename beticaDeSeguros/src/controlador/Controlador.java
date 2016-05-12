@@ -44,9 +44,9 @@ public class Controlador implements ActionListener,MouseListener{
         btnEntrar,
         menuCerrar,
         menuSalir,
-        btnACCBaja,
-        btnACCModificar,
-        btnAADA,
+        
+        
+        
         txtPassword
     }
     
@@ -75,7 +75,9 @@ public class Controlador implements ActionListener,MouseListener{
         this.vista.menuCerrar.addActionListener(this);
         //boton de salir
         this.vista.menuSalir.setActionCommand( "menuSalir" );
-        this.vista.menuSalir.addActionListener(this);   
+        this.vista.menuSalir.addActionListener(this);
+        
+        
            
         
       
@@ -107,11 +109,7 @@ public class Controlador implements ActionListener,MouseListener{
             case menuSalir:
                 this.vista.dispose();
                 break;
-            case btnACCBaja:
-                
-                this.modelo.BajaComerciales(this.vista.txtACCDni.getText());
-                this.vista.tablaACoCo.setModel( this.modelo.getTablaComerciales());
-                break;
+           
               
         
         }

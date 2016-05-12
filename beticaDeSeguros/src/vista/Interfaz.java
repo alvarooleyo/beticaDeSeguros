@@ -114,6 +114,15 @@ public class Interfaz extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         tablaAZonas = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        txtAZoCo = new javax.swing.JTextField();
+        txtAZoNombre = new javax.swing.JTextField();
+        txtAZoHabitantes = new javax.swing.JTextField();
+        txtAZoEst = new javax.swing.JTextField();
+        btnAZoA = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         tablaAClientes = new javax.swing.JTable();
@@ -166,6 +175,8 @@ public class Interfaz extends javax.swing.JFrame {
         jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Bética de Seguros");
+        setLocation(new java.awt.Point(0, 0));
         setPreferredSize(new java.awt.Dimension(650, 550));
 
         login.setPreferredSize(new java.awt.Dimension(650, 550));
@@ -778,7 +789,7 @@ public class Interfaz extends javax.swing.JFrame {
                 .addGap(72, 72, 72))
         );
 
-        jTabbedPane1.addTab("Atlas", Altas);
+        jTabbedPane1.addTab("Altas", Altas);
 
         administrador.addTab("Comerciales", jTabbedPane1);
 
@@ -797,6 +808,16 @@ public class Interfaz extends javax.swing.JFrame {
 
         jLabel8.setText("Datos de las distintas zonas:");
 
+        jLabel40.setText("Nombre:");
+
+        jLabel41.setText("Habitantes:");
+
+        jLabel42.setText("Nº de Establecimientos:");
+
+        jLabel43.setText("Comerciales asignados en la zona:");
+
+        btnAZoA.setText("Añadir Zona");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -804,10 +825,35 @@ public class Interfaz extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(jLabel8)
-                .addContainerGap(474, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane5))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 683, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnAZoA))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel42)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtAZoEst))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel40)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtAZoNombre))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel41)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtAZoHabitantes)))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel43)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtAZoCo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(103, 103, 103))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -816,7 +862,23 @@ public class Interfaz extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(258, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel40)
+                    .addComponent(jLabel43)
+                    .addComponent(txtAZoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAZoCo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel41)
+                    .addComponent(txtAZoHabitantes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel42)
+                    .addComponent(txtAZoEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(btnAZoA)
+                .addGap(99, 99, 99))
         );
 
         administrador.addTab("Zonas", jPanel1);
@@ -1141,7 +1203,7 @@ public class Interfaz extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(login, javax.swing.GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(panelComercial, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1354,6 +1416,7 @@ public class Interfaz extends javax.swing.JFrame {
     public javax.swing.JButton btnAPAn;
     public javax.swing.JButton btnAPEli;
     public javax.swing.JButton btnAPMo;
+    public javax.swing.JButton btnAZoA;
     public javax.swing.JButton btnCoReasignar;
     public javax.swing.JButton btnEntrar;
     public javax.swing.JComboBox<String> comboCoCo;
@@ -1399,6 +1462,10 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1467,11 +1534,15 @@ public class Interfaz extends javax.swing.JFrame {
     public javax.swing.JTextField txtACoClave;
     public javax.swing.JTextField txtACoDni;
     public javax.swing.JTextField txtACoNombre;
-    private javax.swing.JTextField txtACoNusu;
-    private javax.swing.JTextField txtACoZona;
+    public javax.swing.JTextField txtACoNusu;
+    public javax.swing.JTextField txtACoZona;
     public javax.swing.JTextArea txtAPDes;
     public javax.swing.JTextField txtAPNombre;
     public javax.swing.JTextField txtAPPrecio;
+    public javax.swing.JTextField txtAZoCo;
+    public javax.swing.JTextField txtAZoEst;
+    public javax.swing.JTextField txtAZoHabitantes;
+    public javax.swing.JTextField txtAZoNombre;
     public javax.swing.JPasswordField txtPassword;
     public javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables

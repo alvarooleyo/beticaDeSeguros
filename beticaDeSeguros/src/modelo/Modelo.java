@@ -105,7 +105,7 @@ public class Modelo extends Database{
          /**Obtenemos la cantidad de elementos que contendra el ComboBox de comerciales**/
          try{
              //se arma la consulta
-             PreparedStatement pstm = this.getConexion().prepareStatement( "SELECT count(*) as total FROM comercial");
+             PreparedStatement pstm = this.getConexion().prepareStatement( "SELECT count(*) as total FROM comercial where rango='comercial'");
              //se ejecuta la consulta
              ResultSet res1 = pstm.executeQuery();
              res1.next();
@@ -116,7 +116,7 @@ public class Modelo extends Database{
       }         
          int i=0;
          Object[] data = new String[total];       
-         String q = "select nombre FROM comercial" ;       
+         String q = "select nombre FROM comercial where rango='comercial'" ;       
          try {
              //se arma la consulta
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
@@ -377,6 +377,94 @@ public class Modelo extends Database{
                  }
         
     }
+      
+      /**Metodo para asignar zonas a los comerciales
+       * @param nombre
+       * @param zona
+       */
+      public void reasignarZonas(String nombre,String zona){
+          int id=0;
+          String z="select id as id from zona where nombre='"+zona+"'";
+                     System.out.println(z);
+
+          try{
+             PreparedStatement pstm = this.getConexion().prepareStatement(z);             
+             ResultSet res = pstm.executeQuery();
+             res.next();
+             id=res.getInt("id");              
+             pstm.close();
+             }catch(SQLException e){
+                 System.err.println( e.getMessage() );
+                 }
+          String q="update comercial set zona ='"+id+"' where nombre='"+nombre+"'";
+           System.out.println(q);
+           try{
+             PreparedStatement pstm = this.getConexion().prepareStatement(q);             
+             pstm.execute();                        
+             pstm.close();
+             }catch(SQLException e){
+                 System.err.println( e.getMessage() );
+                 }
+          
+      }
+      
+      /** Metodo para dar de alta a un comercial
+       * @param nombre
+       * @param dni
+       * @param apellidos
+       * @param usuario
+       * @param clave
+       * @param zona
+       */
+      public void altaComercial(String nombre,String dni,String usuario,String clave,String zona){
+          String z="insert into comercial values (null,'"+nombre+"','"+dni+"','comercial','"+zona+"','"+clave+"','"+usuario+"')";
+                     System.out.println(z);
+
+          try{
+             PreparedStatement pstm = this.getConexion().prepareStatement(z);             
+             pstm.execute();                           
+             pstm.close();
+             }catch(SQLException e){
+                 System.err.println( e.getMessage() );
+                 }
+      }
+      
+       /** Metodo para dar de alta a un comercial
+       * @param nombre
+       * @param habitantes
+       * @param establecimientos       
+       */
+      public void altaZona(String nombre,String habitantes,String establecimientos){
+          String z="insert into zona values (null,'"+nombre+"','"+habitantes+"','"+establecimientos+"')";
+                     System.out.println(z);
+
+          try{
+             PreparedStatement pstm = this.getConexion().prepareStatement(z);             
+             pstm.execute();                           
+             pstm.close();
+             }catch(SQLException e){
+                 System.err.println( e.getMessage() );
+                 }
+      }
+      
+      public String comercialesZona(String nombreZona){
+           String z="select count(*) as numero from comercial where rango='comercial' and zona=(select id from zona where nombre='"+nombreZona+"')";
+                     System.out.println(z);
+                     String numero=null;
+
+          try{
+             PreparedStatement pstm = this.getConexion().prepareStatement(z);             
+             ResultSet res=pstm.executeQuery();
+             res.next();
+             numero=res.getString("numero");
+             res.close();
+             pstm.close();
+             
+             }catch(SQLException e){
+                 System.err.println( e.getMessage() );
+                 }
+          return numero;
+      }
           
       
     
