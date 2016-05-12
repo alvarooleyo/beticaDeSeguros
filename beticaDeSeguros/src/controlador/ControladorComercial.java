@@ -73,7 +73,11 @@ public class ControladorComercial extends Controlador implements ActionListener,
     
     
     private void panelComercial() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        super.vista.panelComercial.setVisible(true);
+        super.vista.panelAdmin.setVisible(false);
+        super.vista.login.setVisible(false);
+        System.out.println("Comercial cargado");
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

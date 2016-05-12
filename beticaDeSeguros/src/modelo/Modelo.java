@@ -465,7 +465,47 @@ public class Modelo extends Database{
                  }
           return numero;
       }
-          
+      
+      //Nuevo metodo para rellenar clientes en el panel de comercial
+      
+      public DefaultTableModel getTablaCliente(){
+          DefaultTableModel tablemodel = new DefaultTableModel();
+          int registros = 0;
+          String [] columNames = {"id, nombre, telefono"};
+          try{
+              String sql ="select count(*) as total from cliente";
+              PreparedStatement pstm = this.getConexion().prepareStatement(sql);
+              ResultSet res = pstm.executeQuery();
+              res.next();
+              registros = res.getInt("total");
+              res.close();
+          } catch (SQLException e) {
+              System.err.println( e.getMessage() );
+          }
+          // se crea una matriz con tanta filas y columnas como se necesiten
+          Object[][] data = new String[registros][3];
+            try {
+              //se realiza la consulta sql y llenamos los datos en la matriz "Object[][]" data
+              String sql2 = "select id, nombre, telefono from cliente";
+              PreparedStatement pstm = this.getConexion().prepareStatement(sql2);
+              ResultSet res = pstm.executeQuery();
+              int i = 0;
+              while(res.next()){
+                  data[i][0] = res.getString("id");
+                  data[i][1] = res.getString("id");
+                  data[i][2] = res.getString("id");
+                i++;
+              }
+              res.close();
+              //se añade la matriz de datos en el DefaultTableModel
+              tablemodel.setDataVector(data, columNames);
+                System.out.println("tabla cliente cargada");
+          } catch (SQLException e) {
+              System.err.println( e.getMessage() );
+          }
+                    return tablemodel;
+
+      }
       
     
         

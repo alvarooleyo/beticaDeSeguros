@@ -59,7 +59,7 @@ public class Controlador implements ActionListener,MouseListener{
         
         //iniciamos el panel principal        
         this.vista.setVisible(true);
-        this.vista.login.setVisible(true);
+        this.vista.login.setVisible(true); // cambiado para que no salte siempre el usuario contraseña
         this.vista.panelAdmin.setVisible(false);
         this.vista.panelComercial.setVisible(false);
         //declara una acción y añade un escucha al evento producido por el componente:
@@ -153,7 +153,8 @@ public class Controlador implements ActionListener,MouseListener{
                    
                     
                 }else if(modelo.verificarClave(Usuario, clave)==2){
-                    
+                    ControladorComercial comerc = new ControladorComercial(this.vista);
+                    comerc.iniciarAdmin();
                     
                 }else{    
                     JOptionPane.showMessageDialog(vista,"Error: Los datos son incorrectos.");
