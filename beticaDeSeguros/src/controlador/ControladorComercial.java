@@ -98,7 +98,10 @@ public class ControladorComercial extends Controlador implements ActionListener,
                 
                  
                   this.vista.comercial.setSelectedIndex(1);
-               
+                  this.vista.txtClienteNombre.setText(" ");
+                  this.vista.txtClienteId.setText(" ");
+                  this.vista.txtClienteDni.setText(" ");
+                  this.vista.txtClienteTelefono.setText(" ");
                  System.out.println("pulsando agregar");
                  break;
              case  btnCaptEliminar:
