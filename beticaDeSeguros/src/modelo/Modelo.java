@@ -504,10 +504,24 @@ public class Modelo extends Database{
               System.err.println( e.getMessage() );
           }
                     return tablemodel;
-
+        
+        
       }
       
-    
+    public boolean eliminarCliente(int id){
+            boolean res = false;
+            
+            String q = "DELETE FROM cliente WHERE id="+id;
+            try {
+            PreparedStatement pstm = this.getConexion().prepareStatement(q);
+            pstm.execute();
+            pstm.close();
+            res=true;
+         }catch(SQLException e){
+            System.err.println( e.getMessage() );
+        }
+            return res;
+        }
         
     
 }

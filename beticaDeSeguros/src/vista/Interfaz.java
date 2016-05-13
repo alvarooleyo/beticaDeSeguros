@@ -60,6 +60,8 @@ public class Interfaz extends javax.swing.JFrame {
         txtClienteDni = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         txtClienteTelefono = new javax.swing.JTextField();
+        txtClienteId = new javax.swing.JTextField();
+        jLabel44 = new javax.swing.JLabel();
         panelDatosEstablecimiento = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
         txtEstablNombre = new javax.swing.JTextField();
@@ -256,6 +258,11 @@ public class Interfaz extends javax.swing.JFrame {
         btnCaptVer.setText("Ver");
 
         btnCaptEliminar.setText("Eliminar");
+        btnCaptEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCaptEliminarActionPerformed(evt);
+            }
+        });
 
         btnCaptAgregar.setText("Agregar");
         btnCaptAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -391,25 +398,39 @@ public class Interfaz extends javax.swing.JFrame {
 
         jLabel25.setText("Teléfono: ");
 
+        txtClienteId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtClienteIdActionPerformed(evt);
+            }
+        });
+
+        jLabel44.setText("Id: ");
+
         javax.swing.GroupLayout panelDatosClienteLayout = new javax.swing.GroupLayout(panelDatosCliente);
         panelDatosCliente.setLayout(panelDatosClienteLayout);
         panelDatosClienteLayout.setHorizontalGroup(
             panelDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelDatosClienteLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(panelDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelDatosClienteLayout.createSequentialGroup()
-                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap()
+                        .addComponent(jLabel23))
+                    .addGroup(panelDatosClienteLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelDatosClienteLayout.createSequentialGroup()
+                        .addComponent(txtClienteId, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                        .addComponent(jLabel24)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtClienteDni, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addComponent(txtClienteDni, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel25)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtClienteTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelDatosClienteLayout.createSequentialGroup()
-                        .addComponent(jLabel23)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtClienteNombre)))
+                        .addComponent(txtClienteTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtClienteNombre))
                 .addGap(12, 12, 12))
         );
         panelDatosClienteLayout.setVerticalGroup(
@@ -424,7 +445,9 @@ public class Interfaz extends javax.swing.JFrame {
                     .addComponent(txtClienteDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtClienteTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtClienteId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel44)))
         );
 
         panelDatosEstablecimiento.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos Establecimiento: "));
@@ -564,21 +587,17 @@ public class Interfaz extends javax.swing.JFrame {
         panelComercial.setLayout(panelComercialLayout);
         panelComercialLayout.setHorizontalGroup(
             panelComercialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(panelComercialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelComercialLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(comercial)
-                    .addContainerGap()))
+            .addGroup(panelComercialLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(comercial)
+                .addContainerGap())
         );
         panelComercialLayout.setVerticalGroup(
             panelComercialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(panelComercialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelComercialLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(comercial)
-                    .addContainerGap()))
+            .addGroup(panelComercialLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(comercial)
+                .addContainerGap())
         );
 
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
@@ -1270,6 +1289,14 @@ public class Interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRenovAgregarActionPerformed
 
+    private void btnCaptEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaptEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCaptEliminarActionPerformed
+
+    private void txtClienteIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClienteIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtClienteIdActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1499,6 +1526,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1568,9 +1596,10 @@ public class Interfaz extends javax.swing.JFrame {
     public javax.swing.JTextField txtAZoEst;
     public javax.swing.JTextField txtAZoHabitantes;
     public javax.swing.JTextField txtAZoNombre;
-    private javax.swing.JTextField txtClienteDni;
-    private javax.swing.JTextField txtClienteNombre;
-    private javax.swing.JTextField txtClienteTelefono;
+    public javax.swing.JTextField txtClienteDni;
+    public javax.swing.JTextField txtClienteId;
+    public javax.swing.JTextField txtClienteNombre;
+    public javax.swing.JTextField txtClienteTelefono;
     private javax.swing.JTextField txtEstablIdZona;
     private javax.swing.JTextField txtEstablNombre;
     private javax.swing.JTextField txtEstablZona;

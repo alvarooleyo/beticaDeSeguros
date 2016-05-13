@@ -8,6 +8,7 @@ package controlador;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.JOptionPane;
 import vista.Interfaz;
 
 /**
@@ -29,12 +30,16 @@ public class ControladorComercial extends Controlador implements ActionListener,
                 this.panelComercial();
                 this.vista.tablaCaptaciones.setModel(this.modelo.getTablaCliente());
                 this.vista.tablaRenovaciones.setModel(this.modelo.getTablaCliente());
+                
+                this.vista.btnCaptEliminar.setActionCommand( "btnCaptEliminar" );
+                this.vista.btnCaptEliminar.addActionListener(this);
     }
 
     public enum MouseMVC {
          tablaCaptaciones,
-         tablaRenovaciones;
-
+         tablaRenovaciones,
+         btnCaptEliminar;
+         
     }
     
     @Override
@@ -65,6 +70,18 @@ public class ControladorComercial extends Controlador implements ActionListener,
                
              }
             
+            case btnCaptEliminar:
+                if(modelo.eliminarCliente(Integer.parseInt(vista.txtClienteId.getText()))){
+                    this.vista.tablaCaptaciones.setModel( this.modelo.getTablaCliente());
+                    JOptionPane.showMessageDialog(vista,"Exito: Registro eliminado.");
+                    this.vista.txtClienteNombre.setText("");
+                    this.vista.txtClienteId.setText("") ;
+                    this.vista.txtClienteDni.setText("");
+                    this.vista.txtClienteTelefono.setText("") ;
+
+                }
+                
+             
              }
         
     }
