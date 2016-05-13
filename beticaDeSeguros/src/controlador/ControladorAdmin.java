@@ -76,7 +76,7 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
                 this.vista.txtAZoHabitantes.setText( String.valueOf( this.vista.tablaAZonas.getValueAt(fila, 2) ));
                 this.vista.txtAZoEst.setText( String.valueOf( this.vista.tablaAZonas.getValueAt(fila, 3) ));
                 String nombrezona=this.vista.txtAZoNombre.getText();                
-                this.vista.txtAZoCo.setText(this.modelo.comercialesZona(nombrezona));
+                this.vista.txtAZoCo.setText(this.modeloAdmin.comercialesZona(nombrezona));
              }
         
     }
@@ -124,23 +124,23 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
             
             case btnACCBaja:
                 
-                this.modelo.BajaComerciales(this.vista.txtACCDni.getText());
-                this.vista.tablaACoCo.setModel( this.modelo.getTablaComerciales());
+                this.modeloAdmin.BajaComerciales(this.vista.txtACCDni.getText());
+                this.vista.tablaACoCo.setModel( this.modeloAdmin.getTablaComerciales());
                 break;
             case btnACCModificar:
-                this.modelo.MoificarDatosComerciales(this.vista.txtACCUsuario.getText(),this.vista.txtACCClave.getText(),this.vista.txtACCDni.getText());
-                this.vista.tablaACoCo.setModel( this.modelo.getTablaComerciales());
+                this.modeloAdmin.MoificarDatosComerciales(this.vista.txtACCUsuario.getText(),this.vista.txtACCClave.getText(),this.vista.txtACCDni.getText());
+                this.vista.tablaACoCo.setModel( this.modeloAdmin.getTablaComerciales());
                 break;
             case btnAADA:
-                this.modelo.AñadirAdministrador(this.vista.txtAANombre.getText()+" "+this.vista.txtAAApellidos.getText(),this.vista.txtAADni.getText(),"administrador",this.vista.txtAAClave.getText(),this.vista.txtAANU.getText());
-                this.vista.tablaAAdmi.setModel( this.modelo.rellenarTablaAdministradores());
+                this.modeloAdmin.AñadirAdministrador(this.vista.txtAANombre.getText()+" "+this.vista.txtAAApellidos.getText(),this.vista.txtAADni.getText(),"administrador",this.vista.txtAAClave.getText(),this.vista.txtAANU.getText());
+                this.vista.tablaAAdmi.setModel( this.modeloAdmin.rellenarTablaAdministradores());
                 break;
                 
             case btnCoReasignar:
                 String nombre=this.vista.comboCoCo.getSelectedItem().toString();
                 String zona=this.vista.comboCoZona.getSelectedItem().toString();
-                this.modelo.reasignarZonas(nombre, zona);
-                this.vista.tablaACoCo.setModel( this.modelo.getTablaComerciales());
+                this.modeloAdmin.reasignarZonas(nombre, zona);
+                this.vista.tablaACoCo.setModel( this.modeloAdmin.getTablaComerciales());
                 break;
             case btnACoAlta:
                 String nombre1=this.vista.txtACoNombre.getText()+" "+this.vista.txtACoApellidos.getText();
@@ -148,18 +148,18 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
                 String usuario=this.vista.txtACoNusu.getText();
                 String clave=this.vista.txtACoClave.getText();
                 String zona1=this.vista.txtACoZona.getText();
-                this.modelo.altaComercial(nombre1, dni, usuario, clave, zona1);
-                this.vista.tablaACoCo.setModel( this.modelo.getTablaComerciales());
+                this.modeloAdmin.altaComercial(nombre1, dni, usuario, clave, zona1);
+                this.vista.tablaACoCo.setModel( this.modeloAdmin.getTablaComerciales());
                 //Se rellenan los combobox de comerciales y zonas                    
-                    this.vista.comboCoCo.setModel(this.modelo.rellenarComboBajasC());              
+                    this.vista.comboCoCo.setModel(this.modeloAdmin.rellenarComboBajasC());              
                     
                 break;
             case btnAZoA:
                 String nombre2=this.vista.txtAZoNombre.getText();
                 String habitantes=this.vista.txtAZoHabitantes.getText();
                 String establecimientos=this.vista.txtAZoEst.getText();
-                this.modelo.altaZona(nombre2, habitantes, establecimientos);
-                this.vista.comboCoZona.setModel(this.modelo.rellenarComboBajasZ());
+                this.modeloAdmin.altaZona(nombre2, habitantes, establecimientos);
+                this.vista.comboCoZona.setModel(this.modeloAdmin.rellenarComboBajasZ());
                 break;
 
                 
@@ -183,29 +183,29 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
                     
                     //se añaden la tabla comerciales y se cargan los datos de la base de dtos
                     this.vista.tablaACoCo.setModel( new DefaultTableModel() );                   
-                    this.vista.tablaACoCo.setModel( this.modelo.getTablaComerciales() );
+                    this.vista.tablaACoCo.setModel( this.modeloAdmin.getTablaComerciales() );
                     //se añade un mouselistener a la tabla comerciales
                     this.vista.tablaACoCo.addMouseListener(this);
                     this.vista.tablaACoCo.setName("tablaACoCo");
               
                     //Se rellenan los combobox de comerciales y zonas                    
-                    this.vista.comboCoCo.setModel(this.modelo.rellenarComboBajasC());                    
-                    this.vista.comboCoZona.setModel(this.modelo.rellenarComboBajasZ());                  
+                    this.vista.comboCoCo.setModel(this.modeloAdmin.rellenarComboBajasC());                    
+                    this.vista.comboCoZona.setModel(this.modeloAdmin.rellenarComboBajasZ());                  
                    
                     //se cargan los datos de la base de datos en la tabla clientes
-                    this.vista.tablaAClientes.setModel(this.modelo.rellenarTablaClientes());
+                    this.vista.tablaAClientes.setModel(this.modeloAdmin.rellenarTablaClientes());
                     
                     this.vista.tablaAClientes.addMouseListener(this);
                     this.vista.tablaAClientes.setName("tablaAClientes");
                    
                     //se cargan los datos de la base de datos en la tabla zonas
-                    this.vista.tablaAZonas.setModel(this.modelo.rellenarTablaZona());
+                    this.vista.tablaAZonas.setModel(this.modeloAdmin.rellenarTablaZona());
                     this.vista.tablaAZonas.addMouseListener(this);
                     this.vista.tablaAZonas.setName("tablaAZonas");
                     
                     //se cargan los datos de la base de datos en la tabla productos
                     this.vista.tablaAPro.addMouseListener(this);
-                    this.vista.tablaAPro.setModel(this.modelo.rellenarTablaProductos());
+                    this.vista.tablaAPro.setModel(this.modeloAdmin.rellenarTablaProductos());
                     this.vista.tablaAPro.setName("tablaAPro");
                     
                     this.vista.btnACCBaja.setActionCommand("btnACCBaja");
@@ -214,7 +214,7 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
                      this.vista.btnACCModificar.setActionCommand("btnACCModificar");
                     this.vista.btnACCModificar.addActionListener(this);
                     
-                    this.vista.tablaAAdmi.setModel(this.modelo.rellenarTablaAdministradores());
+                    this.vista.tablaAAdmi.setModel(this.modeloAdmin.rellenarTablaAdministradores());
                     
                     this.vista.tablaAAdmi.addMouseListener(this);
                     this.vista.tablaAAdmi.setName("tablaAAdmi");

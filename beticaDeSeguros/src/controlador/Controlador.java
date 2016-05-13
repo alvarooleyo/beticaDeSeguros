@@ -12,6 +12,8 @@ import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Modelo;
+import modelo.ModeloAdmin;
+import modelo.ModeloComercial;
 import vista.Interfaz;
 
 
@@ -25,7 +27,8 @@ public class Controlador implements ActionListener,MouseListener{
     
     /** instancia a nuestro modelo */
     Modelo modelo = new Modelo();
-    
+    ModeloComercial modeloComercial = new ModeloComercial();
+    ModeloAdmin modeloAdmin= new ModeloAdmin();
        
     
     
