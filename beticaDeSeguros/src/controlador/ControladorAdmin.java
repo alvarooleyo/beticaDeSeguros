@@ -78,6 +78,15 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
                 String nombrezona=this.vista.txtAZoNombre.getText();                
                 this.vista.txtAZoCo.setText(this.modeloAdmin.comercialesZona(nombrezona));
              }
+             case tablaAAdmi:
+                fila = this.vista.tablaAAdmi.rowAtPoint(e.getPoint());
+             if (fila > -1){                
+                this.vista.txtAANombre.setText( String.valueOf( this.vista.tablaAAdmi.getValueAt(fila, 1) ));
+                this.vista.txtAADni.setText( String.valueOf( this.vista.tablaAAdmi.getValueAt(fila, 2) ));
+                this.vista.txtAANU.setText( String.valueOf( this.vista.tablaAAdmi.getValueAt(fila, 5) ));
+                this.vista.txtAAClave.setText( String.valueOf( this.vista.tablaAAdmi.getValueAt(fila, 4) ));
+                
+             }
         
     }
     }
@@ -106,8 +115,10 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
         btnAADA,
         btnCoReasignar,
         btnACoAlta,
-        btnAZoA
-        
+        btnAZoA,
+        btnAZoE,
+        btnAZoEli,
+        btnAADB
     }
      public enum MouseMVC {
          tablaACoCo,
@@ -132,7 +143,7 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
                 this.vista.tablaACoCo.setModel( this.modeloAdmin.getTablaComerciales());
                 break;
             case btnAADA:
-                this.modeloAdmin.AñadirAdministrador(this.vista.txtAANombre.getText()+" "+this.vista.txtAAApellidos.getText(),this.vista.txtAADni.getText(),"administrador",this.vista.txtAAClave.getText(),this.vista.txtAANU.getText());
+                this.modeloAdmin.AñadirAdministrador(this.vista.txtAANombre.getText(),this.vista.txtAADni.getText(),"administrador",this.vista.txtAAClave.getText(),this.vista.txtAANU.getText());
                 this.vista.tablaAAdmi.setModel( this.modeloAdmin.rellenarTablaAdministradores());
                 break;
                 
@@ -159,8 +170,35 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
                 String habitantes=this.vista.txtAZoHabitantes.getText();
                 String establecimientos=this.vista.txtAZoEst.getText();
                 this.modeloAdmin.altaZona(nombre2, habitantes, establecimientos);
+                this.vista.tablaAZonas.setModel(this.modeloAdmin.rellenarTablaZona());
                 this.vista.comboCoZona.setModel(this.modeloAdmin.rellenarComboBajasZ());
                 break;
+                
+            case btnAZoE:
+                String nombre3=this.vista.txtAZoNombre.getText();
+                String habitantes3=this.vista.txtAZoHabitantes.getText();
+                String establecimientos3=this.vista.txtAZoEst.getText();
+                this.modeloAdmin.editarZonas(nombre3, habitantes3, establecimientos3);
+                this.vista.tablaAZonas.setModel(this.modeloAdmin.rellenarTablaZona());
+                this.vista.comboCoZona.setModel(this.modeloAdmin.rellenarComboBajasZ());
+                break;  
+            case btnAZoEli:
+                String nombre4=this.vista.txtAZoNombre.getText();
+                this.modeloAdmin.eliminarZona(nombre4);
+                this.vista.tablaAZonas.setModel(this.modeloAdmin.rellenarTablaZona());
+                this.vista.comboCoZona.setModel(this.modeloAdmin.rellenarComboBajasZ());
+                break;
+                
+            case btnAADB:
+                String dni2=this.vista.txtAADni.getText();
+                this.modeloAdmin.eliminarAdmin(dni2);
+                this.vista.tablaAAdmi.setModel(this.modeloAdmin.rellenarTablaAdministradores());
+                break;
+
+                
+                
+                
+                    
 
                 
 
@@ -227,6 +265,20 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
                     
                     this.vista.btnACoAlta.setActionCommand("btnACoAlta");
                     this.vista.btnACoAlta.addActionListener(this);
+                    //boton de añadir zonas
+                    this.vista.btnAZoA.addActionListener(this);
+                    this.vista.btnAZoA.setActionCommand("btnAZoA");
+                    //boton editar zonas
+                    this.vista.btnAZoE.addActionListener(this);
+                    this.vista.btnAZoE.setActionCommand("btnAZoE");
+                    //boton eliminar zona
+                    this.vista.btnAZoEli.addActionListener(this);
+                    this.vista.btnAZoEli.setActionCommand("btnAZoEli");  
+                    //botno eliminar administrador
+                    this.vista.btnAADB.addActionListener(this);
+                    this.vista.btnAADB.setActionCommand("btnAADB");  
+                    
+                    
     }
     
    

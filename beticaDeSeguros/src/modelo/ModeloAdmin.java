@@ -27,7 +27,7 @@ public class ModeloAdmin extends Database{
         
       DefaultTableModel tablemodel = new DefaultTableModel();
       int registros = 0;
-      String[] columNames = {"ID","Nombre","D.N.I.","Puesto","Clave","usuario","Zon"};
+      String[] columNames = {"ID","Nombre","D.N.I.","Puesto","Clave","usuario","Zona"};
       //obtenemos la cantidad de registros existentes en la tabla y se almacena en la variable "registros"
       //para formar la matriz de datos
       try{
@@ -293,7 +293,7 @@ public class ModeloAdmin extends Database{
         
         DefaultTableModel tablemodel = new DefaultTableModel();
       int registros = 0;
-      String[] columNames = {"ID","Nombre","D.N.I.","Puesto","Clave","usuario","Zona"};
+      String[] columNames = {"ID","Nombre","D.N.I.","Puesto","Clave","usuario"};
       //obtenemos la cantidad de registros existentes en la tabla y se almacena en la variable "registros"
       //para formar la matriz de datos
       try{
@@ -306,7 +306,7 @@ public class ModeloAdmin extends Database{
          System.err.println( e.getMessage() );
       }
     //se crea una matriz con tantas filas y columnas que necesite
-    Object[][] data = new String[registros][7];
+    Object[][] data = new String[registros][6];
       try{
           //realizamos la consulta sql y llenamos los datos en la matriz "Object[][] data"
          PreparedStatement pstm = this.getConexion().prepareStatement("SELECT * FROM comercial where rango='administrador'");
@@ -319,7 +319,6 @@ public class ModeloAdmin extends Database{
                 data[i][3] = res.getString( "rango" );
                 data[i][4] = res.getString( "clave" );
                 data[i][5] = res.getString( "usuario" );
-                data[i][6] = res.getString( "zona" );
             i++;
          }
          res.close();
@@ -433,6 +432,43 @@ public class ModeloAdmin extends Database{
                  }
           return numero;
       }
+      
+      public void eliminarZona(String nombre){
+        String q="delete from zona where nombre='"+nombre+"'";
+         try{
+             PreparedStatement pstm = this.getConexion().prepareStatement(q);
+             pstm.execute();
+             pstm.close();
+             }catch(SQLException e){
+                 System.err.println( e.getMessage() );
+                 }
+    }
+      
+        public void editarZonas(String nombre,String habitantes,String establecimientos){
+          
+          String q="update zona set poblacion="+habitantes+", establecimientos='"+establecimientos+"' where nombre='"+nombre+"'";
+           System.out.println(q);
+           try{
+             PreparedStatement pstm = this.getConexion().prepareStatement(q);             
+             pstm.execute();                        
+             pstm.close();
+             }catch(SQLException e){
+                 System.err.println( e.getMessage() );
+                 }
+          
+      }
+    public void eliminarAdmin(String dni){
+        String q="delete from comercial where dni='"+dni+"'";
+         try{
+             PreparedStatement pstm = this.getConexion().prepareStatement(q);
+             pstm.execute();
+             pstm.close();
+             }catch(SQLException e){
+                 System.err.println( e.getMessage() );
+                 }
+    }
+      
+      
 }
    
     
