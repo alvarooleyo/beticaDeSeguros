@@ -511,7 +511,7 @@ public class Modelo extends Database{
     public boolean eliminarCliente(int id){
             boolean res = false;
             
-            String q = "DELETE FROM cliente WHERE id="+id;
+            String q = "DELETE FROM cliente WHERE id='"+id+"'";
             try {
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
             pstm.execute();

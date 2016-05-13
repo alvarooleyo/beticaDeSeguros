@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -30,16 +31,29 @@ public class ControladorComercial extends Controlador implements ActionListener,
                 this.panelComercial();
                 this.vista.tablaCaptaciones.setModel(this.modelo.getTablaCliente());
                 this.vista.tablaRenovaciones.setModel(this.modelo.getTablaCliente());
+                this.vista.btnCaptAgregar.addActionListener(this);
+                this.vista.tablaCaptaciones.addMouseListener(this);
+                this.vista.tablaCaptaciones.setName("tablaCaptaciones");
                 
                 this.vista.btnCaptEliminar.setActionCommand( "btnCaptEliminar" );
                 this.vista.btnCaptEliminar.addActionListener(this);
+                this.vista.btnCaptAgregar.setActionCommand( "btnCaptAgregar" );
+                
+                                
+                               
+
     }
 
     public enum MouseMVC {
          tablaCaptaciones,
-         tablaRenovaciones,
-         btnCaptEliminar;
+         tablaRenovaciones
          
+         
+    }
+    
+    public enum ActionMVC {
+        btnCaptAgregar,
+        btnCaptEliminar
     }
     
     @Override
@@ -49,13 +63,12 @@ public class ControladorComercial extends Controlador implements ActionListener,
         switch (ControladorComercial.MouseMVC.valueOf(e.getComponent().getName())){           
         
             case tablaCaptaciones  :
-             fila = this.vista.tablaAClientes.rowAtPoint(e.getPoint());
+             fila = this.vista.tablaCaptaciones.rowAtPoint(e.getPoint());
             if (fila > -1){                
-                this.vista.txtACNombre.setText( String.valueOf( this.vista.tablaAClientes.getValueAt(fila, 1) ));
-                this.vista.txtACDni.setText( String.valueOf( this.vista.tablaAClientes.getValueAt(fila, 2) ));
-                this.vista.txtACTelefono.setText( String.valueOf( this.vista.tablaAClientes.getValueAt(fila, 3) ));
-                this.vista.txtACEst.setText( String.valueOf( this.vista.tablaAClientes.getValueAt(fila, 4) ));
-                this.vista.txtACZona.setText( String.valueOf( this.vista.tablaAClientes.getValueAt(fila, 5) ));
+                this.vista.txtClienteId.setText( String.valueOf( this.vista.tablaCaptaciones.getValueAt(fila, 0) ));
+                this.vista.txtClienteNombre.setText( String.valueOf( this.vista.tablaCaptaciones.getValueAt(fila, 1) ));
+                this.vista.txtClienteTelefono.setText( String.valueOf( this.vista.tablaCaptaciones.getValueAt(fila, 2) ));
+                
                
              }
       
@@ -70,20 +83,38 @@ public class ControladorComercial extends Controlador implements ActionListener,
                
              }
             
-            case btnCaptEliminar:
-                if(modelo.eliminarCliente(Integer.parseInt(vista.txtClienteId.getText()))){
-                    this.vista.tablaCaptaciones.setModel( this.modelo.getTablaCliente());
-                    JOptionPane.showMessageDialog(vista,"Exito: Registro eliminado.");
-                    this.vista.txtClienteNombre.setText("");
-                    this.vista.txtClienteId.setText("") ;
-                    this.vista.txtClienteDni.setText("");
-                    this.vista.txtClienteTelefono.setText("") ;
-
-                }
+           
                 
              
              }
         
+    }
+    
+    
+     @Override
+    public void actionPerformed(ActionEvent e) {
+         switch ( ControladorComercial.ActionMVC.valueOf( e.getActionCommand() ) ){
+             case btnCaptAgregar:
+                
+                 
+                  this.vista.comercial.setSelectedIndex(1);
+               
+                 System.out.println("pulsando agregar");
+                 break;
+             case  btnCaptEliminar:
+                 
+                 
+
+            
+                    
+                
+            
+        
+        }
+
+
+
+
     }
     
     
