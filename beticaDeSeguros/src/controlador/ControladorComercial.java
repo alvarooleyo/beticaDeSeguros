@@ -28,6 +28,7 @@ public class ControladorComercial extends Controlador implements ActionListener,
          //cargamos el panel de administrador
                 this.panelComercial();
                 this.vista.tablaCaptaciones.setModel(this.modelo.getTablaCliente());
+                this.vista.tablaRenovaciones.setModel(this.modelo.getTablaCliente());
     }
 
     public enum MouseMVC {
