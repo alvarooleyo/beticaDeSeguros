@@ -146,8 +146,6 @@ public class ControladorComercial extends Controlador implements ActionListener,
                 this.vista.txtEstablZona.setText(this.modeloComercial.verCliente(i)[2]);
                 this.vista.txtEstablIdZona.setText(this.modeloComercial.verCliente(i)[3]);
          
-                System.out.println("La id seleccionada es:"+i);
-                int b = Integer.parseInt(i);
                 
                 
                 
