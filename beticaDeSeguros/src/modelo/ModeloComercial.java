@@ -90,8 +90,9 @@ public class ModeloComercial extends Database{
             while(res.next()){
                System.out.println("Consulta realizada.");
                a[0] = res.getString("dni");
-               a[1]= res.getString("nombre");
-                System.out.println(a[1]);
+               a[1] = res.getString("nombre");
+               a[2] = res.getString("establecimiento");
+               a[3] = res.getString("id");
         
             }
             

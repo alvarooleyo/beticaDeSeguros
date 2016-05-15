@@ -140,10 +140,11 @@ public class ControladorComercial extends Controlador implements ActionListener,
                 System.out.println("Se ha pulsado el boton");
                 String i = vista.txtClienteId.getText();
          
-                 System.out.println("llamando metodo");
-                 this.vista.txtClienteDni.setText(this.modeloComercial.verCliente(i)[0]);
-                 this.vista.txtEstablZona.setText(this.modeloComercial.verCliente(i)[1]);
-            
+                System.out.println("llamando metodo");
+                this.vista.txtClienteDni.setText(this.modeloComercial.verCliente(i)[0]);
+                this.vista.txtEstablNombre.setText(this.modeloComercial.verCliente(i)[1]);
+                this.vista.txtEstablZona.setText(this.modeloComercial.verCliente(i)[2]);
+                this.vista.txtEstablIdZona.setText(this.modeloComercial.verCliente(i)[3]);
          
                 System.out.println("La id seleccionada es:"+i);
                 int b = Integer.parseInt(i);
