@@ -5,10 +5,15 @@
  */
 package controlador;
 
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import vista.Interfaz;
 
@@ -38,6 +43,8 @@ public class ControladorComercial extends Controlador implements ActionListener,
                 this.vista.btnCaptEliminar.setActionCommand( "btnCaptEliminar" );
                 this.vista.btnCaptEliminar.addActionListener(this);
                 this.vista.btnCaptAgregar.setActionCommand( "btnCaptAgregar" );
+                this.vista.btnCaptVer.setActionCommand("btnCaptVer");
+                this.vista.btnCaptVer.addActionListener(this);
                 
                                 
                                
@@ -46,14 +53,25 @@ public class ControladorComercial extends Controlador implements ActionListener,
 
     public enum MouseMVC {
          tablaCaptaciones,
-         tablaRenovaciones
+         tablaRenovaciones;
          
-         
+        public void addMouseListener(MouseAdapter mouseAdapter) {         
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
+        public int rowAtPoint(Point point) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
+        public int columnAtPoint(Point point) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
     }
     
     public enum ActionMVC {
         btnCaptAgregar,
-        btnCaptEliminar
+        btnCaptEliminar,
+        btnCaptVer
     }
     
     @Override
@@ -83,7 +101,7 @@ public class ControladorComercial extends Controlador implements ActionListener,
                
              }
             
-           
+             
                 
              
              }
@@ -96,8 +114,10 @@ public class ControladorComercial extends Controlador implements ActionListener,
          switch ( ControladorComercial.ActionMVC.valueOf( e.getActionCommand() ) ){
              case btnCaptAgregar:
                 
-                 
+                  this.vista.btnAgregarCliente.setEnabled(true);
+                  this.vista.btnEditarCliente.setEnabled(false);
                   this.vista.comercial.setSelectedIndex(1);
+                  
                   this.vista.txtClienteNombre.setText(" ");
                   this.vista.txtClienteId.setText(" ");
                   this.vista.txtClienteDni.setText(" ");
@@ -107,10 +127,29 @@ public class ControladorComercial extends Controlador implements ActionListener,
              case  btnCaptEliminar:
                  
                  
-
-            
-                    
+                 break;
+                 
+                 
+            case btnCaptVer:    
+                this.vista.btnEditarCliente.setEnabled(true);
+                this.vista.btnAgregarCliente.setEnabled(false);
+                this.vista.comercial.setSelectedIndex(1);
+                System.out.println("Se ha pulsado el boton");
+                String i = vista.txtClienteId.getText();
+                System.out.println("La id seleccionada es:"+i);
+                int b = Integer.parseInt(i);
+                if(b>0){
+             try {
+                 modeloComercial.verCliente(i);
+                 System.out.println("Deveria verse el dni");
+             } catch (SQLException ex) {
+                 Logger.getLogger(ControladorComercial.class.getName()).log(Level.SEVERE, null, ex);
+             }
+                }
                 
+                    
+                    
+                break;
             
         
         }

@@ -534,6 +534,11 @@ public class Interfaz extends javax.swing.JFrame {
         btnAgregarCliente.setText("Agregar");
 
         btnEditarCliente.setText("Editar");
+        btnEditarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarClienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout mnCliLayout = new javax.swing.GroupLayout(mnCli);
         mnCli.setLayout(mnCliLayout);
@@ -1308,6 +1313,10 @@ public class Interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAZoEActionPerformed
 
+    private void btnEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditarClienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1488,12 +1497,12 @@ public class Interfaz extends javax.swing.JFrame {
     public javax.swing.JButton btnAZoA;
     public javax.swing.JButton btnAZoE;
     public javax.swing.JButton btnAZoEli;
-    private javax.swing.JButton btnAgregarCliente;
+    public javax.swing.JButton btnAgregarCliente;
     public javax.swing.JButton btnCaptAgregar;
     public javax.swing.JButton btnCaptEliminar;
     public javax.swing.JButton btnCaptVer;
     public javax.swing.JButton btnCoReasignar;
-    private javax.swing.JButton btnEditarCliente;
+    public javax.swing.JButton btnEditarCliente;
     public javax.swing.JButton btnEntrar;
     private javax.swing.JButton btnRenovAgregar;
     private javax.swing.JButton btnRenovEliminar;
@@ -1570,9 +1579,9 @@ public class Interfaz extends javax.swing.JFrame {
     public javax.swing.JPanel panelAdmin;
     public javax.swing.JPanel panelCaptaciones;
     public javax.swing.JPanel panelComercial;
-    private javax.swing.JPanel panelDatosCliente;
-    private javax.swing.JPanel panelDatosEstablecimiento;
-    private javax.swing.JPanel panelDatosProducto;
+    public javax.swing.JPanel panelDatosCliente;
+    public javax.swing.JPanel panelDatosEstablecimiento;
+    public javax.swing.JPanel panelDatosProducto;
     private javax.swing.JPanel panelRenovaciones;
     public javax.swing.JTable tablaAAdmi;
     public javax.swing.JTable tablaAClientes;

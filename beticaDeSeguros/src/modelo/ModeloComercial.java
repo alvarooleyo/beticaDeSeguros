@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
+import vista.Interfaz;
 
 /**
  *
@@ -21,7 +22,8 @@ public class ModeloComercial extends Database{
     }
     
        //Nuevo metodo para rellenar clientes en el panel de comercial
-      
+    Interfaz v = new Interfaz();  
+    
       public DefaultTableModel getTablaCliente(){
           DefaultTableModel tablemodel = new DefaultTableModel();
           int registros = 0;
@@ -66,7 +68,7 @@ public class ModeloComercial extends Database{
             boolean res = false;
             
             String q = "DELETE FROM cliente WHERE id='"+id+"'";
-            try {
+        try {
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
             pstm.execute();
             pstm.close();
@@ -76,6 +78,25 @@ public class ModeloComercial extends Database{
         }
             return res;
         }
+    
+    public void verCliente(String id) throws SQLException{
         
+        
+        
+        String verCliente = "select cliente.dni, cliente.establecimiento, zona.nombre, zona.id from cliente join zona where zona.id=cliente.idZona and cliente.id = "+id+"";
+        try{
+            PreparedStatement pstm = this.getConexion().prepareStatement(verCliente);             
+        ResultSet res = pstm.executeQuery();
+            System.out.println("Consulta realizada.");
+        String a = (res.getString("cliente.98dni"));
+            System.out.println("el dni del cliente es: "+a);
+        v.txtClienteDni.setText(a);
+        res.close();
+        pstm.close();
+        }catch(SQLException e){
+            e.getMessage();
+        }
+        
+    }
     
 }
