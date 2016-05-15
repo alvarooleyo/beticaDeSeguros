@@ -709,6 +709,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtEstablNombre">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                      </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel27">
                       <Properties>
@@ -716,6 +719,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtEstablZona">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                      </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel28">
                       <Properties>
@@ -723,6 +729,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtEstablIdZona">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -783,6 +792,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtProductTipo">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                      </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel30">
                       <Properties>
@@ -790,6 +802,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtProductDescripcion">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>

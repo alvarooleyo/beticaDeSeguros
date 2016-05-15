@@ -118,7 +118,9 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
         btnAZoA,
         btnAZoE,
         btnAZoEli,
-        btnAADB
+        btnAADB,
+        btnACAnadir,
+        btnACEliminar
     }
      public enum MouseMVC {
          tablaACoCo,
@@ -193,6 +195,21 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
                 String dni2=this.vista.txtAADni.getText();
                 this.modeloAdmin.eliminarAdmin(dni2);
                 this.vista.tablaAAdmi.setModel(this.modeloAdmin.rellenarTablaAdministradores());
+                break;
+            case btnACAnadir:
+                String nom=this.vista.txtACNombre.getText();
+                String dni3=this.vista.txtACDni.getText();
+                String telefono=this.vista.txtACTelefono.getText();
+                String establecimiento=this.vista.txtACEst.getText();
+                String idzona=this.vista.txtACZona.getText();
+                this.modeloAdmin.AñadirClientes(nom, dni3, telefono, establecimiento, idzona);
+                //se cargan los datos de la base de datos en la tabla clientes
+                this.vista.tablaAClientes.setModel(this.modeloAdmin.rellenarTablaClientes());
+                break;
+            case btnACEliminar:
+                String dni4=this.vista.txtACDni.getText();
+                this.modeloAdmin.eliminarCliente(dni4);
+                this.vista.tablaAClientes.setModel(this.modeloAdmin.rellenarTablaClientes());
                 break;
 
                 
@@ -276,7 +293,13 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
                     this.vista.btnAZoEli.setActionCommand("btnAZoEli");  
                     //botno eliminar administrador
                     this.vista.btnAADB.addActionListener(this);
-                    this.vista.btnAADB.setActionCommand("btnAADB");  
+                    this.vista.btnAADB.setActionCommand("btnAADB");
+                    //botón añadir clientes
+                    this.vista.btnACAnadir.addActionListener(this);
+                    this.vista.btnACAnadir.setActionCommand("btnACAnadir");
+                    //botón eliminar clientes
+                    this.vista.btnACEliminar.addActionListener(this);
+                    this.vista.btnACEliminar.setActionCommand("btnACEliminar");
                     
                     
     }

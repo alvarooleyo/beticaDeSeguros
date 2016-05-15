@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,13 +22,13 @@ public class ModeloAdmin extends Database{
     public ModeloAdmin(){
     
 }
-       /** Obtiene registros de la tabla Comerciales y los devuelve en un DefaultTableMode
+     /** Obtiene registros de la tabla Comerciales y los devuelve en un DefaultTableMode
      * @return DefaultTableModel*/
     public DefaultTableModel getTablaComerciales() {
         
       DefaultTableModel tablemodel = new DefaultTableModel();
       int registros = 0;
-      String[] columNames = {"ID","Nombre","D.N.I.","Puesto","Clave","usuario","Zona"};
+      String[] columNames = {"ID","Nombre","D.N.I.","Puesto","Usuario","Clave","Zona"};
       //obtenemos la cantidad de registros existentes en la tabla y se almacena en la variable "registros"
       //para formar la matriz de datos
       try{
@@ -51,21 +52,21 @@ public class ModeloAdmin extends Database{
                 data[i][1] = res.getString( "nombre" );
                 data[i][2] = res.getString( "dni" );
                 data[i][3] = res.getString( "rango" );
-                data[i][4] = res.getString( "clave" );
-                data[i][5] = res.getString( "usuario" );
+                data[i][4] = res.getString( "usuario" );
+                data[i][5] = res.getString( "clave" );
                 data[i][6] = res.getString( "zona" );
             i++;
          }
          res.close();
          //se añade la matriz de datos en el DefaultTableModel
          tablemodel.setDataVector(data, columNames );
-         }catch(SQLException e){
+         }catch(SQLException e){             
             System.err.println( e.getMessage() );
         }
         return tablemodel;
     }
      
-    /** Cargar datos en el comboBox
+    /** Cargar datos en el comboBox de comerciales
      * @return DefaultComboBoxModel**/
      public DefaultComboBoxModel rellenarComboBajasC(){
         DefaultComboBoxModel vector=new DefaultComboBoxModel();
@@ -104,9 +105,9 @@ public class ModeloAdmin extends Database{
     }
      
      
-      /** Cargar datos en el comboBox
-     * @return DefaultComboBoxModel**/
-     public DefaultComboBoxModel rellenarComboBajasZ(){
+    /** Cargar datos en el comboBox de zonas
+    * @return DefaultComboBoxModel**/
+    public DefaultComboBoxModel rellenarComboBajasZ(){
         DefaultComboBoxModel vector=new DefaultComboBoxModel();
          int total=0;
          /**Obtenemos la cantidad de elementos que contendra el ComboBox de comerciales**/
@@ -142,7 +143,7 @@ public class ModeloAdmin extends Database{
         return vector;          
     }
      
-       /** Obtiene registros de la tabla Cliente y los devuelve en un DefaultTableMode
+     /** Obtiene registros de la tabla Cliente y los devuelve en un DefaultTableMode
      * @return DefaultTableModel*/
     public DefaultTableModel rellenarTablaClientes() {
         
@@ -184,7 +185,8 @@ public class ModeloAdmin extends Database{
         }
         return tablemodel;
     }
-    
+    /** Obtiene registros de la tabla zona y los devuelve en un DefaultTableMode
+     * @return DefaultTableModel*/
      public DefaultTableModel rellenarTablaZona() {
         
       DefaultTableModel tablemodel = new DefaultTableModel();
@@ -224,7 +226,8 @@ public class ModeloAdmin extends Database{
         return tablemodel;
     }
      
-     
+     /** Obtiene registros de la tabla productos y los devuelve en un DefaultTableMode
+     * @return DefaultTableModel*/
        public DefaultTableModel rellenarTablaProductos() {
         
       DefaultTableModel tablemodel = new DefaultTableModel();
@@ -264,31 +267,44 @@ public class ModeloAdmin extends Database{
         return tablemodel;
     }
     
-    
+    /**Método para dar de baja a los comerciales
+     * 
+     * @param dni 
+     */    
     public void BajaComerciales(String dni){
         String q="delete from comercial where dni='"+dni+"'";
          try{
              PreparedStatement pstm = this.getConexion().prepareStatement(q);
              pstm.execute();
              pstm.close();
+             JOptionPane.showMessageDialog(null,"Operación Realizada");
              }catch(SQLException e){
                  System.err.println( e.getMessage() );
                  }
     }
     
+    /**Método para modificar los datos de los comerciales
+     * 
+     * @param usuario
+     * @param clave
+     * @param dni 
+     */
     public void MoificarDatosComerciales(String usuario,String clave,String dni){
         String q="update comercial set usuario='"+usuario+"',clave='"+clave+"' where dni='"+dni+"'";
          try{
              PreparedStatement pstm = this.getConexion().prepareStatement(q);
              pstm.execute();
              pstm.close();
+             JOptionPane.showMessageDialog(null,"Operación Realizada");
              }catch(SQLException e){
+                 JOptionPane.showMessageDialog(null,"Error: Los datos son incorrectos.");
                  System.err.println( e.getMessage() );
                  }
         
     }
     
-    
+    /** Obtiene registros de la tabla Comerciales selecionando solo los que son administradores y los devuelve en un DefaultTableMode
+     * @return DefaultTableModel*/
       public DefaultTableModel rellenarTablaAdministradores() {
         
         DefaultTableModel tablemodel = new DefaultTableModel();
@@ -331,7 +347,14 @@ public class ModeloAdmin extends Database{
     
     }
       
-      
+     /**Método para añadir comerciales de tipo administador
+      * 
+      * @param nom
+      * @param dni
+      * @param admin
+      * @param clave
+      * @param usr 
+      */ 
       public void AñadirAdministrador(String nom,String dni,String admin,String clave,String usr){
            String q="insert into comercial values (null,'"+nom+"','"+dni+"','"+admin+"',null,'"+clave+"','"+usr+"')";
            System.out.println(q);
@@ -339,7 +362,9 @@ public class ModeloAdmin extends Database{
              PreparedStatement pstm = this.getConexion().prepareStatement(q);
              pstm.execute();
              pstm.close();
+             JOptionPane.showMessageDialog(null,"Operación Realizada");
              }catch(SQLException e){
+                 JOptionPane.showMessageDialog(null,"Error: Los datos son incorrectos.");
                  System.err.println( e.getMessage() );
                  }
         
@@ -369,6 +394,7 @@ public class ModeloAdmin extends Database{
              PreparedStatement pstm = this.getConexion().prepareStatement(q);             
              pstm.execute();                        
              pstm.close();
+             JOptionPane.showMessageDialog(null,"Operación Realizada");
              }catch(SQLException e){
                  System.err.println( e.getMessage() );
                  }
@@ -378,7 +404,6 @@ public class ModeloAdmin extends Database{
       /** Metodo para dar de alta a un comercial
        * @param nombre
        * @param dni
-       * @param apellidos
        * @param usuario
        * @param clave
        * @param zona
@@ -391,7 +416,9 @@ public class ModeloAdmin extends Database{
              PreparedStatement pstm = this.getConexion().prepareStatement(z);             
              pstm.execute();                           
              pstm.close();
+             JOptionPane.showMessageDialog(null,"Operación Realizada");
              }catch(SQLException e){
+                 JOptionPane.showMessageDialog(null,"Error: Los datos son incorrectos.");
                  System.err.println( e.getMessage() );
                  }
       }
@@ -409,11 +436,17 @@ public class ModeloAdmin extends Database{
              PreparedStatement pstm = this.getConexion().prepareStatement(z);             
              pstm.execute();                           
              pstm.close();
+             JOptionPane.showMessageDialog(null,"Operación Realizada");
              }catch(SQLException e){
+                 JOptionPane.showMessageDialog(null,"Error: Los datos son incorrectos.");
                  System.err.println( e.getMessage() );
                  }
       }
-      
+      /**Método que nos devuelve el número de comerciales por zona
+       * 
+       * @param nombreZona
+       * @return 
+       */
       public String comercialesZona(String nombreZona){
            String z="select count(*) as numero from comercial where rango='comercial' and zona=(select id from zona where nombre='"+nombreZona+"')";
                      System.out.println(z);
@@ -433,17 +466,29 @@ public class ModeloAdmin extends Database{
           return numero;
       }
       
+      /**Método para eliminar zonas
+       * 
+       * @param nombre 
+       */
       public void eliminarZona(String nombre){
         String q="delete from zona where nombre='"+nombre+"'";
          try{
              PreparedStatement pstm = this.getConexion().prepareStatement(q);
              pstm.execute();
              pstm.close();
+             JOptionPane.showMessageDialog(null,"Operación Realizada");
              }catch(SQLException e){
                  System.err.println( e.getMessage() );
+                 JOptionPane.showMessageDialog(null,"No se puede realizar la operación:\nZona actualmente activa");
                  }
     }
       
+      /**Método para editar los datos de una zona
+       * 
+       * @param nombre
+       * @param habitantes
+       * @param establecimientos 
+       */
         public void editarZonas(String nombre,String habitantes,String establecimientos){
           
           String q="update zona set poblacion="+habitantes+", establecimientos='"+establecimientos+"' where nombre='"+nombre+"'";
@@ -452,17 +497,70 @@ public class ModeloAdmin extends Database{
              PreparedStatement pstm = this.getConexion().prepareStatement(q);             
              pstm.execute();                        
              pstm.close();
+             JOptionPane.showMessageDialog(null,"Operación Realizada");
              }catch(SQLException e){
+                 JOptionPane.showMessageDialog(null,"Error: Los datos son incorrectos.");
                  System.err.println( e.getMessage() );
                  }
           
       }
-    public void eliminarAdmin(String dni){
-        String q="delete from comercial where dni='"+dni+"'";
+        
+         /**Método para añadir clientes
+          * 
+          * @param nom
+          * @param dni
+          * @param telefono
+          * @param establecimiento
+          * @param idzona 
+          */
+      
+      public void AñadirClientes(String nom,String dni,String telefono,String establecimiento,String idzona){
+           String q="insert into cliente values (null,'"+nom+"','"+dni+"','"+telefono+"','"+establecimiento+"','"+idzona+"',0)";
+           System.out.println(q);
          try{
              PreparedStatement pstm = this.getConexion().prepareStatement(q);
              pstm.execute();
              pstm.close();
+             JOptionPane.showMessageDialog(null,"Operación Realizada");
+             }catch(SQLException e){
+                 JOptionPane.showMessageDialog(null,"Error: Los datos son incorrectos.");
+                 System.err.println( e.getMessage() );
+                 }
+        
+    }
+      /**Método para eliminar clientes
+       * 
+       * @param nombre 
+       */
+      public void eliminarCliente(String dni){
+        String q="delete from cliente where dni='"+dni+"'";
+         try{
+             PreparedStatement pstm = this.getConexion().prepareStatement(q);
+             pstm.execute();
+             pstm.close();
+             JOptionPane.showMessageDialog(null,"Operación Realizada");
+             }catch(SQLException e){
+                 System.err.println( e.getMessage() );
+                 JOptionPane.showMessageDialog(null,"No se puede realizar la operación:\nCliente activo");
+                 }
+    }
+        
+        
+        
+        
+        
+        
+        /**Método para eliminar un comercial de tipo administrador
+         * 
+         * @param dni 
+         */
+        public void eliminarAdmin(String dni){
+        String q="delete from comercial where dni='"+dni+"'";
+        try{
+             PreparedStatement pstm = this.getConexion().prepareStatement(q);
+             pstm.execute();
+             pstm.close();
+             JOptionPane.showMessageDialog(null,"Operación Realizada");
              }catch(SQLException e){
                  System.err.println( e.getMessage() );
                  }

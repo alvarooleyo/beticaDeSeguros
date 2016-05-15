@@ -1620,12 +1620,12 @@ public class Interfaz extends javax.swing.JFrame {
     public javax.swing.JTextField txtClienteId;
     public javax.swing.JTextField txtClienteNombre;
     public javax.swing.JTextField txtClienteTelefono;
-    private javax.swing.JTextField txtEstablIdZona;
-    private javax.swing.JTextField txtEstablNombre;
-    private javax.swing.JTextField txtEstablZona;
+    public javax.swing.JTextField txtEstablIdZona;
+    public javax.swing.JTextField txtEstablNombre;
+    public javax.swing.JTextField txtEstablZona;
     public javax.swing.JPasswordField txtPassword;
-    private javax.swing.JTextField txtProductDescripcion;
-    private javax.swing.JTextField txtProductTipo;
+    public javax.swing.JTextField txtProductDescripcion;
+    public javax.swing.JTextField txtProductTipo;
     public javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

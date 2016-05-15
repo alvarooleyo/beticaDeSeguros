@@ -22,7 +22,7 @@ public class ModeloComercial extends Database{
     }
     
        //Nuevo metodo para rellenar clientes en el panel de comercial
-    Interfaz v = new Interfaz();  
+   
     
       public DefaultTableModel getTablaCliente(){
           DefaultTableModel tablemodel = new DefaultTableModel();
@@ -79,24 +79,29 @@ public class ModeloComercial extends Database{
             return res;
         }
     
-    public void verCliente(String id) throws SQLException{
+    public String[] verCliente(String id){
         
         
-        
-        String verCliente = "select cliente.dni, cliente.establecimiento, zona.nombre, zona.id from cliente join zona where zona.id=cliente.idZona and cliente.id = "+id+"";
+        String a[] = new String[4];
+        String verCliente = "select cliente.dni, cliente.establecimiento, zona.nombre, zona.id from cliente join zona where zona.id=cliente.idZona and cliente.id = '"+id+"'";
         try{
-            PreparedStatement pstm = this.getConexion().prepareStatement(verCliente);             
-        ResultSet res = pstm.executeQuery();
-            System.out.println("Consulta realizada.");
-        String a = (res.getString("cliente.98dni"));
-            System.out.println("el dni del cliente es: "+a);
-        v.txtClienteDni.setText(a);
+            PreparedStatement pstm = this.getConexion().prepareStatement(verCliente);
+            ResultSet res = pstm.executeQuery();
+            while(res.next()){
+               System.out.println("Consulta realizada.");
+               a[0] = res.getString("dni");
+               a[1]= res.getString("nombre");
+                System.out.println(a[1]);
+        
+            }
+            
         res.close();
         pstm.close();
         }catch(SQLException e){
             e.getMessage();
         }
         
+      return a;  
     }
     
 }

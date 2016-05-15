@@ -36,12 +36,15 @@ public class ControladorComercial extends Controlador implements ActionListener,
                 this.panelComercial();
                 this.vista.tablaCaptaciones.setModel(this.modeloComercial.getTablaCliente());
                 this.vista.tablaRenovaciones.setModel(this.modeloComercial.getTablaCliente());
-                this.vista.btnCaptAgregar.addActionListener(this);
+                this.vista.tablaRenovaciones.setName("tablaRenovaciones");
+                 this.vista.tablaRenovaciones.addMouseListener(this);
+                
                 this.vista.tablaCaptaciones.addMouseListener(this);
                 this.vista.tablaCaptaciones.setName("tablaCaptaciones");
                 
                 this.vista.btnCaptEliminar.setActionCommand( "btnCaptEliminar" );
                 this.vista.btnCaptEliminar.addActionListener(this);
+                this.vista.btnCaptAgregar.addActionListener(this);
                 this.vista.btnCaptAgregar.setActionCommand( "btnCaptAgregar" );
                 this.vista.btnCaptVer.setActionCommand("btnCaptVer");
                 this.vista.btnCaptVer.addActionListener(this);
@@ -136,16 +139,16 @@ public class ControladorComercial extends Controlador implements ActionListener,
                 this.vista.comercial.setSelectedIndex(1);
                 System.out.println("Se ha pulsado el boton");
                 String i = vista.txtClienteId.getText();
+         
+                 System.out.println("llamando metodo");
+                 this.vista.txtClienteDni.setText(this.modeloComercial.verCliente(i)[0]);
+                 this.vista.txtEstablZona.setText(this.modeloComercial.verCliente(i)[1]);
+            
+         
                 System.out.println("La id seleccionada es:"+i);
                 int b = Integer.parseInt(i);
-                if(b>0){
-             try {
-                 modeloComercial.verCliente(i);
-                 System.out.println("Deveria verse el dni");
-             } catch (SQLException ex) {
-                 Logger.getLogger(ControladorComercial.class.getName()).log(Level.SEVERE, null, ex);
-             }
-                }
+                
+                
                 
                     
                     
