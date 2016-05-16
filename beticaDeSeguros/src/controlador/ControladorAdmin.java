@@ -49,6 +49,7 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
                 this.vista.txtACZona.setText( String.valueOf( this.vista.tablaAClientes.getValueAt(fila, 5) ));
                
              }
+            break;
       
             case tablaAPro:
                 
@@ -60,6 +61,8 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
                 
                
              }
+            break;
+            
             case tablaACoCo:
               fila = this.vista.tablaACoCo.rowAtPoint(e.getPoint());
              if (fila > -1){                
@@ -69,6 +72,7 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
                 this.vista.txtACCClave.setText( String.valueOf( this.vista.tablaACoCo.getValueAt(fila, 4) ));
                 
              }
+            break;
             case tablaAZonas:
                 fila = this.vista.tablaAZonas.rowAtPoint(e.getPoint());
              if (fila > -1){                
@@ -78,6 +82,7 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
                 String nombrezona=this.vista.txtAZoNombre.getText();                
                 this.vista.txtAZoCo.setText(this.modeloAdmin.comercialesZona(nombrezona));
              }
+            break;
              case tablaAAdmi:
                 fila = this.vista.tablaAAdmi.rowAtPoint(e.getPoint());
              if (fila > -1){                
@@ -87,6 +92,7 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
                 this.vista.txtAAClave.setText( String.valueOf( this.vista.tablaAAdmi.getValueAt(fila, 4) ));
                 
              }
+             break;
         
     }
     }

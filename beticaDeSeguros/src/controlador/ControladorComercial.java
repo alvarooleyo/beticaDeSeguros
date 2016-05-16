@@ -24,15 +24,16 @@ import vista.Interfaz;
 public class ControladorComercial extends Controlador implements ActionListener,MouseListener{
 
     public ControladorComercial(Interfaz vista) {
+        /** instancia a nuestra interfaz de usuario*/
         super(vista);
         
     }
- /** instancia a nuestra interfaz de usuario*/
+ 
    
   
     
     public void iniciarComercial(){
-         //cargamos el panel de administrador
+         //cargamos el panel de comercial
                 this.panelComercial();
                 this.vista.tablaCaptaciones.setModel(this.modeloComercial.getTablaCliente());
                 this.vista.tablaRenovaciones.setModel(this.modeloComercial.getTablaCliente());
@@ -56,19 +57,8 @@ public class ControladorComercial extends Controlador implements ActionListener,
 
     public enum MouseMVC {
          tablaCaptaciones,
-         tablaRenovaciones;
-         
-        public void addMouseListener(MouseAdapter mouseAdapter) {         
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        public int rowAtPoint(Point point) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        public int columnAtPoint(Point point) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
+         tablaRenovaciones     
+ 
     }
     
     public enum ActionMVC {
@@ -92,17 +82,19 @@ public class ControladorComercial extends Controlador implements ActionListener,
                 
                
              }
+            break;
       
             case tablaRenovaciones:
                 
               fila = this.vista.tablaRenovaciones.rowAtPoint(e.getPoint());
              if (fila > -1){                
-                this.vista.txtAPNombre.setText( String.valueOf( this.vista.tablaAPro.getValueAt(fila, 1) ));
-                this.vista.txtAPDes.setText( String.valueOf( this.vista.tablaAPro.getValueAt(fila, 2) ));
-                this.vista.txtAPPrecio.setText( String.valueOf( this.vista.tablaAPro.getValueAt(fila, 3) ));
+                this.vista.txtClienteId.setText( String.valueOf( this.vista.tablaRenovaciones.getValueAt(fila, 0) ));
+                this.vista.txtClienteNombre.setText( String.valueOf( this.vista.tablaRenovaciones.getValueAt(fila, 1) ));
+                this.vista.txtClienteTelefono.setText( String.valueOf( this.vista.tablaRenovaciones.getValueAt(fila, 2) ));
                 
                
              }
+            break;
             
              
                 
