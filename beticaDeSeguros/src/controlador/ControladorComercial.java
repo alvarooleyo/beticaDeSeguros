@@ -67,6 +67,8 @@ public class ControladorComercial extends Controlador implements ActionListener,
         btnCaptVer
     }
     
+    String pepe;
+    
     @Override
     public void mouseClicked(MouseEvent e) {
                   
@@ -79,7 +81,7 @@ public class ControladorComercial extends Controlador implements ActionListener,
                 this.vista.txtClienteId.setText( String.valueOf( this.vista.tablaCaptaciones.getValueAt(fila, 0) ));
                 this.vista.txtClienteNombre.setText( String.valueOf( this.vista.tablaCaptaciones.getValueAt(fila, 1) ));
                 this.vista.txtClienteTelefono.setText( String.valueOf( this.vista.tablaCaptaciones.getValueAt(fila, 2) ));
-                
+                pepe = String.valueOf( this.vista.tablaCaptaciones.getValueAt(fila, 0) );
                
              }
             break;
@@ -130,7 +132,7 @@ public class ControladorComercial extends Controlador implements ActionListener,
                 this.vista.btnAgregarCliente.setEnabled(false);
                 this.vista.comercial.setSelectedIndex(1);
                 System.out.println("Se ha pulsado el boton");
-                String i = vista.txtClienteId.getText();
+                String i = pepe;
          
                 System.out.println("llamando metodo");
                 this.vista.txtClienteDni.setText(this.modeloComercial.verCliente(i)[0]);
