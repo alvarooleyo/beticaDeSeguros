@@ -96,8 +96,8 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         btnCoReasignar = new javax.swing.JButton();
-        comboCoCo = new javax.swing.JComboBox<String>();
-        comboCoZona = new javax.swing.JComboBox<String>();
+        comboCoCo = new javax.swing.JComboBox<>();
+        comboCoZona = new javax.swing.JComboBox<>();
         Altas = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -702,9 +702,9 @@ public class Interfaz extends javax.swing.JFrame {
 
         btnCoReasignar.setText("Reasignar");
 
-        comboCoCo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboCoCo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        comboCoZona.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboCoZona.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout ReasignacionesLayout = new javax.swing.GroupLayout(Reasignaciones);
         Reasignaciones.setLayout(ReasignacionesLayout);
@@ -1150,6 +1150,7 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel33.setText("Nombre del Producto:");
 
         txtAPDes.setColumns(20);
+        txtAPDes.setLineWrap(true);
         txtAPDes.setRows(5);
         jScrollPane9.setViewportView(txtAPDes);
 
@@ -1225,11 +1226,11 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 739, Short.MAX_VALUE)
+            .addGap(0, 757, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 599, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
 
         administrador.addTab("Contratos", jPanel5);
@@ -1266,7 +1267,7 @@ public class Interfaz extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(login, javax.swing.GroupLayout.DEFAULT_SIZE, 739, Short.MAX_VALUE))
+                .addComponent(login, javax.swing.GroupLayout.DEFAULT_SIZE, 757, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(panelComercial, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

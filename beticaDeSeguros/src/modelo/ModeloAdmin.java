@@ -298,7 +298,7 @@ public class ModeloAdmin extends Database{
              pstm.close();
              JOptionPane.showMessageDialog(null,"Operación Realizada");
              }catch(SQLException e){
-                 JOptionPane.showMessageDialog(null,"Error: Los datos son incorrectos.");
+                 JOptionPane.showMessageDialog(null,"Error: Los datos son incorrectos.\nReviselos y vuelva a intentarlo");
                  System.err.println( e.getMessage() );
                  }
         
@@ -365,7 +365,7 @@ public class ModeloAdmin extends Database{
              pstm.close();
              JOptionPane.showMessageDialog(null,"Operación Realizada");
              }catch(SQLException e){
-                 JOptionPane.showMessageDialog(null,"Error: Los datos son incorrectos.");
+                 JOptionPane.showMessageDialog(null,"Error: Los datos son incorrectos.\nReviselos y vuelva a intentarlo");
                  System.err.println( e.getMessage() );
                  }
         
@@ -419,7 +419,7 @@ public class ModeloAdmin extends Database{
              pstm.close();
              JOptionPane.showMessageDialog(null,"Operación Realizada");
              }catch(SQLException e){
-                 JOptionPane.showMessageDialog(null,"Error: Los datos son incorrectos.");
+                 JOptionPane.showMessageDialog(null,"Error: Los datos son incorrectos.\nReviselos y vuelva a intentarlo");
                  System.err.println( e.getMessage() );
                  }
       }
@@ -439,7 +439,7 @@ public class ModeloAdmin extends Database{
              pstm.close();
              JOptionPane.showMessageDialog(null,"Operación Realizada");
              }catch(SQLException e){
-                 JOptionPane.showMessageDialog(null,"Error: Los datos son incorrectos.");
+                 JOptionPane.showMessageDialog(null,"Error: Los datos son incorrectos.\nReviselos y vuelva a intentarlo");
                  System.err.println( e.getMessage() );
                  }
       }
@@ -500,7 +500,7 @@ public class ModeloAdmin extends Database{
              pstm.close();
              JOptionPane.showMessageDialog(null,"Operación Realizada");
              }catch(SQLException e){
-                 JOptionPane.showMessageDialog(null,"Error: Los datos son incorrectos.");
+                 JOptionPane.showMessageDialog(null,"Error: Los datos son incorrectos.\nReviselos y vuelva a intentarlo");
                  System.err.println( e.getMessage() );
                  }
           
@@ -513,8 +513,7 @@ public class ModeloAdmin extends Database{
           * @param telefono
           * @param establecimiento
           * @param idzona 
-          */
-      
+          */      
       public void AñadirClientes(String nom,String dni,String telefono,String establecimiento,String idzona){
            String q="insert into cliente values (null,'"+nom+"','"+dni+"','"+telefono+"','"+establecimiento+"','"+idzona+"',0)";
            System.out.println(q);
@@ -524,7 +523,7 @@ public class ModeloAdmin extends Database{
              pstm.close();
              JOptionPane.showMessageDialog(null,"Operación Realizada");
              }catch(SQLException e){
-                 JOptionPane.showMessageDialog(null,"Error: Los datos son incorrectos.");
+                 JOptionPane.showMessageDialog(null,"Error: Los datos son incorrectos.\nReviselos y vuelva a intentarlo");
                  System.err.println( e.getMessage() );
                  }
         
@@ -563,6 +562,63 @@ public class ModeloAdmin extends Database{
              pstm.close();
              JOptionPane.showMessageDialog(null,"Operación Realizada");
              }catch(SQLException e){
+                 System.err.println( e.getMessage() );
+                 }
+    }
+        
+        /**Método para editar la información de los productos
+         * 
+         * @param id
+         * @param nombre
+         * @param descripcion
+         * @param precio 
+         */
+        public void editarproductos(String id,String nombre,String descripcion,String precio){
+          
+          String q="update productos set descripcion='"+descripcion+"', precio='"+precio+"', nombre='"+nombre+"' where id='"+id+"'";
+           System.out.println(q);
+           try{
+             PreparedStatement pstm = this.getConexion().prepareStatement(q);             
+             pstm.execute();                        
+             pstm.close();
+             JOptionPane.showMessageDialog(null,"Operación Realizada");
+             }catch(SQLException e){
+                 JOptionPane.showMessageDialog(null,"Error: Los datos son incorrectos.\nReviselos y vuelva a intentarlo");
+                 System.err.println( e.getMessage() );
+                 }
+          
+      }
+        
+        /**Método para añadir productos
+         * 
+         * @param nombre
+         * @param descripcion
+         * @param precio 
+         */
+         public void AñadirProducto(String nombre,String descripcion,String precio){
+           String q="insert into productos values (null,'"+nombre+"','"+descripcion+"','"+precio+"')";
+           System.out.println(q);
+         try{
+             PreparedStatement pstm = this.getConexion().prepareStatement(q);
+             pstm.execute();
+             pstm.close();
+             JOptionPane.showMessageDialog(null,"Operación Realizada");
+             }catch(SQLException e){
+                 JOptionPane.showMessageDialog(null,"Error: Los datos son incorrectos.\nReviselos y vuelva a intentarlo");
+                 System.err.println( e.getMessage() );
+                 }
+        
+    }
+         
+        public void eliminarProducto(String id){
+        String q="delete from productos where id='"+id+"'";
+        try{
+             PreparedStatement pstm = this.getConexion().prepareStatement(q);
+             pstm.execute();
+             pstm.close();
+             JOptionPane.showMessageDialog(null,"Operación Realizada");
+             }catch(SQLException e){
+                 JOptionPane.showMessageDialog(null,"El producto no puede ser eliminado\nya que actualmente hay clientes que lo tiene contratado.");
                  System.err.println( e.getMessage() );
                  }
     }

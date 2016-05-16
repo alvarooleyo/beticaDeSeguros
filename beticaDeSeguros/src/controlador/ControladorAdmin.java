@@ -32,6 +32,7 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
                 this.panelAdministrador();
                 
     }
+    String id=null;
 
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -58,7 +59,7 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
                 this.vista.txtAPNombre.setText( String.valueOf( this.vista.tablaAPro.getValueAt(fila, 1) ));
                 this.vista.txtAPDes.setText( String.valueOf( this.vista.tablaAPro.getValueAt(fila, 2) ));
                 this.vista.txtAPPrecio.setText( String.valueOf( this.vista.tablaAPro.getValueAt(fila, 3) ));
-                
+                id=String.valueOf( this.vista.tablaAPro.getValueAt(fila, 0) );
                
              }
             break;
@@ -126,7 +127,10 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
         btnAZoEli,
         btnAADB,
         btnACAnadir,
-        btnACEliminar
+        btnACEliminar,
+        btnAPMo,
+        btnAPAn,
+        btnAPEli
     }
      public enum MouseMVC {
          tablaACoCo,
@@ -217,6 +221,29 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
                 this.modeloAdmin.eliminarCliente(dni4);
                 this.vista.tablaAClientes.setModel(this.modeloAdmin.rellenarTablaClientes());
                 break;
+                
+            case btnAPMo:
+                String nombrepro=this.vista.txtAPNombre.getText();
+                String descripcion=this.vista.txtAPDes.getText();
+                String precio=this.vista.txtAPPrecio.getText();
+                this.modeloAdmin.editarproductos(id, nombrepro, descripcion, precio);
+                this.vista.tablaAPro.setModel(this.modeloAdmin.rellenarTablaProductos());
+                break;
+                
+            case btnAPAn:
+                String nombreprod=this.vista.txtAPNombre.getText();
+                String descripcionp=this.vista.txtAPDes.getText();
+                String preciop=this.vista.txtAPPrecio.getText();
+                this.modeloAdmin.AñadirProducto(nombreprod, descripcionp, preciop);
+                this.vista.tablaAPro.setModel(this.modeloAdmin.rellenarTablaProductos());
+                break;
+                
+            case btnAPEli:
+                this.modeloAdmin.eliminarProducto(id);
+                this.vista.tablaAPro.setModel(this.modeloAdmin.rellenarTablaProductos());
+
+                break;
+                   
 
                 
                 
@@ -306,6 +333,15 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
                     //botón eliminar clientes
                     this.vista.btnACEliminar.addActionListener(this);
                     this.vista.btnACEliminar.setActionCommand("btnACEliminar");
+                    //boton modificar productos
+                    this.vista.btnAPMo.addActionListener(this);
+                    this.vista.btnAPMo.setActionCommand("btnAPMo");
+                    //boton añadir producto
+                    this.vista.btnAPAn.addActionListener(this);
+                    this.vista.btnAPAn.setActionCommand("btnAPAn");
+                    //botón para eliminar productos
+                    this.vista.btnAPEli.addActionListener(this);
+                    this.vista.btnAPEli.setActionCommand("btnAPEli");
                     
                     
     }
