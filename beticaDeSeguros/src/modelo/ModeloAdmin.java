@@ -289,6 +289,7 @@ public class ModeloAdmin extends Database{
      * @param clave
      * @param dni 
      */
+    
     public void MoificarDatosComerciales(String usuario,String clave,String dni){
         String q="update comercial set usuario='"+usuario+"',clave='"+clave+"' where dni='"+dni+"'";
          try{

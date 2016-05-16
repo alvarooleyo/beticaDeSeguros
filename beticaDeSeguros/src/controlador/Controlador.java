@@ -37,7 +37,7 @@ public class Controlador implements ActionListener,MouseListener{
      */
     public Controlador( Interfaz vista)
     {
-        this.vista = vista;
+        this.vista = vista;        
         
         System.out.println("Construyendo controlador");
     }
@@ -79,6 +79,8 @@ public class Controlador implements ActionListener,MouseListener{
         //boton de salir
         this.vista.menuSalir.setActionCommand( "menuSalir" );
         this.vista.menuSalir.addActionListener(this);
+        
+       
         
         
            
@@ -153,6 +155,7 @@ public class Controlador implements ActionListener,MouseListener{
                 if (modelo.verificarClave(Usuario, clave)==1){
                     ControladorAdmin admin=new ControladorAdmin(this.vista);
                     admin.iniciarAdmin();
+                    
                    
                     
                 }else if(modelo.verificarClave(Usuario, clave)==2){
