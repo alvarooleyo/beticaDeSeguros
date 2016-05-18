@@ -63,7 +63,15 @@ FROM
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="126" y="0" width="268" height="43" uuid="557fca6f-a4c2-46ea-9d6d-9156bfc8d3b7"/>
+				<textElement textAlignment="Center">
+					<font size="24" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Bética de Seguros]]></text>
+			</staticText>
+		</band>
 	</title>
 	<pageHeader>
 		<band height="35" splitType="Stretch"/>
@@ -71,32 +79,56 @@ FROM
 	<columnHeader>
 		<band height="61" splitType="Stretch">
 			<staticText>
-				<reportElement x="156" y="2" width="100" height="20" uuid="f157841c-ce40-48cb-a948-cc40a17ed0af"/>
-				<text><![CDATA[cliente_establecimiento]]></text>
+				<reportElement x="0" y="41" width="26" height="20" uuid="fafa8a93-e155-45a6-899f-a4f5c60165b4"/>
+				<text><![CDATA[id]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="26" y="41" width="100" height="20" uuid="2fb45090-6316-4271-b4c7-2eb54f65adf0"/>
+				<textFieldExpression><![CDATA[Nombre del Cliente]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="126" y="41" width="100" height="20" uuid="a84fd57a-0480-4218-a875-5c59370c80f6"/>
+				<textFieldExpression><![CDATA[Establecimiento]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="326" y="41" width="112" height="20" uuid="dfc3a8cc-b5c8-44d0-b8a7-ae765051b82f"/>
+				<text><![CDATA[Fechas de contratación]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="226" y="41" width="100" height="20" uuid="d1ba701b-02b6-4908-8734-b10bc48eaed4"/>
+				<textFieldExpression><![CDATA[Producto Contratado]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="438" y="41" width="117" height="20" uuid="9a2d5b72-94ce-4f08-9043-4a9de1d769fc"/>
+				<textFieldExpression><![CDATA[Comercial]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="125" splitType="Stretch">
 			<textField>
-				<reportElement x="455" y="61" width="100" height="20" uuid="1f642f6d-2512-4f96-acb1-164f76160d60"/>
+				<reportElement x="226" y="0" width="100" height="20" uuid="1f642f6d-2512-4f96-acb1-164f76160d60"/>
 				<textFieldExpression><![CDATA[$F{productos_nombre}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="355" y="61" width="100" height="20" uuid="c3673b49-c504-453a-ad5f-6cba3c2be414"/>
+				<reportElement x="438" y="0" width="117" height="20" uuid="c3673b49-c504-453a-ad5f-6cba3c2be414"/>
 				<textFieldExpression><![CDATA[$F{comercial_nombre}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="26" y="61" width="100" height="20" uuid="4dcdd127-7240-466e-9921-f8c9193d1a2f"/>
+				<reportElement x="26" y="0" width="100" height="20" uuid="4dcdd127-7240-466e-9921-f8c9193d1a2f"/>
 				<textFieldExpression><![CDATA[$F{cliente_nombre}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="61" width="26" height="20" uuid="1137568a-a874-4886-8d48-98048e28be35"/>
+				<reportElement x="0" y="0" width="26" height="20" uuid="1137568a-a874-4886-8d48-98048e28be35"/>
 				<textFieldExpression><![CDATA[$F{contrato_id}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="126" y="61" width="100" height="20" uuid="8b94ab87-7370-4be9-a86b-3477cf03fe38"/>
+				<reportElement x="126" y="0" width="100" height="20" uuid="8b94ab87-7370-4be9-a86b-3477cf03fe38"/>
 				<textFieldExpression><![CDATA[$F{cliente_establecimiento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="326" y="0" width="112" height="20" uuid="a6cc5305-749e-4e14-b3df-a09afadb9ab9"/>
+				<textFieldExpression><![CDATA[$F{contrato_fecha}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
