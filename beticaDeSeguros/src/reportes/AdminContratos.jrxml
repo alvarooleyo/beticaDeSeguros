@@ -63,47 +63,73 @@ FROM
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="143" splitType="Stretch">
 			<staticText>
-				<reportElement x="126" y="0" width="268" height="43" uuid="557fca6f-a4c2-46ea-9d6d-9156bfc8d3b7"/>
+				<reportElement x="58" y="21" width="268" height="43" uuid="557fca6f-a4c2-46ea-9d6d-9156bfc8d3b7"/>
 				<textElement textAlignment="Center">
 					<font size="24" isBold="true" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Bética de Seguros]]></text>
 			</staticText>
+			<image>
+				<reportElement x="403" y="0" width="87" height="79" uuid="d5364629-4d02-4335-83c9-6114980de67c"/>
+				<imageExpression><![CDATA["C:\\Users\\Usuario\\Desktop\\betica.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="26" y="97" width="156" height="20" uuid="1a6462e9-5e49-4144-a4c9-dd1f739616e2"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Relación de Contratos:]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
-	</pageHeader>
-	<columnHeader>
-		<band height="61" splitType="Stretch">
+		<band height="35" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="41" width="26" height="20" uuid="fafa8a93-e155-45a6-899f-a4f5c60165b4"/>
+				<reportElement x="0" y="15" width="26" height="20" uuid="4401c279-482a-47f7-bdc5-ce30aa7157f6"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
 				<text><![CDATA[id]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="26" y="41" width="100" height="20" uuid="2fb45090-6316-4271-b4c7-2eb54f65adf0"/>
-				<textFieldExpression><![CDATA[Nombre del Cliente]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="126" y="41" width="100" height="20" uuid="a84fd57a-0480-4218-a875-5c59370c80f6"/>
-				<textFieldExpression><![CDATA[Establecimiento]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement x="326" y="41" width="112" height="20" uuid="dfc3a8cc-b5c8-44d0-b8a7-ae765051b82f"/>
-				<text><![CDATA[Fechas de contratación]]></text>
+				<reportElement x="26" y="15" width="100" height="20" uuid="4ece8551-4127-465d-a356-40d1f41a4e8d"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Nombre del Cliente]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="226" y="41" width="100" height="20" uuid="d1ba701b-02b6-4908-8734-b10bc48eaed4"/>
-				<textFieldExpression><![CDATA[Producto Contratado]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="438" y="41" width="117" height="20" uuid="9a2d5b72-94ce-4f08-9043-4a9de1d769fc"/>
-				<textFieldExpression><![CDATA[Comercial]]></textFieldExpression>
-			</textField>
+			<staticText>
+				<reportElement x="126" y="15" width="100" height="20" uuid="25b4fb91-5e86-444c-b9d8-3e50afd13bf9"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Establecimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="226" y="15" width="100" height="20" uuid="9422581d-5ae5-4418-a9ad-cd744be1ac42"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Producto Contratado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="326" y="15" width="112" height="20" uuid="e752fceb-ddb1-43f5-b177-9de4bcdd45b8"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de Contratación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="438" y="15" width="117" height="20" uuid="1d6f3f27-9001-4acb-bb8d-6d428116ca95"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Comercial]]></text>
+			</staticText>
 		</band>
-	</columnHeader>
+	</pageHeader>
 	<detail>
 		<band height="125" splitType="Stretch">
 			<textField>
@@ -136,7 +162,12 @@ FROM
 		<band height="45" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="455" y="34" width="100" height="20" uuid="b62e2a8a-74b9-4b67-94e1-4f9d568a3e7f"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageFooter>
 	<summary>
 		<band height="42" splitType="Stretch"/>
