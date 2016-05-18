@@ -36,7 +36,7 @@ public class ControladorComercial extends Controlador implements ActionListener,
          //cargamos el panel de comercial
                 this.panelComercial();
                 this.vista.tablaCaptaciones.setModel(this.modeloComercial.getTablaCliente());
-                this.vista.tablaRenovaciones.setModel(this.modeloComercial.getTablaCliente());
+                this.vista.tablaRenovaciones.setModel(this.modeloComercial.getTablaClienteRenov());
                 this.vista.tablaRenovaciones.setName("tablaRenovaciones");
                  this.vista.tablaRenovaciones.addMouseListener(this);
                 

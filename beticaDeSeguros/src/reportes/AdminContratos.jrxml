@@ -71,10 +71,6 @@ FROM
 				</textElement>
 				<text><![CDATA[Bética de Seguros]]></text>
 			</staticText>
-			<image>
-				<reportElement x="403" y="0" width="87" height="79" uuid="d5364629-4d02-4335-83c9-6114980de67c"/>
-				<imageExpression><![CDATA["C:\\Users\\Usuario\\Desktop\\betica.png"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="26" y="97" width="156" height="20" uuid="1a6462e9-5e49-4144-a4c9-dd1f739616e2"/>
 				<textElement>
