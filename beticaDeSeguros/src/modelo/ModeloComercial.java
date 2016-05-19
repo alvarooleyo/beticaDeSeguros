@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -177,35 +178,45 @@ public class ModeloComercial extends Database{
         
     }
     
-    public void MostrarDatos(final JComboBox combobox){
-        combobox.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
-           @Override 
-            public void keyReleased(KeyEvent evt) {
-                String cadenaEscrita = combobox.getEditor().getItem().toString();
-
-                if (evt.getKeyCode() >= 65 && evt.getKeyCode() <= 90 || evt.getKeyCode() >= 96 && evt.getKeyCode() <= 105 || evt.getKeyCode() == 8) {
-                    try {  
-                        combobox.setModel(ObtenerAutocompletar(cadenaEscrita));
-                    } catch (ClassNotFoundException ex) {
-                        Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (SQLException ex) {
-                        Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    if (combobox.getItemCount() > 0) { 
-                        combobox.showPopup();
-                        
-                        if(evt.getKeyCode()!=8){
-                            ((JTextComponent)combobox.getEditor().getEditorComponent()).select(cadenaEscrita.length(), combobox.getEditor().getItem().toString().length());
-                            
-                        }else{
-                            combobox.getEditor().setItem(cadenaEscrita);
-                        }
-
-                    } else {
-                        combobox.addItem(cadenaEscrita);
-                    }
-                }
-            } 
-        });
+    
+     /** Cargar datos en el comboBox de zonas
+    * @return DefaultComboBoxModel**/
+    public DefaultComboBoxModel rellenarComboBajasZ(){
+        DefaultComboBoxModel vector=new DefaultComboBoxModel();
+         int total=0;
+         /**Obtenemos la cantidad de elementos que contendra el ComboBox de comerciales**/
+         try{
+             //se arma la consulta
+             PreparedStatement pstm = this.getConexion().prepareStatement( "SELECT count(*) as total FROM productos");
+             //se ejecuta la consulta
+             ResultSet res1 = pstm.executeQuery();
+             res1.next();
+             total= res1.getInt("total");
+             res1.close();
+      }catch(SQLException e){
+          System.err.println( e.getMessage() );
+      }         
+         int i=0;
+         Object[] data = new String[total];       
+         String q = "select nombre FROM productos" ;       
+         try {
+             //se arma la consulta
+            PreparedStatement pstm = this.getConexion().prepareStatement(q);
+            //se ejecuta la consulta
+            ResultSet resultado=pstm.executeQuery();
+            while(resultado.next()){
+                data[i]=resultado.getString("nombre");
+                vector.addElement(data[i].toString());
+                i++;
+            }           
+            pstm.close();
+            resultado.close();            
+         }catch(SQLException e){
+            System.err.println( e.getMessage() );
+        }         
+        return vector;          
     }
+   
+         
+    
 }

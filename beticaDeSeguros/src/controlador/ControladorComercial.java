@@ -49,7 +49,8 @@ public class ControladorComercial extends Controlador implements ActionListener,
                 this.vista.btnCaptAgregar.setActionCommand( "btnCaptAgregar" );
                 this.vista.btnCaptVer.setActionCommand("btnCaptVer");
                 this.vista.btnCaptVer.addActionListener(this);
-                
+                this.vista.cmbClientesTipoProd.setModel(this.modeloComercial.rellenarComboBajasZ());
+                this.vista.comboClientesPro2.setModel(this.modeloComercial.rellenarComboBajasZ());
                                 
                                
 

@@ -78,7 +78,7 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jLabel50 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jComboBox2 = new javax.swing.JComboBox();
+        comboClientesPro2 = new javax.swing.JComboBox();
         jTextField4 = new javax.swing.JTextField();
         jLabel46 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
@@ -528,7 +528,7 @@ public class Interfaz extends javax.swing.JFrame {
         panelDatosProductoLayout.setVerticalGroup(
             panelDatosProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelDatosProductoLayout.createSequentialGroup()
-                .addContainerGap(8, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelDatosProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel29)
                     .addComponent(cmbClientesTipoProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -581,7 +581,7 @@ public class Interfaz extends javax.swing.JFrame {
 
         jLabel50.setText("Id Cliente: ");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboClientesPro2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel46.setText("Fecha de finalización:");
 
@@ -603,7 +603,7 @@ public class Interfaz extends javax.swing.JFrame {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(comboClientesPro2, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel45)
@@ -641,7 +641,7 @@ public class Interfaz extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboClientesPro2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addContainerGap(72, Short.MAX_VALUE))
@@ -1358,7 +1358,7 @@ public class Interfaz extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(login, javax.swing.GroupLayout.DEFAULT_SIZE, 757, Short.MAX_VALUE))
+                .addComponent(login, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(panelComercial, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1613,11 +1613,11 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JButton btnRenovEliminar;
     private javax.swing.JButton btnRenovVer;
     public javax.swing.JComboBox cmbClientesTipoProd;
+    public javax.swing.JComboBox comboClientesPro2;
     public javax.swing.JComboBox<String> comboCoCo;
     public javax.swing.JComboBox<String> comboCoZona;
     public javax.swing.JTabbedPane comercial;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox jComboBox2;
+    public javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1684,10 +1684,10 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    public javax.swing.JTextField jTextField1;
+    public javax.swing.JTextField jTextField2;
+    public javax.swing.JTextField jTextField3;
+    public javax.swing.JTextField jTextField4;
     public javax.swing.JPanel login;
     public javax.swing.JMenuItem menuCerrar;
     public javax.swing.JMenuItem menuSalir;
