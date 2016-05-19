@@ -10,7 +10,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import reportes.Reportes;
 import vista.Interfaz;
 
 /**
@@ -130,7 +135,10 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
         btnACEliminar,
         btnAPMo,
         btnAPAn,
-        btnAPEli
+        btnAPEli,
+        btnACContratos,
+        btnACconcom,
+        btnACConzon
     }
      public enum MouseMVC {
          tablaACoCo,
@@ -243,6 +251,37 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
                 this.vista.tablaAPro.setModel(this.modeloAdmin.rellenarTablaProductos());
 
                 break;
+            case btnACContratos:
+                try{
+                    Reportes reporte= new Reportes();
+                    reporte.reporteContratos();               
+                    
+                } catch (SQLException | JRException ex) {
+                    Logger.getLogger(ControladorAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                break;
+                
+            case   btnACconcom:
+                try{
+                Reportes reporte= new Reportes();
+                    reporte.reporteContratosComerciales();               
+                    
+                } catch (SQLException | JRException ex) {
+                    Logger.getLogger(ControladorAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                break;        
+                
+            case btnACConzon:
+                try{
+                    Reportes reporte= new Reportes();
+                    reporte.reporteContratosZonas();               
+                    
+                } catch (SQLException | JRException ex) {
+                    Logger.getLogger(ControladorAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                break;
+                
+                 
                    
 
                 
@@ -342,6 +381,16 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
                     //botón para eliminar productos
                     this.vista.btnAPEli.addActionListener(this);
                     this.vista.btnAPEli.setActionCommand("btnAPEli");
+                    //botón contratos
+                    this.vista.btnACContratos.addActionListener(this);
+                    this.vista.btnACContratos.setActionCommand("btnACContratos");
+                    //boton comerciales reporte
+                    this.vista.btnACconcom.addActionListener(this);
+                    this.vista.btnACconcom.setActionCommand("btnACconcom");
+                    //botno zonas reporte
+                    this.vista.btnACConzon.addActionListener(this);
+                    this.vista.btnACConzon.setActionCommand("btnACConzon");
+                            
                     
                     
     }
