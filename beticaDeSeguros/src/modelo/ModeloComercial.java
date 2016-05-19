@@ -5,10 +5,19 @@
  */
 package modelo;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.JTextComponent;
 import vista.Interfaz;
 
 /**
@@ -145,4 +154,58 @@ public class ModeloComercial extends Database{
       return a;  
     }
     
+    public void ObtenerLista () throws ClassNotFoundException, SQLException{
+        Connection cn;
+
+        Interfaz i = new Interfaz();
+        String sql = "SELECT nombre from productos";
+        Database con=new Database();
+        cn=con.getConexion();
+        
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            
+            i.cmbClientesTipoProd.removeAllItems();
+            while (rs.next()) {
+                i.cmbClientesTipoProd.addItem(rs.getString(1));
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al llamar la BD");
+            System.out.println("Coneccion incorrecta: "+ ex);
+        }
+        
+    }
+    
+    public void MostrarDatos(final JComboBox combobox){
+        combobox.getEditor().getEditorComponent().addKeyListener(new KeyAdapter() {
+           @Override 
+            public void keyReleased(KeyEvent evt) {
+                String cadenaEscrita = combobox.getEditor().getItem().toString();
+
+                if (evt.getKeyCode() >= 65 && evt.getKeyCode() <= 90 || evt.getKeyCode() >= 96 && evt.getKeyCode() <= 105 || evt.getKeyCode() == 8) {
+                    try {  
+                        combobox.setModel(ObtenerAutocompletar(cadenaEscrita));
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    if (combobox.getItemCount() > 0) { 
+                        combobox.showPopup();
+                        
+                        if(evt.getKeyCode()!=8){
+                            ((JTextComponent)combobox.getEditor().getEditorComponent()).select(cadenaEscrita.length(), combobox.getEditor().getItem().toString().length());
+                            
+                        }else{
+                            combobox.getEditor().setItem(cadenaEscrita);
+                        }
+
+                    } else {
+                        combobox.addItem(cadenaEscrita);
+                    }
+                }
+            } 
+        });
+    }
 }
