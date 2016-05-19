@@ -245,6 +245,42 @@ public class ModeloComercial extends Database{
         }
         return data;
     }
+    
+    /**Método para crear un contrato
+     * 
+     * @param idcliente
+     * @param idComercial
+     * @param producto
+     * @param fechainicio
+     * @param fechafin 
+     */
+    public void contratar(String idcliente,String idComercial,String producto,String fechainicio,String fechafin){
+        int id=0;
+          String z="select id as id from productos where nombre='"+producto+"'";
+                     System.out.println(z);
+
+          try{
+             PreparedStatement pstm = this.getConexion().prepareStatement(z);             
+             ResultSet res = pstm.executeQuery();
+             res.next();
+             id=res.getInt("id");              
+             pstm.close();
+             }catch(SQLException e){
+                 System.err.println( e.getMessage() );
+                 }
+        String q="insert into contratos values (null,'"+fechainicio+"','"+fechafin+"','"+idComercial+"','"+idcliente+"','"+id+"')";
+           System.out.println(q);
+         try{
+             PreparedStatement pstm = this.getConexion().prepareStatement(q);
+             pstm.execute();
+             pstm.close();
+             JOptionPane.showMessageDialog(null,"Operación Realizada");
+             }catch(SQLException e){
+                 JOptionPane.showMessageDialog(null,"Error: Los datos son incorrectos.\nReviselos y vuelva a intentarlo");
+                 System.err.println( e.getMessage() );
+                 }
+        
+    }
    
          
     

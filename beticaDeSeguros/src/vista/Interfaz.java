@@ -44,7 +44,7 @@ public class Interfaz extends javax.swing.JFrame {
         btnCaptVer = new javax.swing.JButton();
         btnCaptEliminar = new javax.swing.JButton();
         btnCaptAgregar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnContratar = new javax.swing.JButton();
         panelRenovaciones = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         tablaRenovaciones = new javax.swing.JTable();
@@ -80,14 +80,17 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel50 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtIdCliente = new javax.swing.JTextField();
         comboClientesPro2 = new javax.swing.JComboBox();
         jLabel45 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtIdComercial = new javax.swing.JTextField();
         jLabel47 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        btnHacerContrato = new javax.swing.JButton();
+        btnImprimirContrato = new javax.swing.JButton();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        btnHacerContrato = new javax.swing.JButton();
+        jLabel46 = new javax.swing.JLabel();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
         panelAdmin = new javax.swing.JPanel();
         administrador = new javax.swing.JTabbedPane();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -236,12 +239,12 @@ public class Interfaz extends javax.swing.JFrame {
                     .addGroup(loginLayout.createSequentialGroup()
                         .addGap(272, 272, 272)
                         .addComponent(btnEntrar)))
-                .addContainerGap(356, Short.MAX_VALUE))
+                .addContainerGap(262, Short.MAX_VALUE))
         );
         loginLayout.setVerticalGroup(
             loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginLayout.createSequentialGroup()
-                .addContainerGap(238, Short.MAX_VALUE)
+                .addContainerGap(220, Short.MAX_VALUE)
                 .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel32)
                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -288,7 +291,7 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Contratar");
+        btnContratar.setText("Contratar");
 
         javax.swing.GroupLayout panelCaptacionesLayout = new javax.swing.GroupLayout(panelCaptaciones);
         panelCaptaciones.setLayout(panelCaptacionesLayout);
@@ -309,7 +312,7 @@ public class Interfaz extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnCaptVer, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)
+                        .addComponent(btnContratar)
                         .addGap(47, 47, 47))))
         );
         panelCaptacionesLayout.setVerticalGroup(
@@ -321,7 +324,7 @@ public class Interfaz extends javax.swing.JFrame {
                         .addComponent(btnCaptVer)
                         .addComponent(btnCaptEliminar)
                         .addComponent(btnCaptAgregar)
-                        .addComponent(jButton1))
+                        .addComponent(btnContratar))
                     .addComponent(jLabel21))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -618,7 +621,15 @@ public class Interfaz extends javax.swing.JFrame {
 
         jLabel17.setText("Tipo de contrato: ");
 
-        btnHacerContrato.setText("Hacer Contraro");
+        btnImprimirContrato.setText("Imprimir Contrato");
+
+        jDateChooser1.setDateFormatString("dd-MM-yyyy");
+
+        btnHacerContrato.setText("Hacer Contrato");
+
+        jLabel46.setText("Fecha Fin:");
+
+        jDateChooser2.setDateFormatString("dd-MM-yyyy");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -626,7 +637,9 @@ public class Interfaz extends javax.swing.JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnImprimirContrato, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)
+                    .addComponent(btnHacerContrato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -638,13 +651,15 @@ public class Interfaz extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(64, 64, 64)
-                                .addComponent(jLabel47)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(btnHacerContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel47, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel46, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtIdComercial, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(153, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
@@ -653,20 +668,24 @@ public class Interfaz extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel50)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel47)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIdComercial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel45)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel46)
+                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
                     .addComponent(comboClientesPro2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(btnHacerContrato)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnImprimirContrato)
+                .addGap(16, 16, 16))
         );
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -1674,9 +1693,11 @@ public class Interfaz extends javax.swing.JFrame {
     public javax.swing.JButton btnCaptEliminar;
     public javax.swing.JButton btnCaptVer;
     public javax.swing.JButton btnCoReasignar;
+    public javax.swing.JButton btnContratar;
     public javax.swing.JButton btnEditarCliente;
     public javax.swing.JButton btnEntrar;
     public javax.swing.JButton btnHacerContrato;
+    public javax.swing.JButton btnImprimirContrato;
     private javax.swing.JButton btnRenovAgregar;
     private javax.swing.JButton btnRenovEliminar;
     private javax.swing.JButton btnRenovVer;
@@ -1685,8 +1706,8 @@ public class Interfaz extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> comboCoCo;
     public javax.swing.JComboBox<String> comboCoZona;
     public javax.swing.JTabbedPane comercial;
-    private javax.swing.JButton jButton1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    public com.toedter.calendar.JDateChooser jDateChooser1;
+    public com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1727,6 +1748,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
@@ -1757,8 +1779,6 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    public javax.swing.JTextField jTextField1;
-    public javax.swing.JTextField jTextField2;
     public javax.swing.JPanel login;
     public javax.swing.JMenuItem menuCerrar;
     public javax.swing.JMenuItem menuSalir;
@@ -1813,6 +1833,8 @@ public class Interfaz extends javax.swing.JFrame {
     public javax.swing.JTextField txtEstablIdZona;
     public javax.swing.JTextField txtEstablNombre;
     public javax.swing.JTextField txtEstablZona;
+    public javax.swing.JTextField txtIdCliente;
+    public javax.swing.JTextField txtIdComercial;
     public javax.swing.JPasswordField txtPassword;
     public javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables

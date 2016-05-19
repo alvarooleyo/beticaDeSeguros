@@ -53,9 +53,16 @@ public class ControladorComercial extends Controlador implements ActionListener,
                 this.vista.btnCaptVer.addActionListener(this);
                 this.vista.cmbClientesTipoProd.setModel(this.modeloComercial.rellenarComboProductos());
                 this.vista.comboClientesPro2.setModel(this.modeloComercial.rellenarComboProductos());
-                //boton hacer contrato
+                //boton contratar
+                this.vista.btnContratar.addActionListener(this);
+                this.vista.btnContratar.setActionCommand("btnContratar");
+                //boton hacer controtato
                 this.vista.btnHacerContrato.addActionListener(this);
                 this.vista.btnHacerContrato.setActionCommand("btnHacerContrato");
+                //boton imprimir contrato
+                this.vista.btnImprimirContrato.addActionListener(this);
+                this.vista.btnImprimirContrato.setActionCommand("btnImprimirContrato");
+                
                 
                 
                                 
@@ -73,6 +80,8 @@ public class ControladorComercial extends Controlador implements ActionListener,
         btnCaptAgregar,
         btnCaptEliminar,
         btnCaptVer,
+        btnContratar,
+        btnImprimirContrato,
         btnHacerContrato
     }
     
@@ -90,6 +99,7 @@ public class ControladorComercial extends Controlador implements ActionListener,
                 this.vista.txtClienteId.setText( String.valueOf( this.vista.tablaCaptaciones.getValueAt(fila, 0) ));
                 this.vista.txtClienteNombre.setText( String.valueOf( this.vista.tablaCaptaciones.getValueAt(fila, 1) ));
                 this.vista.txtClienteTelefono.setText( String.valueOf( this.vista.tablaCaptaciones.getValueAt(fila, 2) ));
+                this.vista.txtIdCliente.setText(String.valueOf( this.vista.tablaCaptaciones.getValueAt(fila, 0) ));
                 pepe = String.valueOf( this.vista.tablaCaptaciones.getValueAt(fila, 0) );
                
              }
@@ -147,15 +157,25 @@ public class ControladorComercial extends Controlador implements ActionListener,
                 this.vista.txtClienteDni.setText(this.modeloComercial.verCliente(i)[0]);
                 this.vista.txtEstablNombre.setText(this.modeloComercial.verCliente(i)[1]);
                 this.vista.txtEstablZona.setText(this.modeloComercial.verCliente(i)[2]);
-                this.vista.txtEstablIdZona.setText(this.modeloComercial.verCliente(i)[3]);
-         
-                
-                
-                
+                this.vista.txtEstablIdZona.setText(this.modeloComercial.verCliente(i)[3]);               
                     
                     
                 break;
-            case btnHacerContrato:
+                
+            case btnContratar:
+                this.vista.comercial.setSelectedIndex(2);
+                System.out.println("Se ha pulsado el boton contratar");
+                this.vista.txtIdComercial.setText(this.modeloComercial.datosComerciales(this.vista.txtUsuario.getText())[0]);
+                //Intentando poner el primer jcalendar con la fecha actual ya seleccionada
+                //this.vista.jDateChooser1.setDate(date);
+         
+                           
+                    
+                    
+                break;
+                
+                
+            case btnImprimirContrato:
                  try{
                     Reportes reporte= new Reportes();
                     reporte.reporteHacerContratao();               
@@ -164,6 +184,22 @@ public class ControladorComercial extends Controlador implements ActionListener,
                     Logger.getLogger(ControladorAdmin.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 break;
+                
+            case btnHacerContrato:
+                String idcliente=this.vista.txtIdCliente.getText();
+                String idcomercial=this.vista.txtIdComercial.getText();
+                //falla a la hora de seleccionar la fecha del jcalendar hay qu investigar
+                String fechaInicio="this.vista.jDateChooser1.getDate().getDay()-"+"this.vista.jDateChooser1.getDate().getDay()";
+               
+                System.out.println(this.vista.jDateChooser1.getDate().getDay());
+                String fechaFin=this.vista.jDateChooser1.getDateFormatString();
+                String producto=this.vista.comboClientesPro2.getSelectedItem().toString();
+                System.out.println(this.vista.comboClientesPro2.getSelectedItem().toString());
+                this.modeloComercial.contratar(idcliente, idcomercial, producto, fechaInicio, fechaFin);
+                
+                break;
+                
+                
             
         
         }
