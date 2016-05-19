@@ -216,6 +216,35 @@ public class ModeloComercial extends Database{
         }         
         return vector;          
     }
+    
+     /** Obtiene registros de la tabla Comerciales y los devuelve en un DefaultTableMode
+     * @return DefaultTableModel*/
+    public String[] datosComerciales(String Usuario) {
+        
+      
+    //se crea una matriz con tantas filas y columnas que necesite
+    String[] data = new String[7];
+      try{
+          //realizamos la consulta sql y llenamos los datos en la matriz "Object[][] data"
+         PreparedStatement pstm = this.getConexion().prepareStatement("SELECT * FROM comercial where usuario='"+Usuario+"'");
+         ResultSet res = pstm.executeQuery();
+         res.next();
+                data[0] = res.getString( "id" );
+                data[1] = res.getString( "nombre" );
+                data[2] = res.getString( "dni" );
+                data[3] = res.getString( "rango" );
+                data[4] = res.getString( "usuario" );
+                data[5] = res.getString( "clave" );
+                data[6] = res.getString( "zona" );
+            
+         
+         res.close();
+        
+         }catch(SQLException e){             
+            System.err.println( e.getMessage() );
+        }
+        return data;
+    }
    
          
     

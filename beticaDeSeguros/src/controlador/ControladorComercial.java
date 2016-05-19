@@ -15,6 +15,8 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import reportes.Reportes;
 import vista.Interfaz;
 
 /**
@@ -51,6 +53,10 @@ public class ControladorComercial extends Controlador implements ActionListener,
                 this.vista.btnCaptVer.addActionListener(this);
                 this.vista.cmbClientesTipoProd.setModel(this.modeloComercial.rellenarComboProductos());
                 this.vista.comboClientesPro2.setModel(this.modeloComercial.rellenarComboProductos());
+                //boton hacer contrato
+                this.vista.btnHacerContrato.addActionListener(this);
+                this.vista.btnHacerContrato.setActionCommand("btnHacerContrato");
+                
                 
                                 
                                
@@ -66,7 +72,8 @@ public class ControladorComercial extends Controlador implements ActionListener,
     public enum ActionMVC {
         btnCaptAgregar,
         btnCaptEliminar,
-        btnCaptVer
+        btnCaptVer,
+        btnHacerContrato
     }
     
     String pepe;
@@ -147,6 +154,15 @@ public class ControladorComercial extends Controlador implements ActionListener,
                 
                     
                     
+                break;
+            case btnHacerContrato:
+                 try{
+                    Reportes reporte= new Reportes();
+                    reporte.reporteHacerContratao();               
+                    
+                } catch (SQLException | JRException ex) {
+                    Logger.getLogger(ControladorAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 break;
             
         

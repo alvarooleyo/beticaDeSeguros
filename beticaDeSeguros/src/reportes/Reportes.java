@@ -53,4 +53,15 @@ public class Reportes {
     ver.setTitle("Contratos por Zonas");
     ver.setVisible(true);
     }
+    
+    public void reporteHacerContratao() throws SQLException, JRException{
+    Connection a;
+    a=DriverManager.getConnection("jdbc:mysql://localhost/BeticaSeguros");
+    JasperReport contratos=null;
+    contratos=(JasperReport) JRLoader.loadObjectFromLocation("/home/android-0174654321/NetBeansProjects/beticaDeSeguros/beticaDeSeguros/src/reportes/ComercialContrato.jasper");
+    JasperPrint print=JasperFillManager.fillReport(contratos, null, a);
+    JasperViewer ver= new JasperViewer(print);
+    ver.setTitle("Bética de Seguros");
+    ver.setVisible(true);
+    }
 }
