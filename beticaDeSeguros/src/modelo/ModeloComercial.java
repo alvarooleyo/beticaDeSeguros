@@ -181,7 +181,7 @@ public class ModeloComercial extends Database{
     
      /** Cargar datos en el comboBox de zonas
     * @return DefaultComboBoxModel**/
-    public DefaultComboBoxModel rellenarComboBajasZ(){
+    public DefaultComboBoxModel rellenarComboProductos(){
         DefaultComboBoxModel vector=new DefaultComboBoxModel();
          int total=0;
          /**Obtenemos la cantidad de elementos que contendra el ComboBox de comerciales**/
