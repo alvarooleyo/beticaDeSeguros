@@ -161,6 +161,7 @@ public class Controlador implements ActionListener,MouseListener{
                 }else if(modelo.verificarClave(Usuario, clave)==2){
                     ControladorComercial comerc = new ControladorComercial(this.vista);
                     comerc.iniciarComercial();
+                    this.vista.nombreUsuario.setText(Usuario);
                     
                 }else{    
                     JOptionPane.showMessageDialog(vista,"Error: Los datos son incorrectos.");

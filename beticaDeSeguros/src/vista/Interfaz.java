@@ -51,6 +51,8 @@ public class Interfaz extends javax.swing.JFrame {
         btnRenovVer = new javax.swing.JButton();
         btnRenovEliminar = new javax.swing.JButton();
         btnRenovAgregar = new javax.swing.JButton();
+        jLabel30 = new javax.swing.JLabel();
+        nombreUsuario = new javax.swing.JLabel();
         mnCli = new javax.swing.JPanel();
         panelDatosCliente = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
@@ -376,6 +378,10 @@ public class Interfaz extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel30.setText("Usuario Activo:");
+
+        nombreUsuario.setText("jLabel48");
+
         javax.swing.GroupLayout mnObjLayout = new javax.swing.GroupLayout(mnObj);
         mnObj.setLayout(mnObjLayout);
         mnObjLayout.setHorizontalGroup(
@@ -386,6 +392,12 @@ public class Interfaz extends javax.swing.JFrame {
                     .addComponent(panelCaptaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelRenovaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mnObjLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel30)
+                .addGap(18, 18, 18)
+                .addComponent(nombreUsuario)
+                .addGap(57, 57, 57))
         );
         mnObjLayout.setVerticalGroup(
             mnObjLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -394,7 +406,11 @@ public class Interfaz extends javax.swing.JFrame {
                 .addComponent(panelCaptaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(panelRenovaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addGroup(mnObjLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel30)
+                    .addComponent(nombreUsuario))
+                .addGap(44, 44, 44))
         );
 
         comercial.addTab("Objetivo del dia", mnObj);
@@ -1641,6 +1657,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
@@ -1694,6 +1711,7 @@ public class Interfaz extends javax.swing.JFrame {
     public javax.swing.JPanel mnCli;
     public javax.swing.JPanel mnCon;
     public javax.swing.JPanel mnObj;
+    public javax.swing.JLabel nombreUsuario;
     public javax.swing.JPanel panelAdmin;
     public javax.swing.JPanel panelCaptaciones;
     public javax.swing.JPanel panelComercial;

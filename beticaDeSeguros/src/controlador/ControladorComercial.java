@@ -38,7 +38,7 @@ public class ControladorComercial extends Controlador implements ActionListener,
                 this.vista.tablaCaptaciones.setModel(this.modeloComercial.getTablaCliente());
                 this.vista.tablaRenovaciones.setModel(this.modeloComercial.getTablaClienteRenov());
                 this.vista.tablaRenovaciones.setName("tablaRenovaciones");
-                 this.vista.tablaRenovaciones.addMouseListener(this);
+                this.vista.tablaRenovaciones.addMouseListener(this);
                 
                 this.vista.tablaCaptaciones.addMouseListener(this);
                 this.vista.tablaCaptaciones.setName("tablaCaptaciones");
@@ -51,6 +51,7 @@ public class ControladorComercial extends Controlador implements ActionListener,
                 this.vista.btnCaptVer.addActionListener(this);
                 this.vista.cmbClientesTipoProd.setModel(this.modeloComercial.rellenarComboProductos());
                 this.vista.comboClientesPro2.setModel(this.modeloComercial.rellenarComboProductos());
+                
                                 
                                
 
