@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import modelo.Database;
 import net.sf.jasperreports.engine.JRException;
 import reportes.Reportes;
 import vista.Interfaz;
@@ -31,7 +32,7 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
  /** instancia a nuestra interfaz de usuario*/
    
   
-    
+    Database a= new Database();
     public void iniciarAdmin(){
          //cargamos el panel de administrador
                 this.panelAdministrador();
@@ -253,8 +254,12 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
                 break;
             case btnACContratos:
                 try{
+                    
+                    System.out.println("entrando");
                     Reportes reporte= new Reportes();
-                    reporte.reporteContratos();               
+                    System.out.println("entrando2");
+                    reporte.reporteContratos(a.getConexion());   
+                    System.out.println("entrando3");
                     
                 } catch (SQLException | JRException ex) {
                     Logger.getLogger(ControladorAdmin.class.getName()).log(Level.SEVERE, null, ex);
@@ -264,7 +269,7 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
             case   btnACconcom:
                 try{
                 Reportes reporte= new Reportes();
-                    reporte.reporteContratosComerciales();               
+                    reporte.reporteContratosComerciales(a.getConexion());               
                     
                 } catch (SQLException | JRException ex) {
                     Logger.getLogger(ControladorAdmin.class.getName()).log(Level.SEVERE, null, ex);
@@ -274,7 +279,7 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
             case btnACConzon:
                 try{
                     Reportes reporte= new Reportes();
-                    reporte.reporteContratosZonas();               
+                    reporte.reporteContratosZonas(a.getConexion());               
                     
                 } catch (SQLException | JRException ex) {
                     Logger.getLogger(ControladorAdmin.class.getName()).log(Level.SEVERE, null, ex);

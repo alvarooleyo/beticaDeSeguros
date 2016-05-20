@@ -21,44 +21,46 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class Reportes {
     
-    public void reporteContratos() throws SQLException, JRException{
-    Connection a;
-    a=DriverManager.getConnection("jdbc:mysql://localhost/BeticaSeguros");
+    public void reporteContratos(Connection a) throws SQLException, JRException{
     JasperReport contratos=null;
-    contratos=(JasperReport) JRLoader.loadObjectFromLocation("/home/android-0174654321/NetBeansProjects/beticaDeSeguros/beticaDeSeguros/src/reportes/AdminContratos.jasper");
+        System.out.println("1");
+    contratos=(JasperReport) JRLoader.loadObjectFromFile("C:\\Users\\Usuario\\Documents\\NetBeansProjects\\beticaDeSeguros\\beticaDeSeguros\\src\\reportes\\AdminContratos.jasper");
+        System.out.println("2");
     JasperPrint print=JasperFillManager.fillReport(contratos, null, a);
+        System.out.println("3");
     JasperViewer ver= new JasperViewer(print);
+        System.out.println("4");
     ver.setTitle("Contratos");
     ver.setVisible(true);
     }
     
-    public void reporteContratosComerciales() throws SQLException, JRException{
-    Connection a;
+    public void reporteContratosComerciales(Connection a) throws SQLException, JRException{
+    
     a=DriverManager.getConnection("jdbc:mysql://localhost/BeticaSeguros");
     JasperReport contratos=null;
-    contratos=(JasperReport) JRLoader.loadObjectFromLocation("/home/android-0174654321/NetBeansProjects/beticaDeSeguros/beticaDeSeguros/src/reportes/AdminComerciales.jasper");
+    contratos=(JasperReport) JRLoader.loadObjectFromFile("/home/android-0174654321/NetBeansProjects/beticaDeSeguros/beticaDeSeguros/src/reportes/AdminComerciales.jasper");
     JasperPrint print=JasperFillManager.fillReport(contratos, null, a);
     JasperViewer ver= new JasperViewer(print);
     ver.setTitle("Comerciales que han realizado contratos");
     ver.setVisible(true);
     }
     
-    public void reporteContratosZonas() throws SQLException, JRException{
-    Connection a;
+    public void reporteContratosZonas(Connection a) throws SQLException, JRException{
+ 
     a=DriverManager.getConnection("jdbc:mysql://localhost/BeticaSeguros");
     JasperReport contratos=null;
-    contratos=(JasperReport) JRLoader.loadObjectFromLocation("/home/android-0174654321/NetBeansProjects/beticaDeSeguros/beticaDeSeguros/src/reportes/AdminZonas.jasper");
+    contratos=(JasperReport) JRLoader.loadObjectFromFile("/home/android-0174654321/NetBeansProjects/beticaDeSeguros/beticaDeSeguros/src/reportes/AdminZonas.jasper");
     JasperPrint print=JasperFillManager.fillReport(contratos, null, a);
     JasperViewer ver= new JasperViewer(print);
     ver.setTitle("Contratos por Zonas");
     ver.setVisible(true);
     }
     
-    public void reporteHacerContratao() throws SQLException, JRException{
-    Connection a;
+    public void reporteHacerContratao(Connection a) throws SQLException, JRException{
+    
     a=DriverManager.getConnection("jdbc:mysql://localhost/BeticaSeguros");
     JasperReport contratos=null;
-    contratos=(JasperReport) JRLoader.loadObjectFromLocation("/home/android-0174654321/NetBeansProjects/beticaDeSeguros/beticaDeSeguros/src/reportes/ComercialContrato.jasper");
+    contratos=(JasperReport) JRLoader.loadObjectFromFile("/home/android-0174654321/NetBeansProjects/beticaDeSeguros/beticaDeSeguros/src/reportes/ComercialContrato.jasper");
     JasperPrint print=JasperFillManager.fillReport(contratos, null, a);
     JasperViewer ver= new JasperViewer(print);
     ver.setTitle("Bética de Seguros");

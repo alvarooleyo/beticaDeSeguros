@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import modelo.Database;
 import net.sf.jasperreports.engine.JRException;
 import reportes.Reportes;
 import vista.Interfaz;
@@ -32,7 +33,7 @@ public class ControladorComercial extends Controlador implements ActionListener,
     }
  
    
-  
+  Database a=new Database();
     
     public void iniciarComercial(){
          //cargamos el panel de comercial
@@ -209,7 +210,7 @@ public class ControladorComercial extends Controlador implements ActionListener,
             case btnImprimirContrato:
                  try{
                     Reportes reporte= new Reportes();
-                    reporte.reporteHacerContratao();               
+                    reporte.reporteHacerContratao(a.getConexion());               
                     
                 } catch (SQLException | JRException ex) {
                     Logger.getLogger(ControladorAdmin.class.getName()).log(Level.SEVERE, null, ex);
