@@ -262,5 +262,21 @@ public class ModeloComercial extends Database{
     }
    
          
+    public void AñadirCaptaciones(int id , String nombre,String dni,String telefono,String establecimiento,int idZona){
+        
+        String q="insert into cliente values ('"+id+"','"+nombre+"','"+dni+"','"+telefono+"','"+establecimiento+"','"+idZona+"',false)";
+           System.out.println(q);
+         try{
+             PreparedStatement pstm = this.getConexion().prepareStatement(q);
+             pstm.execute();
+             pstm.close();
+             JOptionPane.showMessageDialog(null,"Operación Realizada");
+             }catch(SQLException e){
+                 JOptionPane.showMessageDialog(null,"Error: Los datos son incorrectos.\nReviselos y vuelva a intentarlo");
+                 System.err.println( e.getMessage() );
+                 }
+        
+    }  
+    
     
 }

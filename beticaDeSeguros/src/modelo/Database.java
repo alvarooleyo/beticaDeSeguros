@@ -21,7 +21,7 @@ public class Database {
   /** usuario */
   private String user = "root";
   /** contraseña de MySql*/
-  private String password = "root";
+  private String password = "nikiekany";
   /** Cadena de conexion */
   private String url = "jdbc:mysql://localhost/"+db;
   /** variable para trabajar con la conexion a la base de datos */

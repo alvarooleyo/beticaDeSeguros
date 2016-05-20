@@ -67,6 +67,11 @@ public class ControladorComercial extends Controlador implements ActionListener,
                 this.vista.btnImprimirContrato.addActionListener(this);
                 this.vista.btnImprimirContrato.setActionCommand("btnImprimirContrato");
                 
+                //boton añadir captacion
+                
+                this.vista.btnAgregarCliente.addActionListener(this);
+                this.vista.btnAgregarCliente.setActionCommand("btnAgregarCliente");
+                
                 
                 
                                 
@@ -84,6 +89,7 @@ public class ControladorComercial extends Controlador implements ActionListener,
         btnCaptAgregar,
         btnCaptEliminar,
         btnCaptVer,
+        btnAgregarCliente,
         
         btnRenovAgregar,
         btnRenovEliminar,
@@ -151,13 +157,24 @@ public class ControladorComercial extends Controlador implements ActionListener,
                   this.vista.txtEstablZona.setText(" ");
                   this.vista.txtEstablIdZona.setText("");
                  System.out.println("pulsando agregar");
+                 
+                 
                  break;
+                 
+             case btnAgregarCliente:
+                 
+                 this.modeloComercial.AñadirCaptaciones(Integer.parseInt(vista.txtIdCliente.getText()), vista.txtClienteNombre.getText(), vista.txtClienteDni.getText(), vista.txtClienteTelefono.getText(), vista.txtEstablZona.getText(), Integer.parseInt(vista.txtEstablIdZona.getText()));
+                 this.vista.tablaRenovaciones.setModel(this.modeloComercial.getTablaClienteRenov());
+                 
              
              //Boton para eliminar cliente de la tabla captaciones
              case  btnCaptEliminar:
                  System.out.println("Se ha pulsado eliminar captacion");
                 this.modeloComercial.eliminarCliente(Integer.parseInt(this.vista.txtClienteId.getText()));
-                 break;
+                
+                this.vista.tablaCaptaciones.setModel(this.modeloComercial.getTablaCliente());
+                
+                break;
                  
             // Ver detalles del cliente de la tabla captaciones
             case btnCaptVer:    
