@@ -116,11 +116,12 @@ public class ModeloComercial extends Database{
       
     public boolean eliminarCliente(int id){
             boolean res = false;
-            
+            System.out.println("Id del cliente a borrar: "+id);
             String q = "DELETE FROM cliente WHERE id='"+id+"'";
         try {
             PreparedStatement pstm = this.getConexion().prepareStatement(q);
             pstm.execute();
+            System.out.println("Borrando");
             pstm.close();
             res=true;
          }catch(SQLException e){
@@ -155,28 +156,6 @@ public class ModeloComercial extends Database{
       return a;  
     }
     
-    public void ObtenerLista () throws ClassNotFoundException, SQLException{
-        Connection cn;
-
-        Interfaz i = new Interfaz();
-        String sql = "SELECT nombre from productos";
-        Database con=new Database();
-        cn=con.getConexion();
-        
-        try {
-            Statement st = cn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            
-            i.cmbClientesTipoProd.removeAllItems();
-            while (rs.next()) {
-                i.cmbClientesTipoProd.addItem(rs.getString(1));
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al llamar la BD");
-            System.out.println("Coneccion incorrecta: "+ ex);
-        }
-        
-    }
     
     
      /** Cargar datos en el comboBox de zonas

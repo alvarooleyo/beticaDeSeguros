@@ -44,15 +44,19 @@ public class ControladorComercial extends Controlador implements ActionListener,
                 
                 this.vista.tablaCaptaciones.addMouseListener(this);
                 this.vista.tablaCaptaciones.setName("tablaCaptaciones");
-                
+                //Eliminar cliente de la parte captaciones
                 this.vista.btnCaptEliminar.setActionCommand( "btnCaptEliminar" );
                 this.vista.btnCaptEliminar.addActionListener(this);
+                
                 this.vista.btnCaptAgregar.addActionListener(this);
                 this.vista.btnCaptAgregar.setActionCommand( "btnCaptAgregar" );
                 this.vista.btnCaptVer.setActionCommand("btnCaptVer");
                 this.vista.btnCaptVer.addActionListener(this);
                 this.vista.cmbClientesTipoProd.setModel(this.modeloComercial.rellenarComboProductos());
                 this.vista.comboClientesPro2.setModel(this.modeloComercial.rellenarComboProductos());
+                //boton verRenovaciones
+                this.vista.btnRenovVer.setActionCommand("btnRenovVer");
+                this.vista.btnRenovVer.addActionListener(this);
                 //boton contratar
                 this.vista.btnContratar.addActionListener(this);
                 this.vista.btnContratar.setActionCommand("btnContratar");
@@ -80,12 +84,17 @@ public class ControladorComercial extends Controlador implements ActionListener,
         btnCaptAgregar,
         btnCaptEliminar,
         btnCaptVer,
+        
+        btnRenovAgregar,
+        btnRenovEliminar,
+        btnRenovVer,
+        
         btnContratar,
         btnImprimirContrato,
         btnHacerContrato
     }
     
-    String pepe;
+    String p,j;
     
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -100,7 +109,7 @@ public class ControladorComercial extends Controlador implements ActionListener,
                 this.vista.txtClienteNombre.setText( String.valueOf( this.vista.tablaCaptaciones.getValueAt(fila, 1) ));
                 this.vista.txtClienteTelefono.setText( String.valueOf( this.vista.tablaCaptaciones.getValueAt(fila, 2) ));
                 this.vista.txtIdCliente.setText(String.valueOf( this.vista.tablaCaptaciones.getValueAt(fila, 0) ));
-                pepe = String.valueOf( this.vista.tablaCaptaciones.getValueAt(fila, 0) );
+                p = String.valueOf( this.vista.tablaCaptaciones.getValueAt(fila, 0) );
                
              }
             break;
@@ -112,7 +121,7 @@ public class ControladorComercial extends Controlador implements ActionListener,
                 this.vista.txtClienteId.setText( String.valueOf( this.vista.tablaRenovaciones.getValueAt(fila, 0) ));
                 this.vista.txtClienteNombre.setText( String.valueOf( this.vista.tablaRenovaciones.getValueAt(fila, 1) ));
                 this.vista.txtClienteTelefono.setText( String.valueOf( this.vista.tablaRenovaciones.getValueAt(fila, 2) ));
-                
+                j = String.valueOf( this.vista.tablaRenovaciones.getValueAt(fila, 0) );
                
              }
             break;
@@ -138,29 +147,51 @@ public class ControladorComercial extends Controlador implements ActionListener,
                   this.vista.txtClienteId.setText(" ");
                   this.vista.txtClienteDni.setText(" ");
                   this.vista.txtClienteTelefono.setText(" ");
+                  this.vista.txtEstablNombre.setText(" ");
+                  this.vista.txtEstablZona.setText(" ");
+                  this.vista.txtEstablIdZona.setText("");
                  System.out.println("pulsando agregar");
                  break;
+             
+             //Boton para eliminar cliente de la tabla captaciones
              case  btnCaptEliminar:
-                 
-                 
+                 System.out.println("Se ha pulsado eliminar captacion");
+                this.modeloComercial.eliminarCliente(Integer.parseInt(this.vista.txtClienteId.getText()));
                  break;
                  
-                 
+            // Ver detalles del cliente de la tabla captaciones
             case btnCaptVer:    
                 this.vista.btnEditarCliente.setEnabled(true);
+                this.vista.panelDatosProducto.setVisible(false);
                 this.vista.btnAgregarCliente.setEnabled(false);
                 this.vista.comercial.setSelectedIndex(1);
                 System.out.println("Se ha pulsado el boton");
-                String i = pepe;
+                String i = p;
          
                 System.out.println("llamando metodo");
                 this.vista.txtClienteDni.setText(this.modeloComercial.verCliente(i)[0]);
                 this.vista.txtEstablNombre.setText(this.modeloComercial.verCliente(i)[1]);
                 this.vista.txtEstablZona.setText(this.modeloComercial.verCliente(i)[2]);
                 this.vista.txtEstablIdZona.setText(this.modeloComercial.verCliente(i)[3]);               
-                    
-                    
+                   
                 break;
+            // Ver detalles del cliente de la tabla renovaciones
+            case btnRenovVer:    
+                this.vista.btnEditarCliente.setEnabled(true);
+                this.vista.panelDatosProducto.setVisible(true);
+                this.vista.cmbClientesTipoProd.setEnabled(false);
+                this.vista.btnAgregarCliente.setEnabled(false);
+                this.vista.comercial.setSelectedIndex(1);
+                System.out.println("Se ha pulsado el boton");
+                String ie = j;
+         
+                System.out.println("llamando metodo");
+                this.vista.txtClienteDni.setText(this.modeloComercial.verCliente(ie)[0]);
+                this.vista.txtEstablNombre.setText(this.modeloComercial.verCliente(ie)[1]);
+                this.vista.txtEstablZona.setText(this.modeloComercial.verCliente(ie)[2]);
+                this.vista.txtEstablIdZona.setText(this.modeloComercial.verCliente(ie)[3]);               
+                   
+                break;    
                 
             case btnContratar:
                 this.vista.comercial.setSelectedIndex(2);
