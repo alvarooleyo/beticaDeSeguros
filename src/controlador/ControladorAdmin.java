@@ -25,6 +25,10 @@ import vista.Interfaz;
  */
 public class ControladorAdmin extends Controlador implements ActionListener,MouseListener{
 
+    /**
+     *
+     * @param vista
+     */
     public ControladorAdmin(Interfaz vista) {
         super(vista);
         
@@ -33,6 +37,10 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
    
   
     Database a= new Database();
+
+    /**
+     *
+     */
     public void iniciarAdmin(){
          //cargamos el panel de administrador
                 this.panelAdministrador();
@@ -120,33 +128,126 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
     public void mouseExited(MouseEvent e) {
     }
     
-    
-     public enum AccionMVC {
+    /**
+     *
+     */
+    public enum AccionMVC {
         
+        /**
+         *
+         */
         btnACCBaja,
+
+        /**
+         *
+         */
         btnACCModificar,
+
+        /**
+         *
+         */
         btnAADA,
+
+        /**
+         *
+         */
         btnCoReasignar,
+
+        /**
+         *
+         */
         btnACoAlta,
+
+        /**
+         *
+         */
         btnAZoA,
+
+        /**
+         *
+         */
         btnAZoE,
+
+        /**
+         *
+         */
         btnAZoEli,
+
+        /**
+         *
+         */
         btnAADB,
+
+        /**
+         *
+         */
         btnACAnadir,
+
+        /**
+         *
+         */
         btnACEliminar,
+
+        /**
+         *
+         */
         btnAPMo,
+
+        /**
+         *
+         */
         btnAPAn,
+
+        /**
+         *
+         */
         btnAPEli,
+
+        /**
+         *
+         */
         btnACContratos,
+
+        /**
+         *
+         */
         btnACconcom,
+
+        /**
+         *
+         */
         btnACConzon
     }
-     public enum MouseMVC {
-         tablaACoCo,
-         tablaAClientes,
-         tablaAZonas,
-         tablaAPro,
-         tablaAAdmi
+
+    /**
+     *
+     */
+    public enum MouseMVC {
+
+        /**
+         *
+         */
+        tablaACoCo,
+
+        /**
+         *
+         */
+        tablaAClientes,
+
+        /**
+         *
+         */
+        tablaAZonas,
+
+        /**
+         *
+         */
+        tablaAPro,
+
+        /**
+         *
+         */
+        tablaAAdmi
 
     }
 
@@ -307,6 +408,10 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
 
 
     }
+
+    /**
+     *
+     */
     public void panelAdministrador(){
         this.vista.setVisible(true);
                     this.vista.login.setVisible(false);

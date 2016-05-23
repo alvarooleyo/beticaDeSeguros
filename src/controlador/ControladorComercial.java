@@ -26,6 +26,10 @@ import vista.Interfaz;
  */
 public class ControladorComercial extends Controlador implements ActionListener,MouseListener{
 
+    /**
+     *
+     * @param vista
+     */
     public ControladorComercial(Interfaz vista) {
         /** instancia a nuestra interfaz de usuario*/
         super(vista);
@@ -35,6 +39,9 @@ public class ControladorComercial extends Controlador implements ActionListener,
    
   Database a=new Database();
     
+    /**
+     *
+     */
     public void iniciarComercial(){
          //cargamos el panel de comercial
                 this.panelComercial();
@@ -55,6 +62,12 @@ public class ControladorComercial extends Controlador implements ActionListener,
                 this.vista.btnCaptVer.addActionListener(this);
                 this.vista.cmbClientesTipoProd.setModel(this.modeloComercial.rellenarComboProductos());
                 this.vista.comboClientesPro2.setModel(this.modeloComercial.rellenarComboProductos());
+                //Boton agregar cliente a base de datos
+                this.vista.btnAgregarCliente.setActionCommand("btnAgregarCliente");
+                this.vista.btnAgregarCliente.addActionListener(this);
+                //boton editar = actualizar cliente en la base de datos
+                this.vista.btnEditarCliente.addActionListener(this);
+                this.vista.btnEditarCliente.setActionCommand("btnEditarCliente");
                 //boton verRenovaciones
                 this.vista.btnRenovVer.setActionCommand("btnRenovVer");
                 this.vista.btnRenovVer.addActionListener(this);
@@ -75,23 +88,81 @@ public class ControladorComercial extends Controlador implements ActionListener,
 
     }
 
+    /**
+     *
+     */
     public enum MouseMVC {
-         tablaCaptaciones,
-         tablaRenovaciones     
+
+        /**
+         *
+         */
+        tablaCaptaciones,
+     
+        /**
+         *
+         */
+        tablaRenovaciones     
  
     }
     
+    /**
+     *
+     */
     public enum ActionMVC {
+
+        /**
+         *
+         */
         btnCaptAgregar,
+
+        /**
+         *
+         */
         btnCaptEliminar,
+
+        /**
+         *
+         */
         btnCaptVer,
         
+        /**
+         *
+         */
         btnRenovAgregar,
+
+        /**
+         *
+         */
         btnRenovEliminar,
+
+        /**
+         *
+         */
         btnRenovVer,
         
+        /**
+         *
+         */
+        btnAgregarCliente,
+
+        /**
+         *
+         */
+        btnEditarCliente,
+        
+        /**
+         *
+         */
         btnContratar,
+
+        /**
+         *
+         */
         btnImprimirContrato,
+
+        /**
+         *
+         */
         btnHacerContrato
     }
     
@@ -138,28 +209,59 @@ public class ControladorComercial extends Controlador implements ActionListener,
      @Override
     public void actionPerformed(ActionEvent e) {
          switch ( ControladorComercial.ActionMVC.valueOf( e.getActionCommand() ) ){
+             //boton para ir a panel para agregar cliente
              case btnCaptAgregar:
-                
+                  
                   this.vista.btnAgregarCliente.setEnabled(true);
+                  
                   this.vista.btnEditarCliente.setEnabled(false);
                   this.vista.comercial.setSelectedIndex(1);
                   
-                  this.vista.txtClienteNombre.setText(" ");
-                  this.vista.txtClienteId.setText(" ");
-                  this.vista.txtClienteDni.setText(" ");
-                  this.vista.txtClienteTelefono.setText(" ");
-                  this.vista.txtEstablNombre.setText(" ");
-                  this.vista.txtEstablZona.setText(" ");
+                  
+                  this.vista.txtClienteNombre.setText("");
+                  this.vista.txtClienteId.setText("");
+                  this.vista.txtClienteDni.setText("");
+                  this.vista.txtClienteTelefono.setText("");
+                  this.vista.txtEstablNombre.setText("");
+                  this.vista.txtEstablZona.setText("");
                   this.vista.txtEstablIdZona.setText("");
+                  String usuario = this.vista.nombreUsuario.getText();                 
+                  this.vista.txtEstablIdZona.setText(this.modeloComercial.ponerZonaCliente(usuario)[1]);
+                  this.vista.txtEstablNombre.setText(this.modeloComercial.ponerZonaCliente(usuario)[0]);
                  System.out.println("pulsando agregar");
+                 
                  break;
              
              //Boton para eliminar cliente de la tabla captaciones
              case  btnCaptEliminar:
                  System.out.println("Se ha pulsado eliminar captacion");
                 this.modeloComercial.eliminarCliente(Integer.parseInt(this.vista.txtClienteId.getText()));
+                this.vista.tablaCaptaciones.setModel(this.modeloComercial.getTablaCliente());
                  break;
-                 
+            
+            //boton agregar cliente a la base de datos   
+             case btnAgregarCliente:
+                 String nombre = this.vista.txtClienteNombre.getText();
+                 String dni = this.vista.txtClienteDni.getText();
+                 String telefono = this.vista.txtClienteTelefono.getText();
+                 String establecimiento = this.vista.txtEstablZona.getText();
+                 int idZona = Integer.parseInt(this.vista.txtEstablIdZona.getText());
+                 this.modeloComercial.agregarCliente(nombre, dni, telefono, establecimiento, idZona);
+                 this.vista.tablaCaptaciones.setModel(this.modeloComercial.getTablaCliente());
+                break;  
+            //Boton actualizar cliente en la base de datos
+             case btnEditarCliente:
+                 String n = this.vista.txtClienteNombre.getText();
+                 String d = this.vista.txtClienteDni.getText();
+                 String t = this.vista.txtClienteTelefono.getText();
+                 String est = this.vista.txtEstablZona.getText();
+                 int ide = Integer.parseInt(this.vista.txtClienteId.getText());
+                 int iZ = Integer.parseInt(this.vista.txtEstablIdZona.getText());
+                 this.modeloComercial.MoificarDatosCliente(ide, n, t, est, iZ);
+                 this.vista.tablaCaptaciones.setModel(this.modeloComercial.getTablaCliente());
+                 this.vista.tablaRenovaciones.setModel(this.modeloComercial.getTablaClienteRenov());
+                 System.out.println("Actualizado");
+                break;   
             // Ver detalles del cliente de la tabla captaciones
             case btnCaptVer:    
                 this.vista.btnEditarCliente.setEnabled(true);

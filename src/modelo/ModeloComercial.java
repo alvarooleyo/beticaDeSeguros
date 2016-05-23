@@ -27,14 +27,20 @@ import vista.Interfaz;
  */
 public class ModeloComercial extends Database{
     
+    /**
+     *
+     */
     public ModeloComercial(){
         
     }
     
        //Nuevo metodo para rellenar clientes en el panel de comercial
    
-    
-      public DefaultTableModel getTablaCliente(){
+    /**
+     *
+     * @return
+     */
+    public DefaultTableModel getTablaCliente(){
           DefaultTableModel tablemodel = new DefaultTableModel();
           int registros = 0;
           String [] columNames = {"id", "nombre", "telefono"};
@@ -74,7 +80,11 @@ public class ModeloComercial extends Database{
         
       }
       
-      public DefaultTableModel getTablaClienteRenov(){
+    /**
+     *
+     * @return
+     */
+    public DefaultTableModel getTablaClienteRenov(){
           DefaultTableModel tablemodel = new DefaultTableModel();
           int registros = 0;
           String [] columNames = {"id", "nombre", "telefono"};
@@ -114,6 +124,11 @@ public class ModeloComercial extends Database{
         
       }
       
+    /**
+     *
+     * @param id
+     * @return
+     */
     public boolean eliminarCliente(int id){
             boolean res = false;
             System.out.println("Id del cliente a borrar: "+id);
@@ -130,6 +145,11 @@ public class ModeloComercial extends Database{
             return res;
         }
     
+    /**
+     *
+     * @param id
+     * @return
+     */
     public String[] verCliente(String id){
         
         
@@ -197,6 +217,7 @@ public class ModeloComercial extends Database{
     }
     
      /** Obtiene registros de la tabla Comerciales y los devuelve en un DefaultTableMode
+     * @param Usuario
      * @return DefaultTableModel*/
     public String[] datosComerciales(String Usuario) {
         
@@ -260,7 +281,85 @@ public class ModeloComercial extends Database{
                  }
         
     }
-   
-         
+    //Agregar cliente a la base de datos
+
+    /**
+     *
+     * @param nom
+     * @param dni
+     * @param telefono
+     * @param establecimiento
+     * @param idZona
+     */
+    public void agregarCliente(String nom,String dni,String telefono,String establecimiento,int idZona){
+        String q="insert into cliente values (null,'"+nom+"','"+dni+"',"+telefono+",'"+establecimiento+"',"+idZona+",0)";
+           System.out.println(q);
+         try{
+             PreparedStatement pstm = this.getConexion().prepareStatement(q);
+             pstm.execute();
+             pstm.close();
+             JOptionPane.showMessageDialog(null,"Operación Realizada");
+             }catch(SQLException e){
+                 JOptionPane.showMessageDialog(null,"Error: Los datos son incorrectos.\nReviselos y vuelva a intentarlo");
+                 System.err.println( e.getMessage() );
+                 }
+    }     
+    //Al darle al boton agregar de la pestaña objetivos del dia se pone en la pestaña cliente el id de zona y el nombre de la zona
+
+    /**
+     *
+     * @param usuario
+     * @return
+     */
+    public String[] ponerZonaCliente(String usuario){
+        String a[] = new String[2];
+        String q = "select  zona.nombre, zona.id from zona join comercial where zona.id = comercial.zona and comercial.usuario = '"+usuario+"'";
+        try{
+            PreparedStatement pstm = this.getConexion().prepareStatement(q);
+            ResultSet res = pstm.executeQuery();
+            while(res.next()){
+               System.out.println("Consulta realizada.");
+               a[0] = res.getString("nombre");
+               a[1] = res.getString("id");
+               
+        
+            }
+            
+        res.close();
+        pstm.close();
+        }catch(SQLException e){
+            e.getMessage();
+        }
+        
+      return a;  
+      
+      
+    }
+    
+    //Actualizar cliente en la base de datos
+
+    /**
+     *
+     * @param id
+     * @param nom
+     * @param telefono
+     * @param establecimiento
+     * @param idZona
+     */
+
+    public void MoificarDatosCliente(int id, String nom,String telefono,String establecimiento,int idZona){
+        String q="update cliente set nombre='"+nom+"',telefono="+telefono+",establecimiento='"+establecimiento+"',idZona="+idZona+" where id='"+id+"'";
+         try{
+             PreparedStatement pstm = this.getConexion().prepareStatement(q);
+             pstm.execute();
+             pstm.close();
+             JOptionPane.showMessageDialog(null,"Operación Realizada");
+             }catch(SQLException e){
+                 JOptionPane.showMessageDialog(null,"Error: Los datos son incorrectos.\nReviselos y vuelva a intentarlo");
+                 System.err.println( e.getMessage() );
+                 }
+        
+    }
+    
     
 }

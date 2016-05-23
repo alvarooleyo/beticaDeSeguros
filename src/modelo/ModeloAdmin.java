@@ -18,7 +18,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ModeloAdmin extends Database{
 
-    
+    /**
+     *
+     */
     public ModeloAdmin(){
     
 }
@@ -610,7 +612,11 @@ public class ModeloAdmin extends Database{
         
     }
          
-        public void eliminarProducto(String id){
+    /**
+     *
+     * @param id
+     */
+    public void eliminarProducto(String id){
         String q="delete from productos where id='"+id+"'";
         try{
              PreparedStatement pstm = this.getConexion().prepareStatement(q);

@@ -21,6 +21,12 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class Reportes {
     
+    /**
+     *
+     * @param a
+     * @throws SQLException
+     * @throws JRException
+     */
     public void reporteContratos(Connection a) throws SQLException, JRException{
     JasperReport contratos=null;
         System.out.println("1");
@@ -34,6 +40,12 @@ public class Reportes {
     ver.setVisible(true);
     }
     
+    /**
+     *
+     * @param a
+     * @throws SQLException
+     * @throws JRException
+     */
     public void reporteContratosComerciales(Connection a) throws SQLException, JRException{
     
     a=DriverManager.getConnection("jdbc:mysql://localhost/BeticaSeguros");
@@ -45,6 +57,12 @@ public class Reportes {
     ver.setVisible(true);
     }
     
+    /**
+     *
+     * @param a
+     * @throws SQLException
+     * @throws JRException
+     */
     public void reporteContratosZonas(Connection a) throws SQLException, JRException{
  
     a=DriverManager.getConnection("jdbc:mysql://localhost/BeticaSeguros");
@@ -56,6 +74,12 @@ public class Reportes {
     ver.setVisible(true);
     }
     
+    /**
+     *
+     * @param a
+     * @throws SQLException
+     * @throws JRException
+     */
     public void reporteHacerContratao(Connection a) throws SQLException, JRException{
     
     a=DriverManager.getConnection("jdbc:mysql://localhost/BeticaSeguros");

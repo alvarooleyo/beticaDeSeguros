@@ -1,0 +1,248 @@
+﻿DROP database IF EXISTS BeticaSeguros;
+
+CREATE DATABASE BeticaSeguros;
+
+USE BeticaSeguros;
+
+
+
+DROP TABLE IF EXISTS productos;
+ 
+
+CREATE TABLE productos
+(
+
+id   smallint    not null auto_increment comment 'Id autogenerado',
+
+nombre varchar(50) not null comment 'Nombre del producto',
+
+descripcion varchar(1000) comment 'Tipo de producto',
+
+precio double  comment 'Precio del producto',
+
+primary key (id)
+);
+ 
+ 
+
+
+INSERT INTO productos
+
+values
+
+(NULL, 'Seguro básico', 'Responsabilidad civil', 300.00),
+
+(NULL, 'Seguro 3000', 'Robo, incendio, daños, responsabilidad civil', 650.00),
+
+(NULL, 'Curso de prevencion de riesgos laborales', 'Curso básico dobre la prevención de los riesgos propios de la actividad laboral', 80.00),
+
+(NULL, 'Curso de manipulador de alimentos', 'El certificado o carnet que ofrecemos acredita que el trabajador ha recibido la formación obligatoria para las tareas de manipulación de alimentos en la hostelería.', 90.00);
+
+
+
+DROP TABLE IF EXISTS zona;
+
+
+CREATE TABLE zona
+(
+
+id   smallint    not null auto_increment comment 'Id autogenerado',
+
+nombre varchar(50) not null unique comment 'Nombre del producto',
+
+poblacion int not null comment 'Nº de habitantes',
+
+establecimientos int not null comment 'Nº de establecimientos en la zona',
+
+primary key (id)
+);
+
+
+
+
+INSERT INTO zona
+
+values
+
+(NULL, 'El Aljarafe', 390772, 1720),
+
+(NULL, 'Bajo Guadalquivir', 147183, 712),
+
+(NULL, 'Campiña de Carmona', 68688, 425),
+
+(NULL, 'Campiña de Morón y Marchena', 92643, 592),
+
+(NULL, 'Comarca Metropolitana de Sevilla', 1219709, 5027),
+
+(NULL, 'Comarca de Écija', 60728, 412),
+
+(NULL, 'Sierra Norte', 58481, 394),
+
+(NULL, 'Sierra Sur',  88113, 523),
+
+(NULL, 'Vega del Guadalquivir', 96637, 542),
+
+(NULL, 'Los Alcores', 145321, 698);
+
+
+
+DROP TABLE IF EXISTS comercial;
+ 
+
+CREATE TABLE comercial
+(
+
+id   smallint    not null auto_increment comment 'Id autogenerado',
+
+nombre varchar(25) not null comment 'Nombre del producto',
+
+dni varchar(9) not null unique comment 'Nº de habitantes',
+
+rango varchar(25) not null comment 'Tipo de comercial',
+
+zona smallint comment 'Zona asignada',
+
+clave varchar(7) comment 'Clave de usuario',
+
+usuario varchar(6) unique comment 'Nombre de usuario',
+
+primary key (id),
+
+CONSTRAINT FOREIGN KEY (zona) REFERENCES zona (id)
+);
+
+
+
+
+INSERT INTO comercial
+
+values
+
+(NULL, 'Rafael Gonzalez Muñoz', '39077245T','administrador',1,'clave1','rafgon'),
+
+(NULL, 'Luis Muñoz Ramos', '56077245Y','comercial',1,'clave2','luimun'),
+
+(NULL, 'Adrian Lopez Montero', '32077245A','comercial',7,null,null),
+
+(NULL, 'Andrea Muñoz Jurado', '25075245X','comercial',8,null,null),
+
+(NULL, 'Maria Gonzalez Sanchez', '89077005T','comercial',2,null,null),
+
+(NULL, 'Angel Redondo Suarez', '39073245V','comercial',4,null,null),
+
+(NULL, 'Lucia Lara Carbellido', '42020145F','comercial',6,null,null);
+
+
+
+
+DROP TABLE IF EXISTS cliente;
+ 
+
+CREATE TABLE cliente 
+(
+
+id   smallint    not null auto_increment comment 'Id autogenerado',
+
+nombre varchar(25) not null comment 'Nombre del cliente',
+
+dni varchar(9) not null unique comment 'dni del cliente',
+
+telefono int(9) not null comment 'telefono de contacto',
+
+establecimiento varchar(100) not null comment 'Tipo de clliente',
+
+idZona smallint  comment 'Id de la zona',
+
+contratos bool comment 'nos da true si tiene contratos',
+
+primary key (id),
+
+CONSTRAINT FOREIGN KEY (idZona) REFERENCES zona (id)
+);
+
+
+
+INSERT INTO cliente
+
+values
+
+(NULL, 'Javier Gonzalez Ruiz', '23431434Z',955342311, 'Bar Koala', 5,0),
+
+(NULL, 'Luis Redondo Gonzalez', '45631434Y',954356318, 'Cafeteria Robledo', 8,0),
+
+(NULL, 'Jose López Ruiz', '83912434A',954352712, 'Mesón Julian', 10,0),
+
+(NULL, 'Marina Salguero Perez', '78232434S',954300314, 'Restaurante Las Playas', 2,0),
+
+(NULL, 'Pablo Zurita Fernandez', '23482434P',955349312, 'Bar Koala', 4,0),
+
+(NULL, 'Luisa Perez Robledo', '45431434X',955342345, 'Bar Koala', 2,0),
+
+(NULL, 'Pedro Lorenzo Gomez', '12431234N',954378322, 'Abaceria Rincon', 7,0),
+
+(NULL, 'Lucas Gonzalez Romero', '89012434Z',955342302, 'Bar Lucas', 6,0),
+
+(NULL, 'Javier Lara Ruiz', '10431222M',954542312, 'Restaurante Los Javieres', 1,0),
+
+(NULL, 'Ana Ruiz Silva', '28326234Q',954902300, 'Cafeteria La Luna', 3,0),
+
+(NULL, 'Macarena Robles Diaz', '33381243K',954842300, 'Bar Esquina', 2,0);
+
+
+
+DROP TABLE IF EXISTS contrato;
+ 
+
+CREATE TABLE contrato
+(
+
+id   smallint    not null auto_increment comment 'Id autogenerado',
+
+fecha date not null comment 'fecha de contratacion',
+
+duracion date not null comment 'duracion del servicio',
+
+idComercial smallint not null comment 'id del comercial',
+
+idCliente smallint not null comment 'id del cliente',
+
+idProducto smallint not null comment 'id del producto',
+
+primary key (id),
+
+CONSTRAINT FOREIGN KEY (idComercial) REFERENCES comercial (id),
+
+CONSTRAINT FOREIGN KEY (idCliente) REFERENCES cliente (id),
+
+CONSTRAINT FOREIGN KEY (idProducto) REFERENCES productos (id)
+);
+
+
+
+
+
+delimiter $$
+
+create trigger contratos after insert on contrato
+
+for each row
+
+begin
+
+update cliente set contratos=1 where id=new.idCliente;
+
+end;$$
+
+
+
+
+INSERT INTO contrato
+
+values
+
+(null,'2016-02-01','2017-02-01',2,2,1);
+
+
+
+
+$$

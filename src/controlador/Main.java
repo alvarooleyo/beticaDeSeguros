@@ -14,6 +14,10 @@ import vista.Interfaz;
  */
 public class Main {    
     
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         //ejecuta el controlador y este la vista
         new Controlador( new Interfaz() ).iniciar(); ;

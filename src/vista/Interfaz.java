@@ -51,7 +51,6 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         btnRenovVer = new javax.swing.JButton();
         btnRenovEliminar = new javax.swing.JButton();
-        btnRenovAgregar = new javax.swing.JButton();
         jLabel30 = new javax.swing.JLabel();
         nombreUsuario = new javax.swing.JLabel();
         mnCli = new javax.swing.JPanel();
@@ -353,13 +352,6 @@ public class Interfaz extends javax.swing.JFrame {
 
         btnRenovEliminar.setText("Eliminar");
 
-        btnRenovAgregar.setText("Agregar");
-        btnRenovAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRenovAgregarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout panelRenovacionesLayout = new javax.swing.GroupLayout(panelRenovaciones);
         panelRenovaciones.setLayout(panelRenovacionesLayout);
         panelRenovacionesLayout.setHorizontalGroup(
@@ -367,12 +359,10 @@ public class Interfaz extends javax.swing.JFrame {
             .addGroup(panelRenovacionesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelRenovacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane7)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
                     .addGroup(panelRenovacionesLayout.createSequentialGroup()
                         .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnRenovAgregar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnRenovEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnRenovVer, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -386,9 +376,7 @@ public class Interfaz extends javax.swing.JFrame {
                     .addGroup(panelRenovacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnRenovVer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnRenovEliminar))
-                    .addGroup(panelRenovacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnRenovAgregar)))
+                    .addComponent(jLabel22))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -439,6 +427,7 @@ public class Interfaz extends javax.swing.JFrame {
 
         jLabel25.setText("Teléfono: ");
 
+        txtClienteId.setEditable(false);
         txtClienteId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtClienteIdActionPerformed(evt);
@@ -493,9 +482,13 @@ public class Interfaz extends javax.swing.JFrame {
 
         panelDatosEstablecimiento.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos Establecimiento: "));
 
+        txtEstablNombre.setEditable(false);
+
         jLabel27.setText("Zona: ");
 
         jLabel28.setText("Id Zona:");
+
+        txtEstablIdZona.setEditable(false);
 
         jLabel26.setText("Nombre: ");
 
@@ -1482,10 +1475,6 @@ public class Interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCaptAgregarActionPerformed
 
-    private void btnRenovAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRenovAgregarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRenovAgregarActionPerformed
-
     private void btnCaptEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaptEliminarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCaptEliminarActionPerformed
@@ -1699,7 +1688,6 @@ public class Interfaz extends javax.swing.JFrame {
     public javax.swing.JButton btnEntrar;
     public javax.swing.JButton btnHacerContrato;
     public javax.swing.JButton btnImprimirContrato;
-    public javax.swing.JButton btnRenovAgregar;
     public javax.swing.JButton btnRenovEliminar;
     public javax.swing.JButton btnRenovVer;
     public javax.swing.JComboBox cmbClientesTipoProd;

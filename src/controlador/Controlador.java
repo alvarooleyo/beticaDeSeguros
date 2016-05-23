@@ -42,22 +42,36 @@ public class Controlador implements ActionListener,MouseListener{
         System.out.println("Construyendo controlador");
     }
 
-    
-     public enum AccionMVC {
+    /**
+     *
+     */
+    public enum AccionMVC {
+
+        /**
+         *
+         */
         btnEntrar,
+
+        /**
+         *
+         */
         menuCerrar,
+
+        /**
+         *
+         */
         menuSalir,
         
-        
-        
+        /**
+         *
+         */
         txtPassword
     }
     
-    
-    
-    
-    
-     public void iniciar(){
+    /**
+     *
+     */
+    public void iniciar(){
          
         
         //iniciamos el panel principal        
@@ -89,7 +103,8 @@ public class Controlador implements ActionListener,MouseListener{
     }
     
      
-     /** Acciones que se ejecutar al pulsar cada uno de los botones de la aplicacion**/
+     /** Acciones que se ejecutar al pulsar cada uno de los botones de la aplicacio
+     * @param en**/
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -147,6 +162,9 @@ public class Controlador implements ActionListener,MouseListener{
    
     }
     
+    /**
+     *
+     */
     public void cargaPaneles(){
          System.out.println("Pulsando entrar");
                 String Usuario=this.vista.txtUsuario.getText();
