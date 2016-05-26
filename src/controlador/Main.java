@@ -16,7 +16,7 @@ public class Main {
     
     /**
      *
-     * @param args
+     * @param args String[] 
      */
     public static void main(String[] args) {
         //ejecuta el controlador y este la vista

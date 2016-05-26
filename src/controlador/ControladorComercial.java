@@ -29,7 +29,7 @@ public class ControladorComercial extends Controlador implements ActionListener,
 
     /**
      *
-     * @param vista
+     * @param vista Interfaz
      */
     public ControladorComercial(Interfaz vista) {
         /** instancia a nuestra interfaz de usuario*/
@@ -81,6 +81,14 @@ public class ControladorComercial extends Controlador implements ActionListener,
                 //boton imprimir contrato
                 this.vista.btnImprimirContrato.addActionListener(this);
                 this.vista.btnImprimirContrato.setActionCommand("btnImprimirContrato");
+                //botn eliminar cliente
+                this.vista.btnRenovEliminar.addActionListener(this);
+                this.vista.btnRenovEliminar.setActionCommand("btnRenovEliminar");
+                //boton Nuevo contrato en renovaciones
+                this.vista.btnNuevoContrato.addActionListener(this);
+                this.vista.btnNuevoContrato.setActionCommand("btnNuevoContrato");
+                
+                
                 
                 
                 
@@ -164,7 +172,9 @@ public class ControladorComercial extends Controlador implements ActionListener,
         /**
          *
          */
-        btnHacerContrato
+        btnHacerContrato,
+        
+        btnNuevoContrato
     }
     
     String p,j;
@@ -194,6 +204,7 @@ public class ControladorComercial extends Controlador implements ActionListener,
                 this.vista.txtClienteId.setText( String.valueOf( this.vista.tablaRenovaciones.getValueAt(fila, 0) ));
                 this.vista.txtClienteNombre.setText( String.valueOf( this.vista.tablaRenovaciones.getValueAt(fila, 1) ));
                 this.vista.txtClienteTelefono.setText( String.valueOf( this.vista.tablaRenovaciones.getValueAt(fila, 2) ));
+                this.vista.txtIdCliente.setText(String.valueOf( this.vista.tablaRenovaciones.getValueAt(fila, 0) ));
                 j = String.valueOf( this.vista.tablaRenovaciones.getValueAt(fila, 0) );
                
              }
@@ -234,8 +245,7 @@ public class ControladorComercial extends Controlador implements ActionListener,
                  break;
              
              //Boton para eliminar cliente de la tabla captaciones
-             case  btnCaptEliminar:
-                 System.out.println("Se ha pulsado eliminar captacion");
+             case  btnCaptEliminar:                
                 this.modeloComercial.eliminarCliente(Integer.parseInt(this.vista.txtClienteId.getText()));
                 this.vista.tablaCaptaciones.setModel(this.modeloComercial.getTablaCliente());
                  break;
@@ -279,27 +289,33 @@ public class ControladorComercial extends Controlador implements ActionListener,
                 this.vista.txtEstablIdZona.setText(this.modeloComercial.verCliente(i)[3]);               
                    
                 break;
+            case btnRenovEliminar:
+                this.modeloComercial.eliminarCliente(Integer.parseInt(this.vista.txtClienteId.getText()));
+                this.vista.tablaCaptaciones.setModel(this.modeloComercial.getTablaCliente());
+                break;
+                
+                
+                
+                
             // Ver detalles del cliente de la tabla renovaciones
             case btnRenovVer:    
                 this.vista.btnEditarCliente.setEnabled(true);
                 this.vista.panelDatosProducto.setVisible(true);
-                this.vista.cmbClientesTipoProd.setEnabled(false);
+                this.vista.cmbClientesTipoProd.setModel(this.modeloComercial.rellenarComboProductosRenovacion(this.vista.txtClienteId.getText()));
                 this.vista.btnAgregarCliente.setEnabled(false);
                 this.vista.comercial.setSelectedIndex(1);
-                System.out.println("Se ha pulsado el boton");
                 String ie = j;
          
-                System.out.println("llamando metodo");
                 this.vista.txtClienteDni.setText(this.modeloComercial.verCliente(ie)[0]);
                 this.vista.txtEstablNombre.setText(this.modeloComercial.verCliente(ie)[1]);
                 this.vista.txtEstablZona.setText(this.modeloComercial.verCliente(ie)[2]);
-                this.vista.txtEstablIdZona.setText(this.modeloComercial.verCliente(ie)[3]);               
+                this.vista.txtEstablIdZona.setText(this.modeloComercial.verCliente(ie)[3]);
+                
                    
                 break;    
                 
             case btnContratar:
                 this.vista.comercial.setSelectedIndex(2);
-                System.out.println("Se ha pulsado el boton contratar");
                 this.vista.txtIdComercial.setText(this.modeloComercial.datosComerciales(this.vista.txtUsuario.getText())[0]);
                 //Intentando poner el primer jcalendar con la fecha actual ya seleccionada
                 //this.vista.jDateChooser1.setDate(date);
@@ -335,9 +351,20 @@ public class ControladorComercial extends Controlador implements ActionListener,
                 String producto=this.vista.comboClientesPro2.getSelectedItem().toString();
                 System.out.println(this.vista.comboClientesPro2.getSelectedItem().toString());
                 this.modeloComercial.contratar(idcliente, idcomercial, producto, fechaalta, fechabaja);
+                this.vista.tablaCaptaciones.setModel(this.modeloComercial.getTablaCliente());
+                this.vista.tablaRenovaciones.setModel(this.modeloComercial.getTablaClienteRenov());
                 
                 break;
-                
+            case btnNuevoContrato: 
+                this.vista.comercial.setSelectedIndex(2);
+                this.vista.txtIdComercial.setText(this.modeloComercial.datosComerciales(this.vista.txtUsuario.getText())[0]);
+                //Intentando poner el primer jcalendar con la fecha actual ya seleccionada
+                //this.vista.jDateChooser1.setDate(date);
+         
+                           
+                    
+                    
+                break;
                 
             
         

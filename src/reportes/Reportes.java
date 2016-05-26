@@ -23,9 +23,9 @@ public class Reportes {
     
     /**
      *
-     * @param a
-     * @throws SQLException
-     * @throws JRException
+     * @param a Connection
+     * @throws SQLException excepcion
+     * @throws JRException excepcion
      */
     public void reporteContratos(Connection a) throws SQLException, JRException{
     JasperReport contratos=null;        
@@ -39,9 +39,9 @@ public class Reportes {
     
     /**
      *
-     * @param a
-     * @throws SQLException
-     * @throws JRException
+     * @param a Connection
+     * @throws SQLException excepcion
+     * @throws JRException excepcion
      */
     public void reporteContratosComerciales(Connection a) throws SQLException, JRException{
     JasperReport contratos=null;
@@ -54,9 +54,9 @@ public class Reportes {
     
     /**
      *
-     * @param a
-     * @throws SQLException
-     * @throws JRException
+     * @param a Connection
+     * @throws SQLException excepcion
+     * @throws JRException excepcion
      */
     public void reporteContratosZonas(Connection a) throws SQLException, JRException{
     JasperReport contratos=null;
@@ -69,9 +69,9 @@ public class Reportes {
     
     /**
      *
-     * @param a
-     * @throws SQLException
-     * @throws JRException
+     * @param a Connection
+     * @throws SQLException excepcion
+     * @throws JRException excepcion
      */
     public void reporteHacerContratao(Connection a) throws SQLException, JRException{    
     JasperReport contratos=null;

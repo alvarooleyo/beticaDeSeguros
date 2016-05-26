@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8821f1e4-4532-4728-97e7-f80c181bf3ce">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="65"/>
+	<property name="ireport.y" value="323"/>
 	<queryString>
 		<![CDATA[SELECT
      contrato.`id` AS contrato_id,
@@ -165,7 +165,7 @@ order by contrato.`id` desc limit 1
 				<textElement>
 					<font isBold="true" isUnderline="true"/>
 				</textElement>
-				<text><![CDATA[Descripcion de lo contratado:]]></text>
+				<text><![CDATA[Descripción de lo contratado:]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="485" y="0" width="70" height="38" uuid="e5dfb51c-4a36-4933-904e-3994f95f975a"/>
@@ -197,10 +197,10 @@ order by contrato.`id` desc limit 1
 				<reportElement x="0" y="51" width="555" height="1" uuid="eab62955-a74c-4952-8d93-fe9646a63b37"/>
 			</line>
 			<rectangle>
-				<reportElement x="100" y="291" width="135" height="48" uuid="04bd740d-5222-46e4-a461-3db1e85b6199"/>
+				<reportElement x="51" y="291" width="184" height="48" uuid="04bd740d-5222-46e4-a461-3db1e85b6199"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="360" y="291" width="135" height="48" uuid="df51a8c0-5e23-455a-a184-e02727a3cda4"/>
+				<reportElement x="307" y="291" width="188" height="48" uuid="df51a8c0-5e23-455a-a184-e02727a3cda4"/>
 			</rectangle>
 		</band>
 	</detail>

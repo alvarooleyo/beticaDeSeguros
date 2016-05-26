@@ -24,9 +24,9 @@ public class Modelo extends Database{
   
     
     /** verifica el usuario y clave introducido:
-     * @param usuario*
-     * @param clave
-     * @return */
+     * @param usuario String
+     * @param clave String
+     * @return int */
     public int verificarClave(String usuario, String clave){
         int res=0;
         //se arma la consulta

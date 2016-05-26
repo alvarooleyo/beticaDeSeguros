@@ -38,7 +38,7 @@ public class ModeloComercial extends Database{
    
     /**
      *
-     * @return
+     * @return DefaultTableModel
      */
     public DefaultTableModel getTablaCliente(){
           DefaultTableModel tablemodel = new DefaultTableModel();
@@ -82,7 +82,7 @@ public class ModeloComercial extends Database{
       
     /**
      *
-     * @return
+     * @return DefaultTableModel
      */
     public DefaultTableModel getTablaClienteRenov(){
           DefaultTableModel tablemodel = new DefaultTableModel();
@@ -126,8 +126,8 @@ public class ModeloComercial extends Database{
       
     /**
      *
-     * @param id
-     * @return
+     * @param id int
+     * @return boolean
      */
     public boolean eliminarCliente(int id){
             boolean res = false;
@@ -141,14 +141,15 @@ public class ModeloComercial extends Database{
             res=true;
          }catch(SQLException e){
             System.err.println( e.getMessage() );
+             JOptionPane.showMessageDialog(null,"El cliente no puede ser eliminado\ntiene un contrato en vigor");
         }
             return res;
         }
     
     /**
      *
-     * @param id
-     * @return
+     * @param id String
+     * @return String[]
      */
     public String[] verCliente(String id){
         
@@ -217,7 +218,7 @@ public class ModeloComercial extends Database{
     }
     
      /** Obtiene registros de la tabla Comerciales y los devuelve en un DefaultTableMode
-     * @param Usuario
+     * @param Usuario String
      * @return DefaultTableModel*/
     public String[] datosComerciales(String Usuario) {
         
@@ -248,11 +249,11 @@ public class ModeloComercial extends Database{
     
     /**Método para crear un contrato
      * 
-     * @param idcliente
-     * @param idComercial
-     * @param producto
-     * @param fechainicio
-     * @param fechafin 
+     * @param idcliente String
+     * @param idComercial String
+     * @param producto String
+     * @param fechainicio String
+     * @param fechafin String
      */
     public void contratar(String idcliente,String idComercial,String producto,String fechainicio,String fechafin){
         int id=0;
@@ -285,11 +286,11 @@ public class ModeloComercial extends Database{
 
     /**
      *
-     * @param nom
-     * @param dni
-     * @param telefono
-     * @param establecimiento
-     * @param idZona
+     * @param nom String
+     * @param dni String
+     * @param telefono String
+     * @param establecimiento String
+     * @param idZona int
      */
     public void agregarCliente(String nom,String dni,String telefono,String establecimiento,int idZona){
         String q="insert into cliente values (null,'"+nom+"','"+dni+"',"+telefono+",'"+establecimiento+"',"+idZona+",0)";
@@ -308,8 +309,8 @@ public class ModeloComercial extends Database{
 
     /**
      *
-     * @param usuario
-     * @return
+     * @param usuario String
+     * @return String[]
      */
     public String[] ponerZonaCliente(String usuario){
         String a[] = new String[2];
@@ -340,11 +341,11 @@ public class ModeloComercial extends Database{
 
     /**
      *
-     * @param id
-     * @param nom
-     * @param telefono
-     * @param establecimiento
-     * @param idZona
+     * @param id int
+     * @param nom String
+     * @param telefono String
+     * @param establecimiento String
+     * @param idZona int
      */
 
     public void MoificarDatosCliente(int id, String nom,String telefono,String establecimiento,int idZona){
@@ -361,5 +362,40 @@ public class ModeloComercial extends Database{
         
     }
     
+     public DefaultComboBoxModel rellenarComboProductosRenovacion(String idCliente){
+        DefaultComboBoxModel vector=new DefaultComboBoxModel();
+         int total=0;
+         /**Obtenemos la cantidad de elementos que contendra el ComboBox de comerciales**/
+         try{
+             //se arma la consulta
+             PreparedStatement pstm = this.getConexion().prepareStatement( "SELECT count(*) as total FROM contrato where idCliente="+idCliente);
+             //se ejecuta la consulta
+             ResultSet res1 = pstm.executeQuery();
+             res1.next();
+             total= res1.getInt("total");
+             res1.close();
+      }catch(SQLException e){
+          System.err.println( e.getMessage() );
+      }         
+         int i=0;
+         Object[] data = new String[total];       
+         String q = "select nombre FROM productos where id in (select idProducto from contrato where idCliente="+idCliente+")" ;       
+         try {
+             //se arma la consulta
+            PreparedStatement pstm = this.getConexion().prepareStatement(q);
+            //se ejecuta la consulta
+            ResultSet resultado=pstm.executeQuery();
+            while(resultado.next()){
+                data[i]=resultado.getString("nombre");
+                vector.addElement(data[i].toString());
+                i++;
+            }           
+            pstm.close();
+            resultado.close();            
+         }catch(SQLException e){
+            System.err.println( e.getMessage() );
+        }         
+        return vector;          
+    }
     
 }

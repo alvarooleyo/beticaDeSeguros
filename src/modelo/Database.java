@@ -11,8 +11,8 @@ package modelo;
  */
 import java.sql.*;
 /**
- * @web http://www.jc-mouse.net
- * @author Mouse
+ * @version 1.0
+ * @author Francisco Camas, Manuel Tenorio, Alvaro Márquez
  */
 public class Database {
  /* DATOS PARA LA CONEXION */
@@ -45,7 +45,7 @@ public class Database {
 
     /**
      *
-     * @return
+     * @return Connection
      */
     public Connection getConexion()
    {

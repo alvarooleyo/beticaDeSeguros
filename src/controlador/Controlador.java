@@ -65,7 +65,9 @@ public class Controlador implements ActionListener,MouseListener{
         /**
          *
          */
-        txtPassword
+        txtPassword,
+        menuAyuda,
+        btnAceptarAyuda
     }
     
     /**
@@ -95,6 +97,12 @@ public class Controlador implements ActionListener,MouseListener{
         //boton de salir
         this.vista.menuSalir.setActionCommand( "menuSalir" );
         this.vista.menuSalir.addActionListener(this);
+        //boton de ayuda
+        this.vista.menuAyuda.setActionCommand( "menuAyuda" );
+        this.vista.menuAyuda.addActionListener(this);
+        //boton aceptar de ayuda
+        this.vista.btnAceptarAyuda.setActionCommand( "btnAceptarAyuda" );
+        this.vista.btnAceptarAyuda.addActionListener(this);
         
         
         
@@ -108,7 +116,7 @@ public class Controlador implements ActionListener,MouseListener{
     
      
      /** Acciones que se ejecutar al pulsar cada uno de los botones de la aplicacio
-     * @param en**/
+     * @param e ActionEvent**/
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -137,6 +145,16 @@ public class Controlador implements ActionListener,MouseListener{
             case txtPassword:
                 this.cargaPaneles();
             break;
+            case menuAyuda:
+               
+                this.vista.jAyuda.setSize(400, 320);
+                this.vista.jAyuda.setLocationRelativeTo(null);
+                this.vista.jAyuda.setVisible(true);                
+            break;
+            
+            case btnAceptarAyuda:
+                this.vista.jAyuda.dispose();
+                break;
                 
         
         }

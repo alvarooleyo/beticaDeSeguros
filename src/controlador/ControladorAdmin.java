@@ -27,7 +27,7 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
 
     /**
      *
-     * @param vista
+     * @param vista Interfaz
      */
     public ControladorAdmin(Interfaz vista) {
         super(vista);

@@ -271,7 +271,7 @@ public class ModeloAdmin extends Database{
     
     /**Método para dar de baja a los comerciales
      * 
-     * @param dni 
+     * @param dni String
      */    
     public void BajaComerciales(String dni){
         String q="delete from comercial where dni='"+dni+"'";
@@ -287,9 +287,9 @@ public class ModeloAdmin extends Database{
     
     /**Método para modificar los datos de los comerciales
      * 
-     * @param usuario
-     * @param clave
-     * @param dni 
+     * @param usuario String
+     * @param clave String
+     * @param dni  String
      */
     
     public void MoificarDatosComerciales(String usuario,String clave,String dni){
@@ -352,11 +352,11 @@ public class ModeloAdmin extends Database{
       
      /**Método para añadir comerciales de tipo administador
       * 
-      * @param nom
-      * @param dni
-      * @param admin
-      * @param clave
-      * @param usr 
+      * @param nom String
+      * @param dni String
+      * @param admin String
+      * @param clave String
+      * @param usr  String
       */ 
       public void AñadirAdministrador(String nom,String dni,String admin,String clave,String usr){
            String q="insert into comercial values (null,'"+nom+"','"+dni+"','"+admin+"',null,'"+clave+"','"+usr+"')";
@@ -374,8 +374,8 @@ public class ModeloAdmin extends Database{
     }
       
       /**Metodo para asignar zonas a los comerciales
-       * @param nombre
-       * @param zona
+       * @param nombre String
+       * @param zona String
        */
       public void reasignarZonas(String nombre,String zona){
           int id=0;
@@ -405,11 +405,11 @@ public class ModeloAdmin extends Database{
       }
       
       /** Metodo para dar de alta a un comercial
-       * @param nombre
-       * @param dni
-       * @param usuario
-       * @param clave
-       * @param zona
+       * @param nombre String
+       * @param dni String
+       * @param usuario String
+       * @param clave String
+       * @param zona String
        */
       public void altaComercial(String nombre,String dni,String usuario,String clave,String zona){
           String z="insert into comercial values (null,'"+nombre+"','"+dni+"','comercial','"+zona+"','"+clave+"','"+usuario+"')";
@@ -427,9 +427,9 @@ public class ModeloAdmin extends Database{
       }
       
        /** Metodo para dar de alta a un comercial
-       * @param nombre
-       * @param habitantes
-       * @param establecimientos       
+       * @param nombre String
+       * @param habitantes String
+       * @param establecimientos String      
        */
       public void altaZona(String nombre,String habitantes,String establecimientos){
           String z="insert into zona values (null,'"+nombre+"','"+habitantes+"','"+establecimientos+"')";
@@ -447,8 +447,8 @@ public class ModeloAdmin extends Database{
       }
       /**Método que nos devuelve el número de comerciales por zona
        * 
-       * @param nombreZona
-       * @return 
+       * @param nombreZona String
+       * @return String
        */
       public String comercialesZona(String nombreZona){
            String z="select count(*) as numero from comercial where rango='comercial' and zona=(select id from zona where nombre='"+nombreZona+"')";
@@ -471,7 +471,7 @@ public class ModeloAdmin extends Database{
       
       /**Método para eliminar zonas
        * 
-       * @param nombre 
+       * @param nombre  String
        */
       public void eliminarZona(String nombre){
         String q="delete from zona where nombre='"+nombre+"'";
@@ -488,9 +488,9 @@ public class ModeloAdmin extends Database{
       
       /**Método para editar los datos de una zona
        * 
-       * @param nombre
-       * @param habitantes
-       * @param establecimientos 
+       * @param nombre String
+       * @param habitantes String
+       * @param establecimientos  String
        */
         public void editarZonas(String nombre,String habitantes,String establecimientos){
           
@@ -510,11 +510,11 @@ public class ModeloAdmin extends Database{
         
          /**Método para añadir clientes
           * 
-          * @param nom
-          * @param dni
-          * @param telefono
-          * @param establecimiento
-          * @param idzona 
+          * @param nom String
+          * @param dni String
+          * @param telefono String
+          * @param establecimiento String
+          * @param idzona String
           */      
       public void AñadirClientes(String nom,String dni,String telefono,String establecimiento,String idzona){
            String q="insert into cliente values (null,'"+nom+"','"+dni+"','"+telefono+"','"+establecimiento+"','"+idzona+"',0)";
@@ -532,7 +532,7 @@ public class ModeloAdmin extends Database{
     }
       /**Método para eliminar clientes
        * 
-       * @param nombre 
+       * @param dni String
        */
       public void eliminarCliente(String dni){
         String q="delete from cliente where dni='"+dni+"'";
@@ -554,7 +554,7 @@ public class ModeloAdmin extends Database{
         
         /**Método para eliminar un comercial de tipo administrador
          * 
-         * @param dni 
+         * @param dni  String
          */
         public void eliminarAdmin(String dni){
         String q="delete from comercial where dni='"+dni+"'";
@@ -570,10 +570,10 @@ public class ModeloAdmin extends Database{
         
         /**Método para editar la información de los productos
          * 
-         * @param id
-         * @param nombre
-         * @param descripcion
-         * @param precio 
+         * @param id String
+         * @param nombre String
+         * @param descripcion String
+         * @param precio String
          */
         public void editarproductos(String id,String nombre,String descripcion,String precio){
           
@@ -593,9 +593,9 @@ public class ModeloAdmin extends Database{
         
         /**Método para añadir productos
          * 
-         * @param nombre
-         * @param descripcion
-         * @param precio 
+         * @param nombre String
+         * @param descripcion String
+         * @param precio String
          */
          public void AñadirProducto(String nombre,String descripcion,String precio){
            String q="insert into productos values (null,'"+nombre+"','"+descripcion+"','"+precio+"')";
@@ -614,7 +614,7 @@ public class ModeloAdmin extends Database{
          
     /**
      *
-     * @param id
+     * @param id String
      */
     public void eliminarProducto(String id){
         String q="delete from productos where id='"+id+"'";
