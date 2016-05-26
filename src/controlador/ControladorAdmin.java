@@ -355,13 +355,8 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
                 break;
             case btnACContratos:
                 try{
-                    
-                    System.out.println("entrando");
                     Reportes reporte= new Reportes();
-                    System.out.println("entrando2");
-                    reporte.reporteContratos(a.getConexion());   
-                    System.out.println("entrando3");
-                    
+                    reporte.reporteContratos(a.getConexion());  
                 } catch (SQLException | JRException ex) {
                     Logger.getLogger(ControladorAdmin.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -369,13 +364,8 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
                 
             case   btnACconcom:
                 try{
-                    
-                    System.out.println("entrando");
                     Reportes reporte= new Reportes();
-                    System.out.println("entrando2");
-                    reporte.reporteContratosComerciales(a.getConexion());   
-                    System.out.println("entrando3");
-                    
+                    reporte.reporteContratosComerciales(a.getConexion());  
                 } catch (SQLException | JRException ex) {
                     Logger.getLogger(ControladorAdmin.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -383,13 +373,8 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
                 
             case btnACConzon:
                 try{
-                    
-                    System.out.println("entrando");
                     Reportes reporte= new Reportes();
-                    System.out.println("entrando2");
-                    reporte.reporteContratosZonas(a.getConexion());   
-                    System.out.println("entrando3");
-                    
+                    reporte.reporteContratosZonas(a.getConexion()); 
                 } catch (SQLException | JRException ex) {
                     Logger.getLogger(ControladorAdmin.class.getName()).log(Level.SEVERE, null, ex);
                 }

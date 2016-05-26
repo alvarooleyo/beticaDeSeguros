@@ -1,29 +1,216 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
-
-<jasperReport name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-    <background>
-        <band/>
-    </background>
-    <title>
-        <band height="79"/>
-    </title>
-    <pageHeader>
-        <band height="35"/>
-    </pageHeader>
-    <columnHeader>
-        <band height="61"/>
-    </columnHeader>
-    <detail>
-        <band height="125"/>
-    </detail>
-    <columnFooter>
-        <band height="45"/>
-    </columnFooter>
-    <pageFooter>
-        <band height="54"/>
-    </pageFooter>
-    <summary>
-        <band height="42"/>
-    </summary>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8821f1e4-4532-4728-97e7-f80c181bf3ce">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="65"/>
+	<queryString>
+		<![CDATA[SELECT
+     contrato.`id` AS contrato_id,
+     contrato.`fecha` AS contrato_fecha,
+     contrato.`duracion` AS contrato_duracion,
+     contrato.`idComercial` AS contrato_idComercial,
+     contrato.`idCliente` AS contrato_idCliente,
+     contrato.`idProducto` AS contrato_idProducto,
+     cliente.`id` AS cliente_id,
+     cliente.`nombre` AS cliente_nombre,
+     cliente.`dni` AS cliente_dni,
+     cliente.`telefono` AS cliente_telefono,
+     cliente.`establecimiento` AS cliente_establecimiento,
+     cliente.`idZona` AS cliente_idZona,
+     cliente.`contratos` AS cliente_contratos,
+     productos.`id` AS productos_id,
+     productos.`nombre` AS productos_nombre,
+     productos.`descripcion` AS productos_descripcion,
+     productos.`precio` AS productos_precio,
+     comercial.`id` AS comercial_id,
+     comercial.`nombre` AS comercial_nombre,
+     comercial.`dni` AS comercial_dni,
+     comercial.`rango` AS comercial_rango,
+     comercial.`zona` AS comercial_zona,
+     comercial.`clave` AS comercial_clave,
+     comercial.`usuario` AS comercial_usuario
+FROM
+     `cliente` cliente INNER JOIN `contrato` contrato ON cliente.`id` = contrato.`idCliente`
+     INNER JOIN `productos` productos ON contrato.`idProducto` = productos.`id`
+     INNER JOIN `comercial` comercial ON contrato.`idComercial` = comercial.`id`
+order by contrato.`id` desc limit 1
+]]>
+	</queryString>
+	<field name="contrato_id" class="java.lang.Integer"/>
+	<field name="contrato_fecha" class="java.sql.Date"/>
+	<field name="contrato_duracion" class="java.sql.Date"/>
+	<field name="contrato_idComercial" class="java.lang.Integer"/>
+	<field name="contrato_idCliente" class="java.lang.Integer"/>
+	<field name="contrato_idProducto" class="java.lang.Integer"/>
+	<field name="cliente_id" class="java.lang.Integer"/>
+	<field name="cliente_nombre" class="java.lang.String"/>
+	<field name="cliente_dni" class="java.lang.String"/>
+	<field name="cliente_telefono" class="java.lang.Integer"/>
+	<field name="cliente_establecimiento" class="java.lang.String"/>
+	<field name="cliente_idZona" class="java.lang.Integer"/>
+	<field name="cliente_contratos" class="java.lang.Boolean"/>
+	<field name="productos_id" class="java.lang.Integer"/>
+	<field name="productos_nombre" class="java.lang.String"/>
+	<field name="productos_descripcion" class="java.lang.String"/>
+	<field name="productos_precio" class="java.lang.Double"/>
+	<field name="comercial_id" class="java.lang.Integer"/>
+	<field name="comercial_nombre" class="java.lang.String"/>
+	<field name="comercial_dni" class="java.lang.String"/>
+	<field name="comercial_rango" class="java.lang.String"/>
+	<field name="comercial_zona" class="java.lang.Integer"/>
+	<field name="comercial_clave" class="java.lang.String"/>
+	<field name="comercial_usuario" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="137" splitType="Stretch">
+			<staticText>
+				<reportElement x="61" y="24" width="268" height="43" uuid="8b437788-96d7-4bdf-9153-1a373d77764d"/>
+				<textElement textAlignment="Center">
+					<font size="24" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Bética de Seguros]]></text>
+			</staticText>
+			<image>
+				<reportElement x="442" y="0" width="113" height="96" uuid="734d8e56-6515-4efb-8951-6ff80e6b2208"/>
+				<imageExpression><![CDATA["/home/android-0174654321/NetBeansProjects/beticaDeSeguros3/src/logoBeticaSeguros.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="100" width="415" height="20" uuid="79b728c6-d373-42c0-a078-d81942069834"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Contratación de servicios:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="32" height="20" uuid="c178c148-7524-46ac-b105-ffe71119571c"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="0" width="100" height="20" uuid="82a937db-705d-4a00-8c6b-e7052702ddb3"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="132" y="0" width="89" height="20" uuid="d892fa35-be4e-4188-8eab-d6150de9bab3"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[D.N.I.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="221" y="0" width="128" height="20" uuid="1d1dd254-5fa5-478c-a341-383cf2cf0c1a"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Establecimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="349" y="0" width="119" height="20" uuid="649c1803-e2fa-4eed-9554-cfe557494534"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Producto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="485" y="0" width="70" height="20" uuid="b89a338f-ecb9-48f6-a5c3-73c834bf61f0"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Coste]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="349" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="32" height="38" uuid="ee71f2c2-e521-4d3c-92e3-f2988422dedf"/>
+				<textFieldExpression><![CDATA[$F{contrato_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="32" y="0" width="100" height="38" uuid="7d4e7996-42d9-4e1d-b3ee-17bed644c46e"/>
+				<textFieldExpression><![CDATA[$F{cliente_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="132" y="0" width="89" height="38" uuid="4bea3919-0f3f-40c4-9f25-fa3b1b60cfe5"/>
+				<textFieldExpression><![CDATA[$F{cliente_dni}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="221" y="0" width="128" height="38" uuid="d38818b8-285d-48f7-9e66-258f7b80b423"/>
+				<textFieldExpression><![CDATA[$F{cliente_establecimiento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="349" y="0" width="119" height="38" uuid="8ce90ad0-ad8b-4489-8080-928a843ea688"/>
+				<textFieldExpression><![CDATA[$F{productos_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="132" y="75" width="316" height="37" uuid="3fc97134-f1c5-47c7-bdaf-64ea938d19e8"/>
+				<textFieldExpression><![CDATA[$F{productos_descripcion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="75" width="132" height="37" uuid="0a5ec66c-3046-4301-8070-25a985f0e644"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Descripcion de lo contratado:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="485" y="0" width="70" height="38" uuid="e5dfb51c-4a36-4933-904e-3994f95f975a"/>
+				<textFieldExpression><![CDATA[$F{productos_precio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="271" width="121" height="20" uuid="e318a0a9-4f70-421c-b0ec-8eb3c07c28f5"/>
+				<textFieldExpression><![CDATA[$F{comercial_nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="252" width="100" height="20" uuid="ce7eee0e-0ed0-4b98-9bad-e1860a3dec00"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Firma Comercial:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="360" y="271" width="195" height="20" uuid="954a65fd-9efe-4799-a585-3610f6632271"/>
+				<textFieldExpression><![CDATA[$F{cliente_nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="276" y="252" width="123" height="20" uuid="5f92c4c2-c5b8-4041-8e41-55a65c9e3366"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Firma del Cliente:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="51" width="555" height="1" uuid="eab62955-a74c-4952-8d93-fe9646a63b37"/>
+			</line>
+			<rectangle>
+				<reportElement x="100" y="291" width="135" height="48" uuid="04bd740d-5222-46e4-a461-3db1e85b6199"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="360" y="291" width="135" height="48" uuid="df51a8c0-5e23-455a-a184-e02727a3cda4"/>
+			</rectangle>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="15" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="5" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
 </jasperReport>

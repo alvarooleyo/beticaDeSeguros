@@ -73,13 +73,11 @@ public class Reportes {
      * @throws SQLException
      * @throws JRException
      */
-    public void reporteHacerContratao(Connection a) throws SQLException, JRException{
-    
-    a=DriverManager.getConnection("jdbc:mysql://localhost/BeticaSeguros");
+    public void reporteHacerContratao(Connection a) throws SQLException, JRException{    
     JasperReport contratos=null;
-    contratos=(JasperReport) JRLoader.loadObjectFromFile("/home/android-0174654321/NetBeansProjects/beticaDeSeguros/beticaDeSeguros/src/reportes/ComercialContrato.jasper");
+    contratos=(JasperReport) JRLoader.loadObjectFromFile("/home/android-0174654321/NetBeansProjects/beticaDeSeguros3/src/reportes/ComercialContrato.jasper");
     JasperPrint print=JasperFillManager.fillReport(contratos, null, a);
-    JasperViewer ver= new JasperViewer(print);
+    JasperViewer ver= new JasperViewer(print,false);
     ver.setTitle("Bética de Seguros");
     ver.setVisible(true);
     }

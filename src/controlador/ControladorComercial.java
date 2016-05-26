@@ -313,8 +313,7 @@ public class ControladorComercial extends Controlador implements ActionListener,
             case btnImprimirContrato:
                  try{
                     Reportes reporte= new Reportes();
-                    reporte.reporteHacerContratao(a.getConexion());               
-                    
+                    reporte.reporteHacerContratao(a.getConexion());
                 } catch (SQLException | JRException ex) {
                     Logger.getLogger(ControladorAdmin.class.getName()).log(Level.SEVERE, null, ex);
                 }
