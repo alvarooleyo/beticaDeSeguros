@@ -369,18 +369,26 @@ public class ControladorAdmin extends Controlador implements ActionListener,Mous
                 
             case   btnACconcom:
                 try{
-                Reportes reporte= new Reportes();
-                    reporte.reporteContratosComerciales(a.getConexion());               
+                    
+                    System.out.println("entrando");
+                    Reportes reporte= new Reportes();
+                    System.out.println("entrando2");
+                    reporte.reporteContratosComerciales(a.getConexion());   
+                    System.out.println("entrando3");
                     
                 } catch (SQLException | JRException ex) {
                     Logger.getLogger(ControladorAdmin.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                break;        
+                break;      
                 
             case btnACConzon:
                 try{
+                    
+                    System.out.println("entrando");
                     Reportes reporte= new Reportes();
-                    reporte.reporteContratosZonas(a.getConexion());               
+                    System.out.println("entrando2");
+                    reporte.reporteContratosZonas(a.getConexion());   
+                    System.out.println("entrando3");
                     
                 } catch (SQLException | JRException ex) {
                     Logger.getLogger(ControladorAdmin.class.getName()).log(Level.SEVERE, null, ex);

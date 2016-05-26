@@ -155,7 +155,7 @@ public class ModeloAdmin extends Database{
       //obtenemos la cantidad de registros existentes en la tabla y se almacena en la variable "registros"
       //para formar la matriz de datos
       try{
-         PreparedStatement pstm = this.getConexion().prepareStatement( "SELECT count(*) as total FROM cliente");
+         PreparedStatement pstm = this.getConexion().prepareStatement( "SELECT count(*) as total FROM cliente where contratos=1");
          ResultSet res = pstm.executeQuery();
          res.next();
          registros = res.getInt("total");
@@ -167,7 +167,7 @@ public class ModeloAdmin extends Database{
     Object[][] data = new String[registros][6];
       try{
           //realizamos la consulta sql y llenamos los datos en la matriz "Object[][] data"
-         PreparedStatement pstm = this.getConexion().prepareStatement("SELECT * FROM cliente");
+         PreparedStatement pstm = this.getConexion().prepareStatement("SELECT * FROM cliente where contratos=1");
          ResultSet res = pstm.executeQuery();
          int i=0;
          while(res.next()){

@@ -1,29 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
-
-<jasperReport name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-    <background>
-        <band/>
-    </background>
-    <title>
-        <band height="79"/>
-    </title>
-    <pageHeader>
-        <band height="35"/>
-    </pageHeader>
-    <columnHeader>
-        <band height="61"/>
-    </columnHeader>
-    <detail>
-        <band height="125"/>
-    </detail>
-    <columnFooter>
-        <band height="45"/>
-    </columnFooter>
-    <pageFooter>
-        <band height="54"/>
-    </pageFooter>
-    <summary>
-        <band height="42"/>
-    </summary>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="243a261c-64b1-4213-8fe5-1202a1c1a293">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="126"/>
+	<queryString>
+		<![CDATA[SELECT
+     zona.`id` AS zona_id,
+     zona.`nombre` AS zona_nombre,
+     zona.`poblacion` AS zona_poblacion,
+     zona.`establecimientos` AS zona_establecimientos,
+     contrato.`id` AS contrato_id,
+     contrato.`fecha` AS contrato_fecha,
+     contrato.`duracion` AS contrato_duracion,
+     contrato.`idComercial` AS contrato_idComercial,
+     contrato.`idCliente` AS contrato_idCliente,
+     contrato.`idProducto` AS contrato_idProducto,
+     cliente.`id` AS cliente_id,
+     cliente.`nombre` AS cliente_nombre,
+     cliente.`dni` AS cliente_dni,
+     cliente.`telefono` AS cliente_telefono,
+     cliente.`establecimiento` AS cliente_establecimiento,
+     cliente.`idZona` AS cliente_idZona,
+     cliente.`contratos` AS cliente_contratos,
+     productos.`id` AS productos_id,
+     productos.`nombre` AS productos_nombre,
+     productos.`descripcion` AS productos_descripcion,
+     productos.`precio` AS productos_precio
+FROM
+     `zona` zona INNER JOIN `cliente` cliente ON zona.`id` = cliente.`idZona`
+     INNER JOIN `contrato` contrato ON cliente.`id` = contrato.`idCliente`
+     INNER JOIN `productos` productos ON contrato.`idProducto` = productos.`id`]]>
+	</queryString>
+	<field name="zona_id" class="java.lang.Integer"/>
+	<field name="zona_nombre" class="java.lang.String"/>
+	<field name="zona_poblacion" class="java.lang.Integer"/>
+	<field name="zona_establecimientos" class="java.lang.Integer"/>
+	<field name="contrato_id" class="java.lang.Integer"/>
+	<field name="contrato_fecha" class="java.sql.Date"/>
+	<field name="contrato_duracion" class="java.sql.Date"/>
+	<field name="contrato_idComercial" class="java.lang.Integer"/>
+	<field name="contrato_idCliente" class="java.lang.Integer"/>
+	<field name="contrato_idProducto" class="java.lang.Integer"/>
+	<field name="cliente_id" class="java.lang.Integer"/>
+	<field name="cliente_nombre" class="java.lang.String"/>
+	<field name="cliente_dni" class="java.lang.String"/>
+	<field name="cliente_telefono" class="java.lang.Integer"/>
+	<field name="cliente_establecimiento" class="java.lang.String"/>
+	<field name="cliente_idZona" class="java.lang.Integer"/>
+	<field name="cliente_contratos" class="java.lang.Boolean"/>
+	<field name="productos_id" class="java.lang.Integer"/>
+	<field name="productos_nombre" class="java.lang.String"/>
+	<field name="productos_descripcion" class="java.lang.String"/>
+	<field name="productos_precio" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="146" splitType="Stretch">
+			<staticText>
+				<reportElement x="4" y="110" width="415" height="20" uuid="bb713179-3bfe-47ad-8b17-eea49a266143"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Relación de Contratos realizados por zonas:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="65" y="34" width="268" height="43" uuid="818b1592-79d4-4a8d-bd36-51951c4eddd2"/>
+				<textElement textAlignment="Center">
+					<font size="24" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Bética de Seguros]]></text>
+			</staticText>
+			<image>
+				<reportElement x="442" y="14" width="113" height="96" uuid="b00530d6-1364-4bcf-bf88-a2407db78023"/>
+				<imageExpression><![CDATA["/home/android-0174654321/NetBeansProjects/beticaDeSeguros3/src/logoBeticaSeguros.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="38" splitType="Stretch">
+			<staticText>
+				<reportElement x="4" y="0" width="25" height="20" uuid="20f98385-3247-490b-ab56-313bbfea7f58"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="29" y="0" width="149" height="20" uuid="c519cb34-29c7-46bd-af23-1eba70acec1a"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Zona]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="178" y="0" width="150" height="20" uuid="7c4cabf9-2246-4ea0-9fe3-71d11629e8af"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Establecimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="333" y="0" width="122" height="20" uuid="4dec9ba1-412b-4653-b7eb-258afddbc4e1"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Producto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="0" width="100" height="20" uuid="b79a889b-bc34-4c58-a659-e08b0c140a04"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="29" height="30" uuid="262b7293-3225-448c-b467-a06e3fc11ca4"/>
+				<textFieldExpression><![CDATA[$F{zona_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="29" y="0" width="149" height="30" uuid="b358d96d-ec44-4914-9e46-952ec361b2a8"/>
+				<textFieldExpression><![CDATA[$F{zona_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="178" y="0" width="150" height="30" uuid="a781c7d3-7e5c-474e-b8ce-75ca9330a356"/>
+				<textFieldExpression><![CDATA[$F{cliente_establecimiento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="328" y="0" width="127" height="30" uuid="b9b74b35-7b6f-4fde-9643-4d6fe19513b6"/>
+				<textFieldExpression><![CDATA[$F{productos_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="0" width="100" height="30" uuid="bed52d8e-5558-492a-b303-799e43b2ed80"/>
+				<textFieldExpression><![CDATA[$F{productos_precio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
 </jasperReport>

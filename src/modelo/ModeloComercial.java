@@ -268,7 +268,7 @@ public class ModeloComercial extends Database{
              }catch(SQLException e){
                  System.err.println( e.getMessage() );
                  }
-        String q="insert into contratos values (null,'"+fechainicio+"','"+fechafin+"','"+idComercial+"','"+idcliente+"','"+id+"')";
+        String q="insert into contrato values (null,'"+fechainicio+"','"+fechafin+"','"+idComercial+"','"+idcliente+"','"+id+"')";
            System.out.println(q);
          try{
              PreparedStatement pstm = this.getConexion().prepareStatement(q);

@@ -76,9 +76,11 @@ public class Controlador implements ActionListener,MouseListener{
         
         //iniciamos el panel principal        
         this.vista.setVisible(true);
+        this.vista.setLocationRelativeTo(null);
         this.vista.login.setVisible(true); // cambiado para que no salte siempre el usuario contraseña
         this.vista.panelAdmin.setVisible(false);
         this.vista.panelComercial.setVisible(false);
+        
         //declara una acción y añade un escucha al evento producido por el componente:
         //boton de entrar
         this.vista.btnEntrar.setActionCommand( "btnEntrar" );
@@ -93,6 +95,8 @@ public class Controlador implements ActionListener,MouseListener{
         //boton de salir
         this.vista.menuSalir.setActionCommand( "menuSalir" );
         this.vista.menuSalir.addActionListener(this);
+        
+        
         
        
         
@@ -130,7 +134,10 @@ public class Controlador implements ActionListener,MouseListener{
                 this.vista.dispose();
                 break;
            
-              
+            case txtPassword:
+                this.cargaPaneles();
+            break;
+                
         
         }
         

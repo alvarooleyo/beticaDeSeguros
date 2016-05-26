@@ -12,6 +12,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -323,13 +324,18 @@ public class ControladorComercial extends Controlador implements ActionListener,
                 String idcliente=this.vista.txtIdCliente.getText();
                 String idcomercial=this.vista.txtIdComercial.getText();
                 //falla a la hora de seleccionar la fecha del jcalendar hay qu investigar
-                String fechaInicio="this.vista.jDateChooser1.getDate().getDay()-"+"this.vista.jDateChooser1.getDate().getDay()";
-               
-                System.out.println(this.vista.jDateChooser1.getDate().getDay());
-                String fechaFin=this.vista.jDateChooser1.getDateFormatString();
+                int dia =this.vista.jDateChooser1.getCalendar().get(Calendar.DAY_OF_MONTH);
+                int mes=this.vista.jDateChooser1.getCalendar().get(Calendar.MONTH);
+                int ano=this.vista.jDateChooser1.getCalendar().get(Calendar.YEAR);
+                String fechaalta=ano+"-"+mes+"-"+dia;
+                int dia2 =this.vista.jDateChooser2.getCalendar().get(Calendar.DAY_OF_MONTH);
+                int mes2=this.vista.jDateChooser2.getCalendar().get(Calendar.MONTH);
+                int ano2=this.vista.jDateChooser2.getCalendar().get(Calendar.YEAR);
+                String fechabaja=ano2+"-"+mes2+"-"+dia2;
+                               
                 String producto=this.vista.comboClientesPro2.getSelectedItem().toString();
                 System.out.println(this.vista.comboClientesPro2.getSelectedItem().toString());
-                this.modeloComercial.contratar(idcliente, idcomercial, producto, fechaInicio, fechaFin);
+                this.modeloComercial.contratar(idcliente, idcomercial, producto, fechaalta, fechabaja);
                 
                 break;
                 

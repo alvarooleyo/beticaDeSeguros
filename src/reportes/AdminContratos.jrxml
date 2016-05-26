@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="693e113b-c4a0-42fe-9b47-928168f53fd6">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<subDataset name="dataset1" uuid="25f86c54-e8af-4ba8-9b9e-e2845330208c"/>
@@ -64,19 +64,23 @@ FROM
 	</background>
 	<title>
 		<band height="143" splitType="Stretch">
+			<image>
+				<reportElement x="442" y="0" width="113" height="96" uuid="6845461b-5262-4c47-a0d0-bb63354625f6"/>
+				<imageExpression><![CDATA["/home/android-0174654321/NetBeansProjects/beticaDeSeguros3/src/logoBeticaSeguros.png"]]></imageExpression>
+			</image>
 			<staticText>
-				<reportElement x="58" y="21" width="268" height="43" uuid="557fca6f-a4c2-46ea-9d6d-9156bfc8d3b7"/>
-				<textElement textAlignment="Center">
-					<font size="24" isBold="true" isItalic="true"/>
-				</textElement>
-				<text><![CDATA[Bética de Seguros]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="26" y="97" width="156" height="20" uuid="1a6462e9-5e49-4144-a4c9-dd1f739616e2"/>
+				<reportElement x="12" y="95" width="415" height="20" uuid="19e3b541-3c6f-419f-8a91-957ebe20fedb"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<text><![CDATA[Relación de Contratos:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="73" y="19" width="268" height="43" uuid="b7ac9a42-b3d0-4b22-b5ab-1c2fd127ebd0"/>
+				<textElement textAlignment="Center">
+					<font size="24" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Bética de Seguros]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -129,27 +133,27 @@ FROM
 	<detail>
 		<band height="125" splitType="Stretch">
 			<textField>
-				<reportElement x="226" y="0" width="100" height="20" uuid="1f642f6d-2512-4f96-acb1-164f76160d60"/>
+				<reportElement x="226" y="0" width="100" height="47" uuid="1f642f6d-2512-4f96-acb1-164f76160d60"/>
 				<textFieldExpression><![CDATA[$F{productos_nombre}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="438" y="0" width="117" height="20" uuid="c3673b49-c504-453a-ad5f-6cba3c2be414"/>
+				<reportElement x="438" y="0" width="117" height="47" uuid="c3673b49-c504-453a-ad5f-6cba3c2be414"/>
 				<textFieldExpression><![CDATA[$F{comercial_nombre}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="26" y="0" width="100" height="20" uuid="4dcdd127-7240-466e-9921-f8c9193d1a2f"/>
+				<reportElement x="26" y="0" width="100" height="47" uuid="4dcdd127-7240-466e-9921-f8c9193d1a2f"/>
 				<textFieldExpression><![CDATA[$F{cliente_nombre}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="0" width="26" height="20" uuid="1137568a-a874-4886-8d48-98048e28be35"/>
+				<reportElement x="0" y="0" width="26" height="47" uuid="1137568a-a874-4886-8d48-98048e28be35"/>
 				<textFieldExpression><![CDATA[$F{contrato_id}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="126" y="0" width="100" height="20" uuid="8b94ab87-7370-4be9-a86b-3477cf03fe38"/>
+				<reportElement x="126" y="0" width="100" height="47" uuid="8b94ab87-7370-4be9-a86b-3477cf03fe38"/>
 				<textFieldExpression><![CDATA[$F{cliente_establecimiento}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="326" y="0" width="112" height="20" uuid="a6cc5305-749e-4e14-b3df-a09afadb9ab9"/>
+				<reportElement x="326" y="0" width="112" height="47" uuid="a6cc5305-749e-4e14-b3df-a09afadb9ab9"/>
 				<textFieldExpression><![CDATA[$F{contrato_fecha}]]></textFieldExpression>
 			</textField>
 		</band>
